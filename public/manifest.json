@@ -1,9 +1,9 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "476 Finance",
+  "name": "Finance Project for CS476",
   "icons": [
     {
-      "src": "favicon.ico",
+      "src": "../Assets/favicon.ico",
       "sizes": "64x64 32x32 24x24 16x16",
       "type": "image/x-icon"
     },

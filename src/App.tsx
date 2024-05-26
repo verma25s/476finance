@@ -1,9 +1,14 @@
 import React from 'react';
-import './App.css';
+import './app.css';
+import { Home } from './pages/home'
+import { Forum } from './pages/forum'
+import { Scanner } from './pages/scanner'
+
 import { 
-  BrowserRouter as Router,
+  BrowserRouter,
    Routes, 
    Route, 
+   Link,
   } from "react-router-dom";
 
 
@@ -11,16 +16,20 @@ import {
 function App() {
   return (
     <div className="App">
-<Router>
+<BrowserRouter>
+<div className="navbar"><h2>Navbar</h2>
+<Link to="/">Home</Link>
+<Link to="/Forum">Forum</Link>
+<Link to="/Scanner">Scanner</Link>
   <Routes>
-    <Route>
-
-      
-    </Route>
-
+    <Route path="/" element ={<Home/>}/>
+    <Route path="/" element ={<Forum/>}/>
+    <Route path="/" element ={<Scanner/>}/>
+    <Route path="*" element ={<h1>Page Not Found</h1>}/>
   </Routes>
-  
-  </Router>     
+  </div> 
+</BrowserRouter>    
+
     </div>
   );
 }
