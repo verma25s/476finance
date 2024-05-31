@@ -1,7 +1,7 @@
 import React from 'react';
 import './app.css';
 import {   BrowserRouter,   Routes,    Route,   } from "react-router-dom";
-import React, { useState } from "react";
+import { useState, useEffect } from "react";
 import {Navbar} from './pages/navbar'
 import { Home } from './pages/home'
 import { Forum } from './pages/forum'
