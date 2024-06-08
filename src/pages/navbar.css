@@ -5,7 +5,7 @@
     left: 0;
     background-color: wheat;
     z-index: var(--z-fixed);
-   
+    display: flex;
 }
 
 .nav-container {

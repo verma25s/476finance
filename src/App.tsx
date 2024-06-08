@@ -24,7 +24,7 @@ function App() {
      </main>
 </BrowserRouter> 
 
-<div className="f"></div>
+
 
     </div>
 
