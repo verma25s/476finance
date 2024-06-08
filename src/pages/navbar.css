@@ -5,6 +5,7 @@
     left: 0;
     background-color: wheat;
     z-index: var(--z-fixed);
+   
 }
 
 .nav-container {

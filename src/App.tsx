@@ -22,9 +22,9 @@ function App() {
         <Route path="*" element ={<h1>Page Not Found</h1>}/>
       </Routes>
      </main>
-    </BrowserRouter> 
+</BrowserRouter> 
 
-
+<div className="f"></div>
 
     </div>
 
