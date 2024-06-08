@@ -13,19 +13,22 @@ function App() {
   return (
     <div className="App">
 <BrowserRouter>
-    <div className="navbar"><h2>Navbar</h2>
     <Navbar/>
+      <main className="nav-content">
       <Routes>
         <Route path="/" element ={<Home/>}/>
         <Route path="/Forum" element ={<Forum/>}/>
         <Route path="/Scanner" element ={<Scanner/>}/>
         <Route path="*" element ={<h1>Page Not Found</h1>}/>
       </Routes>
-      </div> 
+     </main>
     </BrowserRouter> 
 
 
+
     </div>
+
+
   );
 }
 

@@ -1,6 +1,12 @@
+import { relative } from "path"
+import "./navbar.css";
 export const Forum = () =>{
 
-    return <h1>Forum</h1>
+    return (
+    
+    <div className="forum"><h1>Forum</h1></div>
+    
+);
     
     
     }
