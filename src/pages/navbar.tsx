@@ -11,7 +11,7 @@ export const Navbar = () =>{
         setShowMenu(!showMenu);
       };
      
-       const closeMenuonMobile = () => {
+const closeMenuonMobile = () => {
        
            setShowMenu(false);
          
@@ -37,7 +37,7 @@ return (
       
     
     <li className="nav-list-child">
-      <NavLink to="/" className="nav-link" onClick={closeMenuonMobile}>
+      <NavLink to="/Home" className="nav-link" onClick={closeMenuonMobile}>
         Home
       </NavLink>
     </li>
@@ -61,6 +61,7 @@ return (
 <div className="nav-menu" onClick={toggleMenu} >  <RxHamburgerMenu /></div>
 
 </nav>
+
 </header>
 );
 

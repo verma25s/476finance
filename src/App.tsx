@@ -2,9 +2,10 @@ import React from 'react';
 import './app.css';
 import {   BrowserRouter,   Routes,    Route,   } from "react-router-dom";
 import { useState, useEffect } from "react";
-import {Navbar} from './pages/navbar'
+import { Navbar } from './pages/navbar'
 import { Home } from './pages/home'
 import { Forum } from './pages/forum'
+import { Login } from './pages/login'
 import { Scanner } from './pages/scanner'
 
 
@@ -16,7 +17,8 @@ function App() {
     <Navbar/>
       <main className="nav-content">
       <Routes>
-        <Route path="/" element ={<Home/>}/>
+      <Route path="/" element ={<Login/>}/>
+        <Route path="/Home" element ={<Home/>}/>
         <Route path="/Forum" element ={<Forum/>}/>
         <Route path="/Scanner" element ={<Scanner/>}/>
         <Route path="*" element ={<h1>Page Not Found</h1>}/>
