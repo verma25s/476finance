@@ -115,6 +115,26 @@ nav ul li a {
     border: 1px solid #ddd;
     border-radius: 5px;
 }
+/* Dropdown Menu */
+nav ul ul {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #fff;
+    padding: 10px 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 999;
+}
+
+nav ul ul li {
+    width: 200px;
+    text-align: left;
+}
+
+nav ul li:hover > ul {
+    display: block;
+}
 
 .signup-button, .login-button, .create-account-button {
     background-color: #007BFF;
@@ -133,10 +153,12 @@ nav ul li a {
     display: flex;
     gap: 20px;
     padding: 20px;
+    color: #fff;
 }
 
 .tabs-content {
     flex: 3;
+    color: #fff;
 }
 
 aside.auth-sidebar {
