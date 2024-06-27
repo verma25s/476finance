@@ -1,0 +1,53 @@
+.auth-sidebar {
+  width: 250px;
+  height: 190px;
+  background-color: #f4f4f4;
+  display: fixed;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.auth-buttons-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 100%;
+}
+
+.auth-buttons-sidebar button {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.auth-buttons-sidebar .login-button {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.auth-buttons-sidebar .login-button:hover {
+  background-color: #0056b3;
+}
+
+.auth-buttons-sidebar .create-account-button {
+  background-color: #28a745;
+  color: #fff;
+}
+
+.auth-buttons-sidebar .create-account-button:hover {
+  background-color: #218838;
+}
+
+.auth-buttons-sidebar a {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  text-align: center;
+}
