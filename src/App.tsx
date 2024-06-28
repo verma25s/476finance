@@ -8,6 +8,7 @@ import Aside from './components/Aside';
 import Login from './pages/Login/Login';
 import CreateAccount from './pages/CreateAccount/CreateAccount';
 import Market from './pages/market/Market';
+import PersonalFinance from './pages/personalFinance/PersonalFinance';
 
 const App: React.FC = () => {
   return (
@@ -20,6 +21,7 @@ const App: React.FC = () => {
           <Route path="/login" element={<Login />} />
           <Route path="/create-account" element={<CreateAccount />} />
           <Route path="/market/*" element={<Market />} />
+          <Route path="/personalFinance/*" element={<PersonalFinance />} />
         </Routes>
         <Footer />
       </div>
