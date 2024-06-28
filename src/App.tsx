@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import './App.css';
 import Nav from './components/Nav';
 import Footer from './components/Footer';
@@ -7,7 +7,7 @@ import VideoBackground from './components/VideoBackground';
 import Aside from './components/Aside';
 import Login from './pages/Login/Login';
 import CreateAccount from './pages/CreateAccount/CreateAccount';
-import Market from './pages/Market/Market';
+import Market from './pages/market/Market';
 
 const App: React.FC = () => {
   return (
@@ -15,7 +15,12 @@ const App: React.FC = () => {
       <div className="App">
         <VideoBackground />
         <Header />
-        <MainContent />
+        <Routes>
+          <Route path="/" element={<MainContent />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/create-account" element={<CreateAccount />} />
+          <Route path="/market/*" element={<Market />} />
+        </Routes>
         <Footer />
       </div>
     </Router>
@@ -43,17 +48,12 @@ const MainContent: React.FC = () => {
     <main>
       <div className="main-content">
         <div className="tabs-content">
-          <Section id="Current Market" title="Market" content="[Market Graphs]" />
+          <Section id="Current Market" title="Market" content={<Link to="/market">Market</Link>} />
           <Section id="graphs" title="Graphical analysis" content="[Analytical Graphs]" />
           <Section id="Top 3's" title="Top 3's" content="[Tabular representation]" />
           <Section id="Latest Finance and Business News" title="Latest Finance and Business News" content="[News Content]" />
         </div>
         <Aside />
-        <Routes>
-          <Route path="/login" element={<Login />} />
-          <Route path="/create-account" element={<CreateAccount />} />
-          <Route path="/market/*" element={<Market />} />
-        </Routes>
       </div>
     </main>
   );
@@ -62,7 +62,7 @@ const MainContent: React.FC = () => {
 interface SectionProps {
   id: string;
   title: string;
-  content: string;
+  content: React.ReactNode;
 }
 
 const Section: React.FC<SectionProps> = ({ id, title, content }) => {
