@@ -1,3 +1,4 @@
+// server.ts
 import express from 'express';
 import bodyParser from 'body-parser';
 import userRoutes from './routes/userRoutes';
@@ -15,3 +16,4 @@ app.use('/api/user', userRoutes);
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
 });
+

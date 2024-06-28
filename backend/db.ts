@@ -1,11 +1,19 @@
-import { Pool } from 'pg';
+// db.ts
+import Database from 'better-sqlite3';
 
-const pool = new Pool({
-    user: 'your_database_user',
-    host: 'localhost',
-    database: 'your_database_name',
-    password: 'your_database_password',
-    port: 5432,
-});
+const db = new Database('users.db');
 
-export default pool;
+// Create users table if it doesn't exist
+db.prepare(`
+  CREATE TABLE IF NOT EXISTS users (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    username TEXT UNIQUE,
+    email TEXT UNIQUE,
+    password_hash TEXT,
+    dob TEXT
+  )
+`).run();
+
+export default db;
+
+

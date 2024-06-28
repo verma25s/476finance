@@ -107,4 +107,3 @@ const CreateAccount: React.FC = () => {
 };
 
 export default CreateAccount;
-

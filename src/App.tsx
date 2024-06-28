@@ -7,9 +7,7 @@ import VideoBackground from './components/VideoBackground';
 import Aside from './components/Aside';
 import Login from './pages/Login/Login';
 import CreateAccount from './pages/CreateAccount/CreateAccount';
-import Market from './pages/market/Market';
-import './components/Header.css';
-
+import Market from './pages/Market/Market';
 
 const App: React.FC = () => {
   return (
@@ -19,11 +17,6 @@ const App: React.FC = () => {
         <Header />
         <MainContent />
         <Footer />
-        <Routes>
-          <Route path="/login" element={<Login />} />
-          <Route path="/create-account" element={<CreateAccount />} />
-          <Route path="/market/*" element={<Market />} />
-        </Routes>
       </div>
     </Router>
   );
@@ -56,6 +49,11 @@ const MainContent: React.FC = () => {
           <Section id="Latest Finance and Business News" title="Latest Finance and Business News" content="[News Content]" />
         </div>
         <Aside />
+        <Routes>
+          <Route path="/login" element={<Login />} />
+          <Route path="/create-account" element={<CreateAccount />} />
+          <Route path="/market/*" element={<Market />} />
+        </Routes>
       </div>
     </main>
   );
