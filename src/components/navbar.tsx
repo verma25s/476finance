@@ -21,12 +21,8 @@ const closeMenuonMobile = () => {
 
 return (
 <header className="navHeader" >
-    <nav className="nav-container">
-        
-
-
-        
-    <NavLink to="/" className="logo" onClick={closeMenuonMobile}>
+  <nav className="nav-container">
+        <NavLink to="/" className="logo" onClick={closeMenuonMobile}>
    
     <img src={require('../Assets/logo.png')}/>
        </NavLink>

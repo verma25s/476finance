@@ -90,6 +90,24 @@ flex-grow: 2;
 margin-left: 10px;
 
 }
+.top-gainers{
+    height: 60vh;
+    overflow-y: scroll;}
+
+.wrapper{
+    display: grid;
+    grid-template-columns: auto auto;
+    padding: 5px;
+    font-weight: bold;
+
+}
+
+.top-gainers  .h3{ font-size: 20px;  text-align: left;}
+.top-gainers  .h5{font-size: 20px;   text-align: right;}
+.top-gainers .h4{ font-size: 13px;   text-align: left;}
+.top-gainers .h6{font-size: 13px;  text-align: right; }
+.positive{color:green;}
+.negative{color: red;}
 
 @media screen and (max-width: 1500px) {
     .portfolio{   
@@ -102,6 +120,12 @@ margin-left: 10px;
        width: 45%;
     }
 }   
+
+
+
+
+
+
 
 @media screen and (max-width: 1000px) {
     .flex-child{   
