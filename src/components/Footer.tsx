@@ -1,5 +1,3 @@
-// Footer.tsx
-
 import React from 'react';
 import './Footer.css';
 
@@ -10,12 +8,10 @@ const Footer: React.FC = () => {
         <p>Disclaimer: All content provided is for informational purposes only and does not constitute financial advice.</p>
       </div>
       <div className="contact-us">
-        <h3>Contact Us</h3>
         <p>Email: contact@476finance.com</p>
-        <p>Phone: +123-456-7890</p>
       </div>
       <div className="get-in-touch">
-        <h3>Get in Touch</h3>
+        <p>Phone: +123-456-7890</p>
         {/* Social Media Links */}
       </div>
       <div className="footer-copyright">

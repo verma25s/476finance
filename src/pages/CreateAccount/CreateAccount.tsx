@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import './CreateAccount.css'; // Import your styles
+import './CreateAccount.css';
 
-const CreateAccount: React.FC = () => {
+
+
+const CreateAccount = () => {
   const navigate = useNavigate();
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -10,33 +12,25 @@ const CreateAccount: React.FC = () => {
   const [dob, setDob] = useState('');
   const [termsAccepted, setTermsAccepted] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  
+  
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    const response = await fetch('http://localhost:5000/register', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ name, password, email, dob }),
+    });
 
-  const handleRegister = async (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-
-    if (!termsAccepted) {
-      setError('Please accept the terms and conditions.');
-      return;
-    }
-
-    try {
-      const response = await fetch('/api/user/register', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ username: name, email, password }),
-      });
-
-      if (!response.ok) {
-        const data = await response.json();
-        setError(data.message);
-      } else {
-        navigate('/login'); // Redirect to login page after successful registration
-      }
-    } catch (error) {
-      console.error('Error during registration:', error);
-      setError('Internal server error');
+    const data = await response.json();
+    console.log(data);
+    console.log(data.type);
+    if (response.ok) {
+      alert(data.success);
+    } else {
+      alert(data.error);
     }
   };
 
@@ -44,7 +38,9 @@ const CreateAccount: React.FC = () => {
     <div className="create-account-container">
       <h1>476Finance</h1>
       <h2>Create your account</h2>
-      <form onSubmit={handleRegister}>
+      
+      <form onSubmit={handleSubmit}>
+        
         <label htmlFor="name">Name</label>
         <input
           type="text"

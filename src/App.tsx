@@ -1,20 +1,19 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
-import './App.css';
+import './app.css';
 import Nav from './components/Nav';
 import Footer from './components/Footer';
-import VideoBackground from './components/VideoBackground';
 import Aside from './components/Aside';
 import Login from './pages/Login/Login';
 import CreateAccount from './pages/CreateAccount/CreateAccount';
 import Market from './pages/market/Market';
 import PersonalFinance from './pages/personalFinance/PersonalFinance';
 
-const App: React.FC = () => {
+const App = () => {
   return (
     <Router>
       <div className="App">
-        <VideoBackground />
+       
         <Header />
         <Routes>
           <Route path="/" element={<MainContent />} />
@@ -22,6 +21,7 @@ const App: React.FC = () => {
           <Route path="/create-account" element={<CreateAccount />} />
           <Route path="/market/*" element={<Market />} />
           <Route path="/personalFinance/*" element={<PersonalFinance />} />
+         
         </Routes>
         <Footer />
       </div>
@@ -29,7 +29,7 @@ const App: React.FC = () => {
   );
 }
 
-const Header: React.FC = () => {
+const Header = () => {
   return (
     <header>
       <div>
@@ -45,7 +45,7 @@ const Header: React.FC = () => {
   );
 }
 
-const MainContent: React.FC = () => {
+const MainContent = () => {
   return (
     <main>
       <div className="main-content">

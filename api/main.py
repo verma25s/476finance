@@ -1,8 +1,12 @@
 from app import create_app
 import yfinance as yf
-from flask import Flask, jsonify
-import requests
 from dotenv import load_dotenv
+from flask import Flask, jsonify, session, redirect, url_for
+from flask_pymongo import PyMongo
+from flask_bcrypt import Bcrypt
+import requests
+
+
 import os
 load_dotenv()
 app = create_app()
@@ -28,6 +32,11 @@ def get_top_gainers():
         return data
     else:
         print("error")
+
+import manage_users
+
+
+
 
 if __name__ == '__main__':
     app.run(debug=True)

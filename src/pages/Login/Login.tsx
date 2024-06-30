@@ -1,18 +1,18 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import './Login.css'; // Import your styles
+import './Login.css';
 
-const Login: React.FC = () => {
+const Login = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState<string | null>(null);
 
-  const handleLogin = async (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     try {
-      const response = await fetch('/api/user/login', {
+      const response = await fetch('http://localhost:5000/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -21,17 +21,17 @@ const Login: React.FC = () => {
       });
 
       if (!response.ok) {
-        const data = await response.json();
-        setError(data.message);
-      } else {
-        navigate('/'); // Redirect to home or another page on successful login
+        throw new Error('Invalid credentials');
       }
+
+      // Login successful
+      setError('');
+      console.log('Login successful');
+      // Redirect or update state as needed after successful login
     } catch (error) {
-      console.error('Error during login:', error);
-      setError('Internal server error');
+      setError("error");
     }
   };
-
   return (
     <div className="login-container">
       <div className="login-left">
@@ -41,7 +41,7 @@ const Login: React.FC = () => {
       </div>
       <div className="login-right">
         <h2>Sign in to 476Finance</h2>
-        <form onSubmit={handleLogin}>
+        <form onSubmit={handleSubmit}>
           <label htmlFor="email">Email</label>
           <input
             type="email"

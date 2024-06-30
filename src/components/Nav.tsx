@@ -7,6 +7,7 @@ const Nav: React.FC = () => {
   return (
     <nav>
       <ul>
+      <li><Link to="/login">Login</Link></li>
         <li>
           <Link to="/market">Market</Link>
           <ul className="dropdown">
