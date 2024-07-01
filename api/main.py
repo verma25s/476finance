@@ -5,7 +5,7 @@ from flask import Flask, jsonify, session, redirect, url_for
 from flask_pymongo import PyMongo
 from flask_bcrypt import Bcrypt
 import requests
-
+from flask_session import Session
 
 import os
 load_dotenv()
@@ -14,6 +14,7 @@ app = create_app()
 ALPHA_VANTAGE_API_KEY = os.getenv('ALPHA_VANTAGE_API_KEY')
 
 
+Session(app)
 
 @app.route('/stock/<symbol>')
 def get_stock_data(symbol):

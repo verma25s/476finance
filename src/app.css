@@ -3,6 +3,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+ 
 }
 
 /* Global Styles */
@@ -18,7 +19,11 @@ body {
   flex-direction: column;
   min-height: 100vh;
 }
+.logo img{
+  width: var(--header-width);
+  height: var(--header-height);
 
+}
 .video-background {
   position: fixed;
   top: 0;
@@ -75,6 +80,7 @@ header {
 main {
   flex: 1;
   display: flex;
+  
 }
 
 .main-content {
@@ -84,8 +90,9 @@ main {
 }
 
 .tabs-content {
+  flex: 1;
+  position: relative;
   width: 70%;
-  padding: 1rem;
 }
 
 .graph {
@@ -127,6 +134,7 @@ aside {
 /* Nav */
 nav ul {
   list-style-type: none;
+  
 }
 
 nav ul li {
@@ -161,6 +169,8 @@ nav ul li ul li a {
 
 /* Footer */
 footer {
+  flex: 1;
+  height: 15vh;
   background-color: #333;
   color: #fff;
   padding: 1rem;

@@ -1,9 +1,7 @@
 /* Footer.css */
 
 footer {
-    position: fixed;
-    left: 0;
-    bottom: 0;
+  height: 15vh;
     width: 100%;
     display: flex;
     justify-content: space-between;

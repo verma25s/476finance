@@ -1,14 +1,27 @@
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Link, useNavigate   } from 'react-router-dom';
 import './Login.css';
+
+let isLoggedInState = false;
+
+export const getIsLoggedIn = () => {
+  return isLoggedInState;
+};
+
+export const setIsLoggedIn = (loggedIn: boolean) => {
+  isLoggedInState = loggedIn;
+};
 
 const Login = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState<string | null>(null);
+  
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    
     event.preventDefault();
 
     try {
@@ -18,7 +31,9 @@ const Login = () => {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({ email, password }),
+        
       });
+      
 
       if (!response.ok) {
         throw new Error('Invalid credentials');
@@ -27,9 +42,15 @@ const Login = () => {
       // Login successful
       setError('');
       console.log('Login successful');
-      // Redirect or update state as needed after successful login
+      setIsLoggedIn(true);
+      localStorage.setItem('isLoggedIn', 'true');
+      console.log(isLoggedInState);
+      if (isLoggedInState) {
+        navigate('/');
+    }
+      
     } catch (error) {
-      setError("error");
+      setError("Incorrect username or Password");
     }
   };
   return (

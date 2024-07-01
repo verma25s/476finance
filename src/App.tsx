@@ -33,8 +33,9 @@ const Header = () => {
   return (
     <header>
       <div>
-        <h1><strong>476 Finance</strong></h1>
-        <p><i>Welcome to the new financial world</i></p>
+      <Link to="/" className="logo"><h1><strong>476 Finance</strong></h1></Link>
+        
+    
       </div>
       <Nav />
       <div className="search-auth">
@@ -50,7 +51,7 @@ const MainContent = () => {
     <main>
       <div className="main-content">
         <div className="tabs-content">
-          <Section id="Current Market" title="Market" content={<Link to="/market">Market</Link>} />
+          <Section  id="Current Market" title="Market" content={<Link to="/market">Market</Link>} />
           <Section id="graphs" title="Graphical analysis" content="[Analytical Graphs]" />
           <Section id="Top 3's" title="Top 3's" content="[Tabular representation]" />
           <Section id="Latest Finance and Business News" title="Latest Finance and Business News" content="[News Content]" />
@@ -70,7 +71,6 @@ interface SectionProps {
 const Section: React.FC<SectionProps> = ({ id, title, content }) => {
   return (
     <section id={id}>
-      <h2>{title}</h2>
       <div className="graph">{content}</div>
     </section>
   );

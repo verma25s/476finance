@@ -13,7 +13,7 @@ users = fn_database.users
 
 
 bcrypt = Bcrypt(app)
-cors = CORS(app, resources={r"/api/*": {"origins": "*"}})
+cors = CORS(app,supports_credentials=True, resources={r"/api/*": {"origins": "*"}})
 @app.route('/register', methods=['POST'])
 def register():
     
@@ -46,7 +46,8 @@ def login():
 
     return jsonify({'error': 'Invalid email or password!'}), 401
 
-@app.route('/logout', methods=['GET'])
+@app.route('/logout', methods=['GET','POST'])
 def logout():
-    session.pop('email', None)
+    session.pop()
+    print("Logout")
     return jsonify({'success': 'Logged out successfully!'}), 200
