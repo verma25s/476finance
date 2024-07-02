@@ -88,12 +88,27 @@ flex-grow: 2;
     border-radius: 10px;
     margin-top: 10px;
 margin-left: 10px;
+.cp{
+position: fixed;
 
 }
+}
 .top-gainers{
-    height: 60vh;
+    color: black;
+    height: 100%;
     overflow-y: scroll;}
+.top-losers{
+    color: black;
+    height: 100%;
+    overflow-y: scroll;}
+.message-board .messages{
+        color: black;
+        height: 100%;
+        overflow-y: scroll;
 
+
+
+    }
 .wrapper{
     display: grid;
     grid-template-columns: auto auto;
@@ -106,6 +121,12 @@ margin-left: 10px;
 .top-gainers  .h5{font-size: 20px;   text-align: right;}
 .top-gainers .h4{ font-size: 13px;   text-align: left;}
 .top-gainers .h6{font-size: 13px;  text-align: right; }
+
+.top-losers  .h3{ font-size: 20px;  text-align: left;}
+.top-losers  .h5{font-size: 20px;   text-align: right;}
+.top-losers .h4{ font-size: 13px;   text-align: left;}
+.top-losers .h6{font-size: 13px;  text-align: right; }
+
 .positive{color:green;}
 .negative{color: red;}
 

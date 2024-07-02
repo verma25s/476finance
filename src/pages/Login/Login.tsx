@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { Link, useNavigate   } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import './Login.css';
+import { useCookies } from 'react-cookie';
 
 let isLoggedInState = false;
 
@@ -18,22 +18,21 @@ const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState<string | null>(null);
-  
+  const [cookies, setCookie] = useCookies(['userEmail']);
+
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-    
     event.preventDefault();
 
     try {
+      
       const response = await fetch('http://localhost:5000/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({ email, password }),
-        
       });
-      
 
       if (!response.ok) {
         throw new Error('Invalid credentials');
@@ -44,18 +43,23 @@ const Login = () => {
       console.log('Login successful');
       setIsLoggedIn(true);
       localStorage.setItem('isLoggedIn', 'true');
-      console.log(isLoggedInState);
+     
       if (isLoggedInState) {
+        setCookie('userEmail', email, { path: '/', maxAge: 86400 });
+        console.log(email);
+        console.log(cookies.userEmail);
         navigate('/');
-    }
+      }
       
     } catch (error) {
       setError("Incorrect username or Password");
     }
   };
+
   return (
     <div className="login-container">
       <div className="login-left">
+        {cookies.userEmail ? <p>Welcome {cookies.userEmail}</p> : <p>Not logged in</p>}
         <h1>476Finance</h1>
         <h2>Welcome to 476Finance</h2>
         <p className="tagline">Smart money made simple</p>

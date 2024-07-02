@@ -3,12 +3,14 @@ import { getIsLoggedIn, setIsLoggedIn }  from '../pages/Login/Login'
 import './Aside.css'; // Import your styles
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-
+import { useCookies } from 'react-cookie';
 const Aside = () => {
   const navigate = useNavigate();
   const [message, setMessage] = useState<string | null>(null);
+  const [cookies, setCookie, removeCookie] = useCookies(['userEmail']);
  
     const handleButtonClick = async () => {
+      removeCookie('userEmail', { path: '/' });
         try {
           const response = await fetch('logout', {
             method: 'GET',
@@ -44,7 +46,7 @@ const Aside = () => {
     <aside className="auth-sidebar">
       
       {message && <p className="logout-message">{message}</p>}
-      {!getIsLoggedIn() &&
+      {!cookies.userEmail &&
           
         <div className="auth-buttons-sidebar">
         
@@ -57,7 +59,7 @@ const Aside = () => {
         </div>
         }
 
-{getIsLoggedIn() &&
+{cookies.userEmail &&
         <div className="auth-buttons-sidebar">
         
         <button className="login-button" onClick={handleButtonClick}>

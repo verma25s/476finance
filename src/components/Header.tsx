@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Nav from './Nav'; //  Nav is your navigation component
-import './Header.css'; // Assuming you have a Header.css for styling
+import Nav from './Nav'; 
+import './Header.css';
 
 const Header: React.FC = () => {
   return (

@@ -1,16 +1,17 @@
-import React, { useEffect, useState } from 'react';
-import { RxWidth } from 'react-icons/rx';
+import  { useEffect, useState } from 'react';
+
 
 interface Gainer {
-    change_amount: number;
-    change_percentage: number;
-    price: number;
-    ticker: string;
-    volume: number;
+  change_amount: number;
+  change_percentage: number;
+  price : number;
+  ticker: string;
+    
   }
 export const Top_gainers = () =>{
-    const [gainers, setGainers] = useState<Gainer[]>([]);
+  const [gainers, setGainers] = useState<Gainer[]>([]);
   const [error, setError] = useState<string | null>(null);
+  const [loading, setLoading] = useState<boolean>(true); // Add loading state
 
   useEffect(() => {
     fetchTopGainers();
@@ -18,26 +19,25 @@ export const Top_gainers = () =>{
 
   const fetchTopGainers = async () => {
     try {
-      const response = await fetch('/top-gainers');
+      const response = await fetch('/top-gainers'); // Adjust API endpoint as needed
       if (!response.ok) {
         throw new Error('Network response was not ok');
       }
       const data = await response.json();
 
-      // Debugging log
-      console.log('Fetched data:', data);
-      console.log('Type of fetched data:', typeof data.top_gainers);
-      console.log('Is array:', Array.isArray(data.top_gainers));
-
-      // Ensure data is an array
+      
+      
+      // Ensure data.top_gainers is an array and set it to state
       if (Array.isArray(data.top_gainers)) {
         setGainers(data.top_gainers);
+        setLoading(false); // Set loading to false once data is fetched
       } else {
         throw new Error('Fetched data is not an array');
       }
     } catch (error) {
       setError('Error fetching top gainers');
       console.error('Error fetching top gainers:', error);
+      setLoading(false); // Set loading to false on error
     }
   };
 
@@ -47,11 +47,11 @@ export const Top_gainers = () =>{
     
 
 <div className="top-gainers">
-      
-   
+<h1 className="cp">TOP GAINERS</h1>
+<hr/><hr/>
 
     
-        {gainers.map((gainer) => (
+        {gainers.length > 0 ? (gainers.map((gainer) => (
             
             
             <div className="wrapper" key={gainer.ticker}> 
@@ -61,10 +61,12 @@ export const Top_gainers = () =>{
             
               <div className="h4">  {gainer.change_percentage}</div>
                 <div className={"positive h6"}> {gainer.change_amount}</div>
-            
+                <hr/><hr/>
                 </div>
                
-        ))}
+        ))) : (
+          <p>Loading...</p>
+        )}
      
      
 
