@@ -59,7 +59,7 @@ const Login = () => {
   return (
     <div className="login-container">
       <div className="login-left">
-        {cookies.userEmail ? <p>Welcome {cookies.userEmail}</p> : <p>Not logged in</p>}
+       
         <h1>476Finance</h1>
         <h2>Welcome to 476Finance</h2>
         <p className="tagline">Smart money made simple</p>
