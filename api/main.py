@@ -16,6 +16,7 @@ app = create_app()
 
 
 
+Session(app)
 
 
 ALPHA_VANTAGE_API_KEY = os.getenv('ALPHA_VANTAGE_API_KEY')
@@ -47,6 +48,7 @@ def get_top_gainers():
     return data
     
 import manage_users
+import user_messages
 
 if __name__ == '__main__':
     app.run(debug=True)

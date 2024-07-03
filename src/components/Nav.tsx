@@ -7,7 +7,7 @@ const Nav: React.FC = () => {
   return (
     <nav>
       <ul>
-      
+      <li><Link to="/forum">Forum</Link></li>
         <li>
           <Link to="/market">Market</Link>
           <ul className="dropdown">

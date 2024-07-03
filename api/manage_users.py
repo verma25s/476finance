@@ -3,13 +3,12 @@ from flask import Flask, jsonify, session, redirect, url_for, request
 from pymongo import MongoClient
 from flask_cors import CORS
 import os
-
+from flask_session import Session
 CORS(app)
 Client = MongoClient('localhost',27017)
 
-secret_key = os.urandom(24)
-app.secret_key = secret_key
 
+Session(app)
 fn_database = Client.finance476_database
 users = fn_database.users
 
@@ -37,25 +36,24 @@ def register():
 
 @app.route('/login', methods=['GET','POST'])
 def login():
-    
     email = request.json['email']
     password = request.json['password']
 
     user = users.find_one({'email': email})
     if user and bcrypt.check_password_hash(user['password'], password):
         session['email'] = email
+        
         return jsonify({'success': 'Login successful!'}), 200
-
+        
     return jsonify({'error': 'Invalid email or password!'}), 401
 
 @app.route('/logout', methods=['GET','POST'])
 def logout():
-    session.pop()
+    session.clear()
     return jsonify({'success': 'Logged out successfully!'}), 200
 
 
-@app.route('/message', methods=['GET','POST'])
-def add_message():
-    
-    
-    return jsonify({'error': 'Invalid email or password!'}), 401
+
+
+
+

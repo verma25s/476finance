@@ -13,7 +13,7 @@ export const setIsLoggedIn = (loggedIn: boolean) => {
   isLoggedInState = loggedIn;
 };
 
-const Login = () => {
+export const Login = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');

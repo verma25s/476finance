@@ -29,7 +29,7 @@ export const Top_losers = () =>{
       
       // Ensure data.top_Losers is an array and set it to state
       if (Array.isArray(data.top_losers)) {
-        console.log(data.top_losers)
+        
         setLosers(data.top_losers);
         setLoading(false); // Set loading to false once data is fetched
       } else {

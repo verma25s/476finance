@@ -10,9 +10,11 @@ import CreateAccount from './pages/CreateAccount/CreateAccount';
 import Market from './pages/market/Market';
 import PersonalFinance from './pages/personalFinance/PersonalFinance';
 import { Top_gainers } from './pages/top_gainers'
+import { Forum } from './pages/Forum'
+
 import { Top_losers } from './pages/Top_losers'
 import { useCookies } from 'react-cookie';
-import {MessageBoard} from './pages/messages'
+import {MessageBox} from './pages/messages'
 
 const App = () => {
   const [cookies, setCookie, removeCookie] = useCookies(['userEmail']);
@@ -25,6 +27,7 @@ const App = () => {
         <Routes>
           <Route path="/" element={<MainContent />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/forum" element={<Forum />} />
           <Route path="/create-account" element={<CreateAccount />} />
           <Route path="/market/*" element={<Market />} />
           <Route path="/personalFinance/*" element={<PersonalFinance />} />
@@ -65,7 +68,7 @@ const MainContent = () => {
           
           <Section id="graphs" title="Graphical analysis" content=<Top_gainers/>/>
           <Section id="Top 3's" title="Top 3's" content= <Top_losers/> />
-          <Section id="Latest Finance and Business News" title="Latest Finance and Business News" content=<MessageBoard/> />
+          <Section id="Latest Finance and Business News" title="Latest Finance and Business News" content=<MessageBox/> />
         </div>
         <Aside />
       </div>

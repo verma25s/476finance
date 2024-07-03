@@ -109,6 +109,12 @@ position: fixed;
 
 
     }
+.message-board{color: black;
+    height: 100%;
+    overflow-y: scroll;}
+.messages{color: black;
+    height: 100%;
+    overflow-y: scroll;}
 .wrapper{
     display: grid;
     grid-template-columns: auto auto;
