@@ -21,6 +21,10 @@ Session(app)
 
 ALPHA_VANTAGE_API_KEY = os.getenv('ALPHA_VANTAGE_API_KEY')
 
+url = 'https://www.alphavantage.co/query?function=TOP_GAINERS_LOSERS&apikey=demo'
+r = requests.get(url)
+data = r.json()
+
 
 
 
@@ -30,14 +34,6 @@ def get_stock_data(symbol):
     data = stock.info
     return data
 
-
-
-url = 'https://www.alphavantage.co/query?function=TOP_GAINERS_LOSERS&apikey=demo'
-r = requests.get(url)
-data = r.json()
-
-
-        
 
 @app.route('/top-losers')
 def get_top_losers():
@@ -49,6 +45,7 @@ def get_top_gainers():
     
 import manage_users
 import user_messages
+import forum_post
 
 if __name__ == '__main__':
     app.run(debug=True)

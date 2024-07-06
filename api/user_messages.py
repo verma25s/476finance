@@ -12,7 +12,7 @@ import manage_users
 
 fn = Client.finance476_database
 messages = fn.messages
-CORS(app, resources={r"/*": {"origins": "http://localhost:3000"}})
+CORS(app, resources={r"/*": {"origins": "*"}})
 
 @app.route('/messages', methods=['GET'])
 def get_messages():

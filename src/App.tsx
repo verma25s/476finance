@@ -23,11 +23,13 @@ const App = () => {
       <div className="App">
        
         <Header />
-        {cookies.userEmail ? <p>Welcome {cookies.userEmail}</p> : <p>Not logged in</p>}
+        
         <Routes>
           <Route path="/" element={<MainContent />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/forum" element={<Forum />} />
+          <switch><Route path="/forum" element={<Forum />} /></switch>
+          
+          
           <Route path="/create-account" element={<CreateAccount />} />
           <Route path="/market/*" element={<Market />} />
           <Route path="/personalFinance/*" element={<PersonalFinance />} />
