@@ -11,10 +11,11 @@ import Market from './pages/market/Market';
 import PersonalFinance from './pages/personalFinance/PersonalFinance';
 import { Top_gainers } from './pages/top_gainers'
 import { Forum } from './pages/Forum'
-
+import { FullPost } from './pages/post'
 import { Top_losers } from './pages/Top_losers'
 import { useCookies } from 'react-cookie';
 import {MessageBox} from './pages/messages'
+import {TickerPage} from './pages/tickerPage';
 
 const App = () => {
   const [cookies, setCookie, removeCookie] = useCookies(['userEmail']);
@@ -26,10 +27,10 @@ const App = () => {
         
         <Routes>
           <Route path="/" element={<MainContent />} />
+          <Route path="/:symbol" Component={TickerPage} />
           <Route path="/login" element={<Login />} />
-          <switch><Route path="/forum" element={<Forum />} /></switch>
-          
-          
+          <Route path="/forum" element={<Forum />} />
+          <Route path="/forum/:title" Component={FullPost} />     
           <Route path="/create-account" element={<CreateAccount />} />
           <Route path="/market/*" element={<Market />} />
           <Route path="/personalFinance/*" element={<PersonalFinance />} />

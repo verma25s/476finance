@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useCookies } from 'react-cookie';
-
+import {Link, useNavigate} from 'react-router-dom';
+import "./Forum.css";
 interface ForumPost {
   _id: string;
   email: string;
@@ -15,7 +16,7 @@ export const Forum = () => {
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<string | null>(null);
   const [cookies] = useCookies(['userEmail']);
-
+  const navigate = useNavigate();
   useEffect(() => {
     fetchPosts();
   }, []);
@@ -88,19 +89,11 @@ export const Forum = () => {
     
   };
   const handlePostClick = (postTitle: string) => {
-    
+    navigate(`/forum/${postTitle}`);
   };
 
-  const renderPostContent = (content: string) => {
-    if (typeof content !== 'string') {
-        return '';
-      }
-      const lines = content.split('\n');
-    if (lines.length > 3) {
-      return lines.slice(0, 3).join('\n') + '...';
-    }
-    return content;
-  };
+  
+
   return (
     <div>
       <h1>Forum</h1>
@@ -112,11 +105,14 @@ export const Forum = () => {
             <div key={post.title} className="post" onClick={() => handlePostClick(post.title)}>
               <p><strong>Title:</strong> {post.title}</p>
               <p><strong>User:</strong> {post.email}</p>
-              <p><strong>Content:</strong> {renderPostContent(post.content)}</p>
-              <p><strong>Timestamp:</strong> {new Date(post.timestamp).toLocaleString()}</p>
+              <p className ="postContent"><strong>Content:</strong> {post.content}</p>
+              <p ><strong>Timestamp:</strong> {new Date(post.timestamp).toLocaleString()}</p>
               {post.email === cookies.userEmail && (
                 <button onClick={(e) => { e.stopPropagation(); handleDeletePost(post["_id"]); }}>Delete</button>
               )}
+
+
+            <br></br><br></br>
             </div>
           ))
         ) : (

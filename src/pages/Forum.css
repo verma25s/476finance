@@ -1,0 +1,36 @@
+.post{
+
+border: 1px;
+border-radius: 10px;
+border-width: 90%;
+border-style: double;
+
+
+}
+.post:hover {
+    transform: translateZ(10px);
+    background-color: yellow;
+    cursor: pointer;
+  }
+p.post{
+max-height: 20px;;
+
+
+}
+
+.postContent{
+
+    
+        text-overflow: ellipsis;
+        
+        width: 80%;
+        height: 100px;
+        
+         overflow:hidden;
+        white-space: wrap;
+        
+        
+    
+
+
+}

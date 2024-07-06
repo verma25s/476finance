@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams, useHistory } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 
 interface Post {
   title: string;
@@ -8,11 +8,11 @@ interface Post {
   timestamp: string;
 }
 
-const FullPost: React.FC = () => {
+export const FullPost = () => {
   const { title } = useParams<{ title: string }>();
   const [post, setPost] = useState<Post | null>(null);
   const [error, setError] = useState<string | null>(null);
-  const history = useHistory();
+  const history =  useNavigate();
 
   useEffect(() => {
     fetchPost();
@@ -35,10 +35,10 @@ const FullPost: React.FC = () => {
 
   return (
     <div>
-      <button onClick={() => history.push('/')}>Back to Forum</button>
+      <button onClick={() => history('/forum')}>Back to Forum</button>
       {error && <p style={{ color: 'red' }}>{error}</p>}
       {post ? (
-        <div className="post">
+        <div className="detailed_post">
           <p><strong>Title:</strong> {post.title}</p>
           <p><strong>User:</strong> {post.email}</p>
           <p><strong>Content:</strong> {post.content}</p>
