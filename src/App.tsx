@@ -16,7 +16,7 @@ import { Top_losers } from './pages/Top_losers'
 import { useCookies } from 'react-cookie';
 import {MessageBox} from './pages/messages'
 import {TickerPage} from './pages/tickerPage';
-
+import { SearchBar } from './pages/searchBar';
 const App = () => {
   const [cookies, setCookie, removeCookie] = useCookies(['userEmail']);
   return (
@@ -54,11 +54,8 @@ const Header = () => {
     
       </div>
       <Nav />
+      <SearchBar/>
       
-      <div className="search-auth">
-        <input type="text" placeholder="Search..." className="search-box" />
-        <button className="search-button">Search</button>
-      </div>
     </header>
   );
 }

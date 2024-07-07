@@ -35,6 +35,22 @@ def get_stock_data(symbol):
     return data
 
 
+@app.route('/search/<query>', methods=['GET'])
+def search_stock(query):
+    
+    if not query:
+        return jsonify({'error': 'Query parameter is required'}), 400
+
+    url = f'https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords={query}&apikey={ALPHA_VANTAGE_API_KEY}'
+    response = requests.get(url)
+    if response.status_code == 200:
+        return jsonify(response.json())
+    else:
+        return jsonify({'error': 'Failed to fetch data from Alpha Vantage'}), 500
+
+
+
+
 @app.route('/top-losers')
 def get_top_losers():
     return data

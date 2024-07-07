@@ -31,7 +31,7 @@ interface StockData {
   website: string;
 }
 
-export const TickerPage: React.FC = () => {
+export const TickerPage = () => {
   const { symbol } = useParams<{ symbol: string }>();
   const [stockData, setStockData] = useState<StockData | null>(null);
   const [error, setError] = useState<string | null>(null);

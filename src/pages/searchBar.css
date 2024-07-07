@@ -1,0 +1,48 @@
+.search-auth {
+    position: relative;
+    width: 300px; /* Adjust width as needed */
+  }
+  
+  .search-box {
+    width: 100%;
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-right: 8px;
+  }
+  
+  .search-results {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-top: none;
+    border-radius: 0 0 4px 4px;
+    z-index: 10;
+  }
+  
+  .search-results ul {
+    list-style-type: none;
+    padding: 0;
+    color:black;
+    margin: 0;
+  }
+  
+  .search-results li {
+    padding: 8px;
+    color:black;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .search-results li:hover {
+    background-color: #f0f0f0;
+  }
+  
+  .search-results strong {
+    margin-right: 8px;
+  }
