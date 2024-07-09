@@ -73,7 +73,7 @@ export const TickerPage = () => {
       <p>Current Price: ${stockData.currentPrice}</p>
       <p>Price Change: ${stockData.priceChange}</p>
       <p>Volume: {stockData.volume.toLocaleString()}</p>
-      <p>Average Volume: {stockData.averageVolume.toLocaleString()}</p>
+      <p>Average Volume: { stockData.averageVolume.toLocaleString()}</p>
       <p>Day High: ${stockData.dayHigh}</p>
       <p>Day Low: ${stockData.dayLow}</p>
       <p>Market Cap: ${stockData.marketCap.toLocaleString()}</p>

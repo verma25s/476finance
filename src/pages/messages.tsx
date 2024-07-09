@@ -93,7 +93,6 @@ export const MessageBox: React.FC = () => {
           <p>No messages available</p>
         )}
       </div>
-      <div></div>
     </div>
   );
 };

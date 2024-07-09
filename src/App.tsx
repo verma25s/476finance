@@ -27,7 +27,7 @@ const App = () => {
         
         <Routes>
           <Route path="/" element={<MainContent />} />
-          <Route path="/:symbol" Component={TickerPage} />
+          <Route path="/symbol/:symbol" Component={TickerPage} />
           <Route path="/login" element={<Login />} />
           <Route path="/forum" element={<Forum />} />
           <Route path="/forum/:title" Component={FullPost} />     

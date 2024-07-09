@@ -54,7 +54,7 @@ export const SearchBar: React.FC = () => {
   const handleClick = (symbol: string) => {
     setSearchQuery('');
     setSearchResults([]);
-    navigate(`/${symbol}`);
+    navigate(`/symbol/${symbol}`);
   };
 
 
