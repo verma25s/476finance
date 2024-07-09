@@ -29,6 +29,7 @@ interface StockData {
   officers: Officer[];
   address: string;
   website: string;
+  dude:string;
 }
 
 export const TickerPage = () => {
