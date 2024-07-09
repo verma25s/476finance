@@ -17,6 +17,8 @@ import { useCookies } from 'react-cookie';
 import {MessageBox} from './pages/messages'
 import {TickerPage} from './pages/tickerPage';
 import { SearchBar } from './pages/searchBar';
+import {News} from './pages/news';
+
 const App = () => {
   const [cookies, setCookie, removeCookie] = useCookies(['userEmail']);
   return (
@@ -66,7 +68,7 @@ const MainContent = () => {
       <div className="main-content">
         <div className="tabs-content">
           
-          <Section id="graphs" title="Graphical analysis" content=<Top_gainers/>/>
+          <Section id="graphs" title="Graphical analysis" content=<News/> />
           <Section id="Top 3's" title="Top 3's" content= <Top_losers/> />
           <Section id="Latest Finance and Business News" title="Latest Finance and Business News" content=<MessageBox/> />
         </div>

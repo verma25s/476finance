@@ -1,0 +1,5 @@
+.news-feed {
+height: 100%;
+overflow-y: scroll;
+color: black;
+}

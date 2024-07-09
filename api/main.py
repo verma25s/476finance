@@ -7,8 +7,7 @@ from flask_bcrypt import Bcrypt
 import requests
 from flask_session import Session
 
-from bs4 import BeautifulSoup
-import pandas as pd
+
 
 import os
 load_dotenv()
@@ -62,6 +61,8 @@ def get_top_gainers():
 import manage_users
 import user_messages
 import forum_post
+import news
+
 
 if __name__ == '__main__':
     app.run(debug=True)
