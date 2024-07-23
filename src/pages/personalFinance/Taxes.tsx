@@ -10,6 +10,15 @@ interface ProvincialTaxBrackets {
   [key: string]: TaxBracket[];
 }
 
+interface Address {
+  name: string;
+  address: string;
+}
+
+interface ProvinceAddresses {
+  [key: string]: Address[];
+}
+
 const federalTaxBrackets: TaxBracket[] = [
   { income: '$0 - $50,197', rate: 15 },
   { income: '$50,198 - $100,392', rate: 20.5 },
@@ -104,23 +113,73 @@ const provincialTaxBrackets: ProvincialTaxBrackets = {
   ]
 };
 
-interface TaxService {
-  name: string;
-  description: string;
-  link: string;
-}
 
-const taxServiceCompanies: TaxService[] = [
+const provinceAddresses: ProvinceAddresses = {
+  Alberta: [
+    { name: "Alberta Tax Services Office", address: "9833 109 St NW, Edmonton, AB T5K 2E8" },
+    { name: "Calgary Tax Services Office", address: "220 4th Ave SE, Calgary, AB T2G 0L1" }
+  ],
+  BritishColumbia: [
+    { name: "Vancouver Tax Services Office", address: "1166 W Pender St, Vancouver, BC V6E 3H8" },
+    { name: "Victoria Tax Services Office", address: "1415 Vancouver St, Victoria, BC V8V 3W4" }
+  ],
+  Manitoba: [
+    { name: "Winnipeg Tax Services Office", address: "360 Main St, Winnipeg, MB R3C 3Z3" },
+    { name: "Brandon Tax Services Office", address: "1039 Princess Ave, Brandon, MB R7A 6E2" }
+  ],
+  NewBrunswick: [
+    { name: "Saint John Tax Services Office", address: "126 Prince William St, Saint John, NB E2L 2B6" },
+    { name: "Moncton Tax Services Office", address: "777 Main St, Moncton, NB E1C 1E9" }
+  ],
+  NewfoundlandAndLabrador: [
+    { name: "St. John's Tax Services Office", address: "223 Churchill Ave, St. John's, NL A1A 1N3" },
+    { name: "Corner Brook Tax Services Office", address: "12 Main St, Corner Brook, NL A2H 6G9" }
+  ],
+  NorthwestTerritories: [
+    { name: "Yellowknife Tax Services Office", address: "4920 52 St, Yellowknife, NT X1A 3T1" },
+    { name: "Inuvik Tax Services Office", address: "85 Kingmingya Rd, Inuvik, NT X0E 0T0" }
+  ],
+  NovaScotia: [
+    { name: "Halifax Tax Services Office", address: "1557 Hollis St, Halifax, NS B3J 1V5" },
+    { name: "Sydney Tax Services Office", address: "15 Dorchester St, Sydney, NS B1P 5Y9" }
+  ],
+  Nunavut: [
+    { name: "Iqaluit Tax Services Office", address: "924 Mivvik St, Iqaluit, NU X0A 0H0" },
+    { name: "Rankin Inlet Tax Services Office", address: "256 Williamson Lake Rd, Rankin Inlet, NU X0C 0G0" }
+  ],
+  Ontario: [
+    { name: "Toronto Centre Tax Services Office", address: "1 Front St W, Toronto, ON M5J 2X6" },
+    { name: "Ottawa Tax Services Office", address: "333 Laurier Ave W, Ottawa, ON K1P 1C1" }
+  ],
+  PrinceEdwardIsland: [
+    { name: "Charlottetown Tax Services Office", address: "161 Grafton St, Charlottetown, PE C1A 1K3" },
+    { name: "Summerside Tax Services Office", address: "275 Notre Dame St, Summerside, PE C1N 1S5" }
+  ],
+  Quebec: [
+    { name: "Montreal Tax Services Office", address: "305 René-Lévesque Blvd W, Montreal, QC H2Z 1A6" },
+    { name: "Quebec City Tax Services Office", address: "2750 Einstein St, Quebec City, QC G1P 4R1" }
+  ],
+  Saskatchewan: [
+    { name: "Regina Tax Services Office", address: "1901 Hamilton St, Regina, SK S4P 3M3" },
+    { name: "Saskatoon Tax Services Office", address: "340 3rd Ave N, Saskatoon, SK S7K 2M7" }
+  ],
+  Yukon: [
+    { name: "Whitehorse Tax Services Office", address: "300 Main St, Whitehorse, YT Y1A 2B5" },
+    { name: "Dawson City Tax Services Office", address: "998 Front St, Dawson City, YT Y0B 1G0" }
+  ]
+};
+
+const taxServiceCompanies = [
   { name: 'H&R Block', description: 'Comprehensive tax services.', link: 'https://www.hrblock.ca' },
   { name: 'TurboTax', description: 'Self-filing tax software with expert help.', link: 'https://www.turbotax.ca' },
   { name: 'KPMG', description: 'Professional services for complex tax situations.', link: 'https://home.kpmg/ca' }
 ];
 
-const Taxes = () => {
+const Taxes: React.FC = () => {
   const [selectedProvince, setSelectedProvince] = useState<string>('Alberta');
   const [income, setIncome] = useState<string>('');
   const [calculatedTax, setCalculatedTax] = useState<string>('');
-  const [activeTab, setActiveTab] = useState<string>('H&R Block');
+  const [activeTab, setActiveTab] = useState<string>('Download Tax Forms');
 
   const calculateTotalTax = () => {
     const incomeNumber = parseFloat(income);
@@ -128,10 +187,10 @@ const Taxes = () => {
       alert('Please enter a valid income.');
       return;
     }
-    
+
     let remainingIncome = incomeNumber;
 
-    const federalTax = federalTaxBrackets.reduce((acc: number, bracket: TaxBracket) => {
+    const federalTax = federalTaxBrackets.reduce((acc, bracket) => {
       const maxIncome = parseFloat(bracket.income.split(' ')[2]?.replace(',', '').replace('$', '')) || remainingIncome;
       const taxableIncome = Math.min(remainingIncome, maxIncome);
       remainingIncome -= taxableIncome;
@@ -140,7 +199,7 @@ const Taxes = () => {
 
     remainingIncome = incomeNumber;
     const provinceBrackets = provincialTaxBrackets[selectedProvince];
-    const provincialTax = provinceBrackets.reduce((acc: number, bracket: TaxBracket) => {
+    const provincialTax = provinceBrackets.reduce((acc, bracket) => {
       const maxIncome = parseFloat(bracket.income.replace('Up to ', '').replace('Over ', '').replace(',', '').replace('$', '')) || remainingIncome;
       const taxableIncome = Math.min(remainingIncome, maxIncome);
       remainingIncome -= taxableIncome;
@@ -151,23 +210,100 @@ const Taxes = () => {
   };
 
   const renderTabContent = () => {
-    const company = taxServiceCompanies.find(company => company.name === activeTab);
+    switch (activeTab) {
+      case 'H&R Block':
+        case 'TurboTax':
+        case 'KPMG':
+          const activeCompany = taxServiceCompanies.find(company => company.name === activeTab);
+          return (
+            <div className="company-info">
+              <h3>{activeCompany?.name}</h3>
+              <p>{activeCompany?.description}</p>
+              <a href={activeCompany?.link} target="_blank" rel="noopener noreferrer">Visit Website</a>
+            </div>
+          );
+      case 'Download Tax Forms':
+        return (
+          <div className="tab-content">
+            <p>Access all necessary CRA forms and resources directly through our links. Key forms and publications for both individuals and businesses are available for download.</p>
+            <ul>
+              <li><a href="https://www.canada.ca/en/revenue-agency/services/forms-publications.html" target="_blank" rel="noopener noreferrer">Click Here: Download Tax Forms</a></li>
+              
+            </ul>
+          </div>
+        );
+      case 'Helpful Publications':
+        return (
+          <div className="tab-content">
+            <p>Explore our collection of helpful publications to better understand the tax system and stay updated with the latest changes.</p>
+            <ul>
+              <li><a href="https://www.canada.ca/en/revenue-agency/services/forms-publications/publications.html" target="_blank" rel="noopener noreferrer">Click Here: Helpful Publications</a></li>
+            </ul>
+          </div>
+        );
+      default:
+        return null;
+    }
+  };
+
+  const renderAddresses = () => {
+    const addresses = provinceAddresses[selectedProvince] || [];
     return (
-      <div className="company-info">
-        <h3>{company?.name}</h3>
-        <p>{company?.description}</p>
-        <a href={company?.link} target="_blank" rel="noopener noreferrer">Visit Website</a>
+      <div className="address-box">
+        {addresses.map((address: Address, index: number) => (
+          <div key={index}>
+            <div className="office-name">{address.name}</div>
+            <div>{address.address}</div>
+          </div>
+        ))}
       </div>
     );
-  };
+  };  
 
   return (
     <div className="taxes-container">
-      <h1>Understanding Canadian Taxes</h1>
-      <section className="tax-info">
-        <h2>Taxes:</h2>
-        <p>Add information about Canadian Tax <a href="https://www.canada.ca/en/revenue-agency.html" target="_blank" rel="noopener noreferrer">browse online</a></p>
-      </section>
+      <h1>Welcome to Your Canadian Tax Guide</h1>
+      <h2>Understanding Canadian Taxes</h2>
+      <p>Welcome to your comprehensive guide on Canadian taxes. Whether you're filing for the first time or looking to understand more about the tax system, this page is your one-stop resource for all things tax-related in Canada, including federal and provincial taxes.</p>
+      <h3>Mark these critical dates in your calendar to stay on top of your taxes:</h3>
+      <ul>
+        <li><strong>April 30:</strong> Deadline for filing personal income tax returns</li>
+        <li><strong>June 15:</strong> Deadline for self-employed individuals</li>
+        <li><strong>Quarterly Payments:</strong> March 15, June 15, September 15, and December 15</li>
+      </ul>
+      <h3>Deductions and Credits</h3>
+      <p>Discover how you can reduce your taxable income through various deductions and credits available for both individuals and businesses. Learn more about popular deductions such as RRSP contributions, childcare expenses, and educational credits.</p>
+      <h3>Guide for Filing Taxes</h3>
+      <p>Filing your taxes doesn't have to be complicated. Follow our step-by-step guide to file your taxes efficiently using:</p>
+      <ul>
+        <li><strong>Paper Filing:</strong> Instructions and required documents</li>
+        <li><strong>Online through NETFILE:</strong> A direct link to the CRA's filing system</li>
+        <li><strong>Third-party Software:</strong> Recommendations for reliable tax preparation software</li>
+      </ul>
+      <h3>Resources and Forms</h3>
+      <div className="tabs">
+        <button className={`tab ${activeTab === 'Download Tax Forms' ? 'active' : ''}`} onClick={() => setActiveTab('Download Tax Forms')}>Download Tax Forms</button>
+        <button className={`tab ${activeTab === 'Helpful Publications' ? 'active' : ''}`} onClick={() => setActiveTab('Helpful Publications')}>Helpful Publications</button>
+      </div>
+      {renderTabContent()}
+      <h3>Contact Information</h3>
+      <div className="contact-information">
+        <p>Need additional help? Contact the Canada Revenue Agency or your provincial tax authority through these links:</p>
+      <ul>
+        <li><a href="https://www.canada.ca/en/revenue-agency.html" target="_blank" rel="noopener noreferrer">Canada Revenue Agency</a></li>
+        <li>
+           Provincial Contacts:
+          <select onChange={(e) => setSelectedProvince(e.target.value)} value={selectedProvince}>
+            {Object.keys(provincialTaxBrackets).map(province => (
+           <option key={province} value={province}>{province.replace(/([A-Z])/g, ' $1').trim()}</option>
+         ))}
+          </select>
+         {renderAddresses()}
+        </li>
+      </ul>
+      </div>
+
+      <h3>Tax Brackets and Rates</h3>
       <div className="tax-calculator">
         <h2>See Your Tax Bracket</h2>
         <label htmlFor="province">Select your province:</label>
