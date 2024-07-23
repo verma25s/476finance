@@ -1,0 +1,141 @@
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 0;
+}
+
+.calculator-container {
+  max-width: 900px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h1, h2 {
+  text-align: center;
+  color: #0E2E3B;
+}
+
+h1 {
+  font-size: 28px;
+  margin-bottom: 20px;
+}
+
+h2 {
+  font-size: 22px;
+  margin-bottom: 10px;
+}
+
+.affordability-estimate {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  padding: 20px;
+  background-color: #7DB9B3;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.affordability-estimate div {
+  text-align: center;
+  color: #ffffff;
+}
+
+.affordability-estimate h2 {
+  margin-bottom: 5px;
+}
+
+.affordability-estimate p {
+  margin: 0;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.tip {
+  text-align: center;
+  color: #666;
+  margin-bottom: 20px;
+  font-size: 14px;
+}
+
+.edit-expenses, .basic-inputs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.edit-expenses div, .basic-inputs div {
+  flex: 1 1 45%;
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #0E2E3B;
+}
+
+input, select {
+  width: calc(100% - 10px);
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+button {
+  display: block;
+  width: 100%;
+  padding: 15px;
+  background-color: #166678;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #0E2E3B;
+}
+
+.error {
+  color: red;
+  font-size: 12px;
+  margin-top: -10px;
+  margin-bottom: 10px;
+}
+
+.additional-info {
+  margin-top: 30px;
+  background-color: #D8D7C3;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.additional-info h2 {
+  margin-top: 0;
+  font-size: 18px;
+  color: #0E2E3B;
+}
+
+.additional-info p {
+  margin: 10px 0;
+  color: #333;
+}
+
+.additional-info ul {
+  padding-left: 20px;
+  color: #333;
+}
+
+.additional-info ul li {
+  margin-bottom: 10px;
+}

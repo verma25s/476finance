@@ -26,7 +26,6 @@ const Nav: React.FC = () => {
             <li><Link to="/personalFinance/student-loans">Student Loans</Link></li>
             <li><Link to="/personalFinance/personal-loans">Personal Loans</Link></li>
             <li><Link to="/personalFinance/insurance">Insurance</Link></li>
-            <li><Link to="/personalFinance/mortgages">Mortgages</Link></li>
             <li><Link to="/personalFinance/mortgage-calculator">Mortgage Calculator</Link></li>
             <li><Link to="/personalFinance/taxes">Taxes</Link></li>
           </ul>

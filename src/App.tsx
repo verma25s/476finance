@@ -5,14 +5,22 @@ import './pages/home.css';
 import Nav from './components/Nav';
 import Footer from './components/Footer';
 import Aside from './components/Aside';
+
+//Pages
 import Login from './pages/Login/Login';
 import CreateAccount from './pages/CreateAccount/CreateAccount';
 import Market from './pages/market/Market';
 import PersonalFinance from './pages/personalFinance/PersonalFinance';
-import { TopGainers } from './pages/top_gainers';
+//import { TopGainers } from './pages/Top_gainers';
 import { Forum } from './pages/Forum';
-import { TopLosers } from './pages/Top_losers';
+//import { TopLosers } from './pages/Top_losers';
 import { MessageBox } from './pages/messages';
+
+//Personal Finance
+import MortgageCalculator from './pages/personalFinance/MortgageCalculator';
+import PersonalLoans from './pages/personalFinance/PersonalLoans';
+
+//CreditCard
 import CreditCard from './pages/personalFinance/creditCard/CreditCard'; // Correct import path
 import BestCreditCard from './pages/personalFinance/creditCard/BestCreditCard'; // Correct import path
 import BestTravelCard from './pages/personalFinance/creditCard/BestTravelCard'; // Correct import path
@@ -20,6 +28,9 @@ import BestCashBackCard from './pages/personalFinance/creditCard/BestCashBackCar
 import BestSignUpOffers from './pages/personalFinance/creditCard/BestSignUpOffers'; // Correct import path
 import BestRewardsCards from './pages/personalFinance/creditCard/BestRewardsCards'; // Correct import path
 import BestHomeImprovementCards from './pages/personalFinance/creditCard/BestHomeImprovementCards'; // Correct import path
+
+// src/App.tsx
+import { useCookies } from 'react-cookie';
 
 
 const App = () => {
@@ -30,13 +41,14 @@ const App = () => {
         <Header />
         {cookies.userEmail ? <p>Welcome {cookies.userEmail}</p> : <p>Not logged in</p>}
         <Routes>
-          <Route path="/" element={<MainContent />} />
           <Route path="/login" element={<Login />} />
           <Route path="/forum" element={<Forum />} />
           <Route path="/create-account" element={<CreateAccount />} />
           <Route path="/market/*" element={<Market />} />
           <Route path="/personalFinance/*" element={<PersonalFinance />} />
           <Route path="/personalFinance/credit-Card" element={<CreditCard />} />
+          <Route path="/personalFinance/mortgage-calculator" element = {<MortgageCalculator/>} />
+          <Route path="/personalFinance/personal-loans" element = {<PersonalLoans/>} />
           <Route path="/personalFinance/creditCard/best-credit-cards" element={<BestCreditCard />} />
           <Route path="/personalFinance/creditCard/best-travel-cards" element={<BestTravelCard />} />
           <Route path="/personalFinance/creditCard/best-cash-back-cards" element={<BestCashBackCard />} />
@@ -65,7 +77,7 @@ const Header = () => {
   );
 };
 
-const MainContent = () => {
+/*const MainContent = () => {
   return (
     <main>
       <div className="main-content">
@@ -78,7 +90,7 @@ const MainContent = () => {
       </div>
     </main>
   );
-};
+};*/
 
 interface SectionProps {
   id: string;

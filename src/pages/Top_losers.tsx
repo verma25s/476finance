@@ -1,6 +1,5 @@
 import  { useEffect, useState } from 'react';
 
-
 interface Loser {
   change_amount: number;
     change_percentage: number;
@@ -8,6 +7,7 @@ interface Loser {
     ticker: string;
     
   }
+
 export const Top_losers = () =>{
   const [losers, setLosers] = useState<Loser[]>([]);
   const [error, setError] = useState<string | null>(null);
@@ -25,8 +25,6 @@ export const Top_losers = () =>{
       }
       const data = await response.json();
 
-      
-      
       // Ensure data.top_Losers is an array and set it to state
       if (Array.isArray(data.top_losers)) {
         
@@ -43,9 +41,6 @@ export const Top_losers = () =>{
   };
 
   return (
-   
-      
-    
 
 <div className="top-losers">
 <h1 className="cp">TOP LOSERS</h1>
@@ -68,11 +63,11 @@ export const Top_losers = () =>{
         ))) : (
           <p>Loading...</p>
         )}
-     
-     
 
 </div>
 
 
   );
-    }
+ };
+
+export default Top_losers;

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./home.css";
-import { Top_gainers } from './top_gainers'
+import { Top_gainers } from './Top_gainers'
 interface StockData {
     longName: string;
     symbol: string;

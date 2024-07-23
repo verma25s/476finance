@@ -5,7 +5,6 @@ import CreditCard from './creditCard/CreditCard';
 import StudentLoans from './StudentLoans';
 import PersonalLoans from './PersonalLoans';
 import Insurance from './Insurance';
-import Mortgages from './Mortgages';
 import MortgageCalculator from './MortgageCalculator';
 import Taxes from './Taxes';
 import './PersonalFinance.css';
@@ -20,7 +19,6 @@ const PersonalFinance: React.FC = () => {
         <Link to="student-loans" className="finance-box">Student Loans</Link>
         <Link to="personal-loans" className="finance-box">Personal Loans</Link>
         <Link to="insurance" className="finance-box">Insurance</Link>
-        <Link to="mortgages" className="finance-box">Mortgages</Link>
         <Link to="mortgage-calculator" className="finance-box">Mortgage Calculator</Link>
         <Link to="taxes" className="finance-box">Taxes</Link>
       </div>
@@ -29,7 +27,6 @@ const PersonalFinance: React.FC = () => {
         <Route path="student-loans" element={<StudentLoans />} />
         <Route path="personal-loans" element={<PersonalLoans />} />
         <Route path="insurance" element={<Insurance />} />
-        <Route path="mortgages" element={<Mortgages />} />
         <Route path="mortgage-calculator" element={<MortgageCalculator />} />
         <Route path="taxes" element={<Taxes />} />
       </Routes>
