@@ -1,7 +1,7 @@
 // ./pages/personalFinance/PersonalFinance.tsx
 import React from 'react';
 import { Link, Routes, Route } from 'react-router-dom';
-import CreditCard from './CreditCard';
+import CreditCard from './creditCard/CreditCard';
 import StudentLoans from './StudentLoans';
 import PersonalLoans from './PersonalLoans';
 import Insurance from './Insurance';

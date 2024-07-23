@@ -1,0 +1,46 @@
+/* ./pages/personalFinance/creditCard/CreditCardCategory.css */
+
+.credit-card-category-container {
+    padding: 20px;
+    background-color: #f9f9f9;
+    text-align: left;
+}
+
+.credit-card-category-container h1 {
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+.ranked-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.ranked-cards .card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    width: 300px;
+    text-align: left;
+    transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+}
+
+.ranked-cards .card img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.ranked-cards .card p {
+    font-size: 1em;
+    color: #333;
+}
+
+.ranked-cards .card:hover {
+    background-color: #f0f0f0;
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}

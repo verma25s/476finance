@@ -9,74 +9,76 @@ import Login from './pages/Login/Login';
 import CreateAccount from './pages/CreateAccount/CreateAccount';
 import Market from './pages/market/Market';
 import PersonalFinance from './pages/personalFinance/PersonalFinance';
-import { Top_gainers } from './pages/top_gainers'
-import { Forum } from './pages/Forum'
-import { FullPost } from './pages/post'
-import { Top_losers } from './pages/Top_losers'
-import { useCookies } from 'react-cookie';
-import {MessageBox} from './pages/messages'
-import {TickerPage} from './pages/tickerPage';
-import { SearchBar } from './pages/searchBar';
-import {News} from './pages/news';
+import { TopGainers } from './pages/top_gainers';
+import { Forum } from './pages/Forum';
+import { TopLosers } from './pages/Top_losers';
+import { MessageBox } from './pages/messages';
+import CreditCard from './pages/personalFinance/creditCard/CreditCard'; // Correct import path
+import BestCreditCard from './pages/personalFinance/creditCard/BestCreditCard'; // Correct import path
+import BestTravelCard from './pages/personalFinance/creditCard/BestTravelCard'; // Correct import path
+import BestCashBackCard from './pages/personalFinance/creditCard/BestCashBackCard'; // Correct import path
+import BestSignUpOffers from './pages/personalFinance/creditCard/BestSignUpOffers'; // Correct import path
+import BestRewardsCards from './pages/personalFinance/creditCard/BestRewardsCards'; // Correct import path
+import BestHomeImprovementCards from './pages/personalFinance/creditCard/BestHomeImprovementCards'; // Correct import path
+
 
 const App = () => {
   const [cookies, setCookie, removeCookie] = useCookies(['userEmail']);
   return (
     <Router>
       <div className="App">
-       
         <Header />
-        
+        {cookies.userEmail ? <p>Welcome {cookies.userEmail}</p> : <p>Not logged in</p>}
         <Routes>
           <Route path="/" element={<MainContent />} />
-          <Route path="/symbol/:symbol" Component={TickerPage} />
           <Route path="/login" element={<Login />} />
           <Route path="/forum" element={<Forum />} />
-          <Route path="/forum/:title" Component={FullPost} />     
           <Route path="/create-account" element={<CreateAccount />} />
           <Route path="/market/*" element={<Market />} />
           <Route path="/personalFinance/*" element={<PersonalFinance />} />
-         
+          <Route path="/personalFinance/credit-Card" element={<CreditCard />} />
+          <Route path="/personalFinance/creditCard/best-credit-cards" element={<BestCreditCard />} />
+          <Route path="/personalFinance/creditCard/best-travel-cards" element={<BestTravelCard />} />
+          <Route path="/personalFinance/creditCard/best-cash-back-cards" element={<BestCashBackCard />} />
+          <Route path="/personalFinance/creditCard/best-sign-up-offers" element={<BestSignUpOffers />} />
+          <Route path="/personalFinance/creditCard/best-rewards-cards" element={<BestRewardsCards />} />
+          <Route path="/personalFinance/creditCard/best-home-improvement-cards" element={<BestHomeImprovementCards />} />
         </Routes>
-        <div>
-      
-      </div>
         <Footer />
       </div>
     </Router>
   );
-}
+};
 
 const Header = () => {
   return (
     <header>
       <div>
-      <Link to="/" className="logo"><h1><strong>476 Finance</strong></h1></Link>
-        
-    
+        <Link to="/" className="logo"><h1><strong>476 Finance</strong></h1></Link>
       </div>
       <Nav />
-      <SearchBar/>
-      
+      <div className="search-auth">
+        <input type="text" placeholder="Search..." className="search-box" />
+        <button className="search-button">Search</button>
+      </div>
     </header>
   );
-}
+};
 
 const MainContent = () => {
   return (
     <main>
       <div className="main-content">
         <div className="tabs-content">
-          
-          <Section id="graphs" title="Graphical analysis" content=<News/> />
-          <Section id="Top 3's" title="Top 3's" content= <Top_losers/> />
-          <Section id="Latest Finance and Business News" title="Latest Finance and Business News" content=<MessageBox/> />
+          <Section id="graphs" title="Graphical analysis" content={<TopGainers />} />
+          <Section id="Top 3's" title="Top 3's" content={<TopLosers />} />
+          <Section id="Latest Finance and Business News" title="Latest Finance and Business News" content={<MessageBox />} />
         </div>
         <Aside />
       </div>
     </main>
   );
-}
+};
 
 interface SectionProps {
   id: string;
@@ -90,8 +92,6 @@ const Section: React.FC<SectionProps> = ({ id, title, content }) => {
       <div className="graph">{content}</div>
     </section>
   );
-}
-
-
+};
 
 export default App;
