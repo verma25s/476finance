@@ -1,4 +1,3 @@
-// src/components/CardRecommendationForm.tsx
 import React, { useState } from 'react';
 import './CardRecommendationForm.css';
 
@@ -34,7 +33,7 @@ const CardRecommendationForm: React.FC<Props> = ({ onSubmit }) => {
             <p>Answer a few questions to help you find a Card that is appropriate for you.</p>
             
             <div className="form-group">
-                <label>Your Card is for...</label>
+                <label>1) Your Card is for...</label>
                 <div className="button-group">
                     <input
                         type="button"
@@ -52,7 +51,7 @@ const CardRecommendationForm: React.FC<Props> = ({ onSubmit }) => {
             </div>
 
             <div className="form-group">
-                <label>Which benefit appeals to you the most?</label>
+                <label>2) Which benefit appeals to you the most?</label>
                 <div className="button-group">
                     <input
                         type="button"
@@ -82,7 +81,7 @@ const CardRecommendationForm: React.FC<Props> = ({ onSubmit }) => {
             </div>
 
             <div className="form-group">
-                <label>What annual fee are you comfortable paying to receive greater benefits?</label>
+                <label>3) What annual fee are you comfortable paying to receive greater benefits?</label>
                 <div className="button-group">
                     <input
                         type="button"

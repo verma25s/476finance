@@ -19,6 +19,7 @@ import { MessageBox } from './pages/messages';
 //Personal Finance
 import MortgageCalculator from './pages/personalFinance/MortgageCalculator';
 import PersonalLoans from './pages/personalFinance/PersonalLoans';
+import Taxes from './pages/personalFinance/Taxes';
 
 //CreditCard
 import CreditCard from './pages/personalFinance/creditCard/CreditCard'; // Correct import path
@@ -48,6 +49,7 @@ const App = () => {
           <Route path="/personalFinance/*" element={<PersonalFinance />} />
           <Route path="/personalFinance/credit-Card" element={<CreditCard />} />
           <Route path="/personalFinance/mortgage-calculator" element = {<MortgageCalculator/>} />
+          <Route path="/personalFinance/Taxes" element = {<Taxes/>} />
           <Route path="/personalFinance/personal-loans" element = {<PersonalLoans/>} />
           <Route path="/personalFinance/creditCard/best-credit-cards" element={<BestCreditCard />} />
           <Route path="/personalFinance/creditCard/best-travel-cards" element={<BestTravelCard />} />

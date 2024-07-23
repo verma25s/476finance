@@ -7,7 +7,7 @@ const Nav: React.FC = () => {
   return (
     <nav>
       <ul>
-      <li><Link to="/forum">Forum</Link></li>
+        <li><Link to="/forum">Forum</Link></li>
         <li>
           <Link to="/market">Market</Link>
           <ul className="dropdown">
@@ -20,10 +20,9 @@ const Nav: React.FC = () => {
           </ul>
         </li>
         <li>
-          <Link to="/Personal-Finance">Personal Finance</Link>
+          <Link to="/personalFinance">Personal Finance</Link>
           <ul className="dropdown">
             <li><Link to="/personalFinance/credit-card">Credit Card</Link></li>
-            <li><Link to="/personalFinance/student-loans">Student Loans</Link></li>
             <li><Link to="/personalFinance/personal-loans">Personal Loans</Link></li>
             <li><Link to="/personalFinance/insurance">Insurance</Link></li>
             <li><Link to="/personalFinance/mortgage-calculator">Mortgage Calculator</Link></li>
@@ -56,17 +55,9 @@ const Nav: React.FC = () => {
             <li><Link to="/news/crypto-news">Crypto</Link></li>
           </ul>
         </li>
-        <li>
-          <Link to="/newcomers">Newcomers</Link>
-          <ul className="dropdown">
-            <li><Link to="/newcomers/student">Student</Link></li>
-            <li><Link to="/newcomers/non-student">Non-Student</Link></li>
-          </ul>
-        </li>
       </ul>
     </nav>
   );
 };
 
 export default Nav;
-

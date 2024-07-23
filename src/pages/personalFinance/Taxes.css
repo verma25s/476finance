@@ -1,0 +1,102 @@
+.taxes-container {
+  font-family: Arial, sans-serif;
+  max-width: 960px;
+  margin: auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  color: #0E2E3B;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+h2 {
+  color: #166678;
+  margin-bottom: 10px;
+}
+
+.tax-brackets, .tax-services, footer {
+  margin-top: 20px;
+}
+
+label {
+  display: block;
+  margin: 10px 0 5px;
+}
+
+input[type="number"], select {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+button {
+  padding: 10px 15px;
+  background-color: #166678;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #0E2E3B;
+}
+
+.calculated-tax-box {
+  padding: 10px;
+  margin-top: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #D8D7C3;
+}
+
+.company-info {
+  border: 1px solid #ccc;
+  padding: 15px;
+  margin-bottom: 10px;
+  border-radius: 4px;
+  background-color: #fff;
+}
+
+.company-info h3 {
+  color: #166678;
+}
+
+.company-info p {
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.company-info a {
+  color: #166678;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.company-info a:hover {
+  text-decoration: underline;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+th {
+  background-color: #D8D7C3;
+}
