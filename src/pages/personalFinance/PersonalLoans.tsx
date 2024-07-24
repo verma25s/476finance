@@ -125,3 +125,4 @@ const ProviderTab: React.FC<{ provider: typeof providers[0] }> = ({ provider }) 
 );
 
 export default PersonalLoans;
+

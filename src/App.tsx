@@ -11,9 +11,9 @@ import Login from './pages/Login/Login';
 import CreateAccount from './pages/CreateAccount/CreateAccount';
 import Market from './pages/market/Market';
 import PersonalFinance from './pages/personalFinance/PersonalFinance';
-//import { TopGainers } from './pages/Top_gainers';
+import { TopGainers } from './pages/Top_gainers';
 import { Forum } from './pages/Forum';
-//import { TopLosers } from './pages/Top_losers';
+import { TopLosers } from './pages/Top_losers';
 import { MessageBox } from './pages/messages';
 
 //Personal Finance
@@ -42,6 +42,7 @@ const App = () => {
         <Header />
         {cookies.userEmail ? <p>Welcome {cookies.userEmail}</p> : <p>Not logged in</p>}
         <Routes>
+          <Route path="/" element=(< MainContent />)/>
           <Route path="/login" element={<Login />} />
           <Route path="/forum" element={<Forum />} />
           <Route path="/create-account" element={<CreateAccount />} />
@@ -79,7 +80,7 @@ const Header = () => {
   );
 };
 
-/*const MainContent = () => {
+const MainContent = () => {
   return (
     <main>
       <div className="main-content">
@@ -92,7 +93,7 @@ const Header = () => {
       </div>
     </main>
   );
-};*/
+};
 
 interface SectionProps {
   id: string;
