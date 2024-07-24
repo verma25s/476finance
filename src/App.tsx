@@ -16,6 +16,8 @@ import { Forum } from './pages/Forum';
 import { Top_losers } from './pages/Top_losers';
 import { MessageBox } from './pages/messages';
 import { SearchBar } from './pages/searchBar';
+import { FullPost } from './pages/post';
+import {TickerPage} from './pages/tickerPage';
 //Personal Finance
 import MortgageCalculator from './pages/personalFinance/MortgageCalculator';
 import PersonalLoans from './pages/personalFinance/PersonalLoans';
@@ -45,8 +47,10 @@ const App = () => {
           <Route path="/" element={< MainContent />}/>
           <Route path="/login" element={<Login />} />
           <Route path="/forum" element={<Forum />} />
+          <Route path="/symbol/:symbol" Component={TickerPage} />
           <Route path="/create-account" element={<CreateAccount />} />
           <Route path="/market/*" element={<Market />} />
+          <Route path="/forum/:title" Component={FullPost} />
           <Route path="/personalFinance/*" element={<PersonalFinance />} />
           <Route path="/personalFinance/credit-Card" element={<CreditCard />} />
           <Route path="/personalFinance/mortgage-calculator" element = {<MortgageCalculator/>} />
