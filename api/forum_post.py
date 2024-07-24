@@ -52,6 +52,7 @@ def add_forum_post():
     except Exception as e:
         return jsonify({'error': 'An error occurred while adding the post', 'details': str(e)}), 500
 
+
 @app.route('/delete-forum-post/<post_id>', methods=['DELETE'])
 def delete_forum_post(post_id):
     try:
