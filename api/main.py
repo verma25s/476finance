@@ -19,10 +19,9 @@ Session(app)
 
 
 ALPHA_VANTAGE_API_KEY = os.getenv('ALPHA_VANTAGE_API_KEY')
+FMP_API_KEY = os.getenv('FMP_API_KEY')
+FINNHUB_API_KEY = os.getenv('FINNHUB_API_KEY')
 
-url = 'https://www.alphavantage.co/query?function=TOP_GAINERS_LOSERS&apikey=demo'
-r = requests.get(url)
-data = r.json()
 
 
 
@@ -40,7 +39,7 @@ def search_stock(query):
     if not query:
         return jsonify({'error': 'Query parameter is required'}), 400
 
-    url = f'https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords={query}&apikey={ALPHA_VANTAGE_API_KEY}'
+    url = f'https://finnhub.io/api/v1/search?q=apple&token={FINNHUB_API_KEY}'
     response = requests.get(url)
     if response.status_code == 200:
         return jsonify(response.json())
@@ -52,10 +51,20 @@ def search_stock(query):
 
 @app.route('/top-losers')
 def get_top_losers():
+    url =f'https://financialmodelingprep.com/api/v3/stock_market/gainers?apikey={FMP_API_KEY}'
+    r = requests.get(url)
+    data = r.json()
+    print(data)
     return data
+    
+    
 
 @app.route('/top-gainers')
 def get_top_gainers():
+    url =f'https://financialmodelingprep.com/api/v3/stock_market/losers?apikey={FMP_API_KEY}'
+    r = requests.get(url)
+    data = r.json()
+    print(data)
     return data
     
 import manage_users

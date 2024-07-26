@@ -19,8 +19,6 @@ max-height: 20px;;
 }
 
 .postContent{
-
-    
         text-overflow: ellipsis;
         
         width: 80%;

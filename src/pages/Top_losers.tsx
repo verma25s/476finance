@@ -1,10 +1,10 @@
 import  { useEffect, useState } from 'react';
-
+import { useNavigate } from 'react-router-dom';
 interface Loser {
-  change_amount: number;
-    change_percentage: number;
-    price : number;
-    ticker: string;
+  change: number;
+  changesPercentage: number;
+  price: number;
+  symbol: string;
     
   }
 
@@ -12,7 +12,7 @@ export const Top_losers = () =>{
   const [losers, setLosers] = useState<Loser[]>([]);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState<boolean>(true); // Add loading state
-
+  const navigate = useNavigate();
   useEffect(() => {
     fetchTopLosers();
   }, []);
@@ -26,9 +26,9 @@ export const Top_losers = () =>{
       const data = await response.json();
 
       // Ensure data.top_Losers is an array and set it to state
-      if (Array.isArray(data.top_losers)) {
+      if (Array.isArray(data)) {
         
-        setLosers(data.top_losers);
+        setLosers(data);
         setLoading(false); // Set loading to false once data is fetched
       } else {
         throw new Error('Fetched data is not an array');
@@ -38,6 +38,12 @@ export const Top_losers = () =>{
       
       setLoading(false); // Set loading to false on error
     }
+
+    
+  };
+  const handleInputChange = (symbol: string) => {
+      
+    navigate(`/symbol/${symbol}`);
   };
 
   return (
@@ -50,13 +56,13 @@ export const Top_losers = () =>{
         {losers.length > 0 ? (losers.map((loser) => (
             
             
-            <div className="wrapper" key={loser.ticker}> 
+            <div className="wrapper" key={loser.symbol}> 
             
-                <div className="h3"> {loser.ticker}</div>
+                <div className="h3" onClick={() => handleInputChange(loser.symbol)}> {loser.symbol}</div>
                 <div className="h5"> {loser.price} </div>
             
-              <div className="h4">  {loser.change_percentage}</div>
-                <div className={"positive h6"}> {loser.change_amount}</div>
+              <div className="h4">  {loser.changesPercentage}</div>
+                <div className={"positive h6"}> {loser.change}</div>
                 <hr/><hr/>
                 </div>
                

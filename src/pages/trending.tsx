@@ -1,17 +1,16 @@
 import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+
 interface Gainer {
-  change: number;
-  changesPercentage: number;
+  change_amount: number;
+  change_percentage: number;
   price: number;
-  symbol: string;
+  ticker: string;
 }
 
 export const Top_gainers = () => {
   const [gainers, setGainers] = useState<Gainer[]>([]);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
-  const navigate = useNavigate();
 
   useEffect(() => {
     fetchTopGainers();
@@ -26,8 +25,8 @@ export const Top_gainers = () => {
       const data = await response.json();
 
       // Ensure data.top_gainers is an array and set it to state
-      if (Array.isArray(data)) {
-        setGainers(data);
+      if (Array.isArray(data.top_gainers)) {
+        setGainers(data.top_gainers);
         setLoading(false); // Set loading to false once data is fetched
       } else {
         throw new Error('Fetched data is not an array');
@@ -37,11 +36,6 @@ export const Top_gainers = () => {
       console.error('Error fetching top gainers:', error);
       setLoading(false); // Set loading to false on error
     }
-  };
-
-  const handleInputChange = (symbol: string) => {
-      
-    navigate(`/symbol/${symbol}`);
   };
 
   return (
@@ -56,11 +50,11 @@ export const Top_gainers = () => {
       ) : (
         gainers.length > 0 &&
         gainers.map((gainer) => (
-          <div className="wrapper" key={gainer.symbol}>
-            <div className="h3" onClick={() => handleInputChange(gainer.symbol)}>{gainer.symbol}</div>
+          <div className="wrapper" key={gainer.ticker}>
+            <div className="h3">{gainer.ticker}</div>
             <div className="h5">{gainer.price}</div>
-            <div className="h4">{gainer.changesPercentage}</div>
-            <div className="positive h6">{gainer.change}</div>
+            <div className="h4">{gainer.change_percentage}</div>
+            <div className="positive h6">{gainer.change_amount}</div>
             <hr />
             <hr />
           </div>

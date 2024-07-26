@@ -66,35 +66,51 @@ export const TickerPage = () => {
     return <div>Loading...</div>;
   }
 
+  if (!stockData) {
+    return <div>Error: No stock data available.</div>;
+  }
+
   return (
     <div className="ticker-page">
-      <h1>{stockData.companyName} ({stockData.symbol})</h1>
-      <p>Exchange: {stockData.exchange}</p>
-      <p>Current Price: ${stockData.currentPrice}</p>
-      <p>Price Change: ${stockData.priceChange}</p>
-      <p>Volume: {stockData.volume.toLocaleString()}</p>
-      <p>Average Volume: { stockData.averageVolume.toLocaleString()}</p>
-      <p>Day High: ${stockData.dayHigh}</p>
-      <p>Day Low: ${stockData.dayLow}</p>
-      <p>Market Cap: ${stockData.marketCap.toLocaleString()}</p>
-      <p>52-Week High: ${stockData["52WeekHigh"]}</p>
-      <p>52-Week Low: ${stockData["52WeekLow"]}</p>
+      <h1>{stockData.companyName || 'N/A'} ({stockData.symbol || 'N/A'})</h1>
+      <p>Exchange: {stockData.exchange || 'N/A'}</p>
+      <p>Current Price: ${stockData.currentPrice !== undefined ? stockData.currentPrice : 'N/A'}</p>
+      <p>Price Change: ${stockData.priceChange !== undefined ? stockData.priceChange : 'N/A'}</p>
+      <p>Volume: {stockData.volume !== undefined ? stockData.volume.toLocaleString() : 'N/A'}</p>
+      <p>Average Volume: {stockData.averageVolume !== undefined ? stockData.averageVolume.toLocaleString() : 'N/A'}</p>
+      <p>Day High: ${stockData.dayHigh !== undefined ? stockData.dayHigh : 'N/A'}</p>
+      <p>Day Low: ${stockData.dayLow !== undefined ? stockData.dayLow : 'N/A'}</p>
+      <p>Market Cap: ${stockData.marketCap !== undefined ? stockData.marketCap.toLocaleString() : 'N/A'}</p>
+      <p>52-Week High: ${stockData["52WeekHigh"] !== undefined ? stockData["52WeekHigh"] : 'N/A'}</p>
+      <p>52-Week Low: ${stockData["52WeekLow"] !== undefined ? stockData["52WeekLow"] : 'N/A'}</p>
       <h2>News</h2>
       <ul>
-        {stockData.news.map((newsItem, index) => (
-          <li key={index}>
-            <a href={newsItem.link} target="_blank" rel="noopener noreferrer">{newsItem.title}</a>
-          </li>
-        ))}
+        {stockData.news && stockData.news.length > 0 ? (
+          stockData.news.map((newsItem, index) => (
+            <li key={index}>
+              <a href={newsItem.link} target="_blank" rel="noopener noreferrer">
+                {newsItem.title || 'No Title'}
+              </a>
+            </li>
+          ))
+        ) : (
+          <li>No news available.</li>
+        )}
       </ul>
       <h2>Officers</h2>
       <ul>
-        {stockData.officers.map((officer, index) => (
-          <li key={index}>{officer.name} - {officer.title}</li>
-        ))}
+        {stockData.officers && stockData.officers.length > 0 ? (
+          stockData.officers.map((officer, index) => (
+            <li key={index}>
+              {officer.name || 'No Name'} - {officer.title || 'No Title'}
+            </li>
+          ))
+        ) : (
+          <li>No officers available.</li>
+        )}
       </ul>
-      <p>Address: {stockData.address}</p>
-      <p>Website: <a href={stockData.website} target="_blank" rel="noopener noreferrer">{stockData.website}</a></p>
+      <p>Address: {stockData.address || 'N/A'}</p>
+      <p>Website: {stockData.website ? <a href={stockData.website} target="_blank" rel="noopener noreferrer">{stockData.website}</a> : 'N/A'}</p>
     </div>
   );
 };
