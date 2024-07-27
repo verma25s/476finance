@@ -39,9 +39,10 @@ def search_stock(query):
     if not query:
         return jsonify({'error': 'Query parameter is required'}), 400
 
-    url = f'https://finnhub.io/api/v1/search?q=apple&token={FINNHUB_API_KEY}'
+    url = f'https://finnhub.io/api/v1/search?q={query}&token={FINNHUB_API_KEY}'
     response = requests.get(url)
     if response.status_code == 200:
+        print(jsonify(response.json()))
         return jsonify(response.json())
     else:
         return jsonify({'error': 'Failed to fetch data from Alpha Vantage'}), 500
@@ -77,9 +78,8 @@ def get_trending():
 
 
 
-
 import manage_users
-import user_messages
+import user_data
 import forum_post
 import news
 

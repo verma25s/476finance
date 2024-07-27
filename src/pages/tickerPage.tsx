@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import './tickerPage.css';
+import { useCookies } from 'react-cookie';
+
 
 interface NewsItem {
   title: string;
@@ -35,6 +37,10 @@ export const TickerPage = () => {
   const { symbol } = useParams<{ symbol: string }>();
   const [stockData, setStockData] = useState<StockData | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const [isInWatchlist, setIsInWatchlist] = useState<boolean>(false);
+  const [watchlistLoading, setWatchlistLoading] = useState<boolean>(true);
+  const [watchlistError, setWatchlistError] = useState<string | null>(null);
+  const [cookies, setCookie, removeCookie] = useCookies(['userEmail']);
 
   useEffect(() => {
     const fetchStockData = async () => {
@@ -58,16 +64,74 @@ export const TickerPage = () => {
     fetchStockData();
   }, [symbol]);
 
+  useEffect(() => {
+    const checkIfInWatchlist = async () => {
+      if (!symbol) return;
+      setWatchlistLoading(true);
+      try {
+        const response = await fetch(`/check-if-in-watchlist?symbol=${symbol}&email=${cookies.userEmail}`);
+        if (response.ok) {
+          const data = await response.json();
+          setIsInWatchlist(data.inWatchlist);
+        } else {
+          setWatchlistError('Error checking watchlist status');
+        }
+      } catch (error) {
+        setWatchlistError('Error checking watchlist status');
+      } finally {
+        setWatchlistLoading(false);
+      }
+    };
+
+    checkIfInWatchlist();
+  }, [symbol]);
+
+  const handleAddToWatchlist = async () => {
+    if (!symbol) return;
+    try {
+      const response = await fetch('/add-to-watchlist', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email:cookies.userEmail, symbol:symbol }),
+      });
+      if (response.ok) {
+        setIsInWatchlist(true);
+      } else {
+        setWatchlistError('Error adding to watchlist');
+      }
+    } catch (error) {
+      setWatchlistError('Error adding to watchlist');
+    }
+  };
+
+  const handleRemoveFromWatchlist = async () => {
+    if (!symbol) return;
+    try {
+      const response = await fetch('/remove-from-watchlist', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email:cookies.userEmail, symbol:symbol }),
+      });
+      if (response.ok) {
+        setIsInWatchlist(false);
+      } else {
+        setWatchlistError('Error removing from watchlist');
+      }
+    } catch (error) {
+      setWatchlistError('Error removing from watchlist');
+    }
+  };
+
   if (error) {
     return <div>Error: {error}</div>;
   }
 
   if (!stockData) {
     return <div>Loading...</div>;
-  }
-
-  if (!stockData) {
-    return <div>Error: No stock data available.</div>;
   }
 
   return (
@@ -111,6 +175,19 @@ export const TickerPage = () => {
       </ul>
       <p>Address: {stockData.address || 'N/A'}</p>
       <p>Website: {stockData.website ? <a href={stockData.website} target="_blank" rel="noopener noreferrer">{stockData.website}</a> : 'N/A'}</p>
+      {cookies.userEmail ?  <div className="watchlist-controls">
+        {watchlistLoading ? (
+          <p>Loading watchlist status...</p>
+        ) : watchlistError ? (
+          <p>{watchlistError}</p>
+        ) : isInWatchlist ? (
+          <button onClick={handleRemoveFromWatchlist}>Remove from Watchlist</button>
+        ) : (
+          <button onClick={handleAddToWatchlist}>Add to Watchlist</button>
+        )}
+      </div>
+      : <p>Please login to add to watchlist</p>}
+      
     </div>
   );
 };

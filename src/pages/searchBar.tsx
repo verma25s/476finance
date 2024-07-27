@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 
 interface Stock {
   symbol: string;
-  name: string;
+  description: string;
 }
 
 
@@ -30,11 +30,7 @@ export const SearchBar: React.FC = () => {
         const response = await fetch(`http://localhost:5000/search/${query}`);
         const data = await response.json();
         if (response.ok) {
-          const results = data.bestMatches.map((match: any) => ({
-            symbol: match['1. symbol'],
-            name: match['2. name']
-          }));
-          setSearchResults(results);
+          setSearchResults(data.result);
         } else {
           setError('Failed to fetch search results');
         }
@@ -74,7 +70,7 @@ export const SearchBar: React.FC = () => {
           <ul>
             {searchResults.map((result, index) => (
               <li key={index} onClick={() => handleClick(result.symbol)}>
-                <strong>{result.symbol} </strong> {result.name}
+                <strong>{result.symbol} </strong> {result.description}
               </li>
             ))}
           </ul>
