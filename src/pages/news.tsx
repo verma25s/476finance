@@ -1,32 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
-interface TickerSentiment {
-  relevance_score: string;
-  ticker: string;
-  ticker_sentiment_label: string;
-  ticker_sentiment_score: number;
-}
+
 
 interface NewsArticle {
-  authors: string[];
-  banner_image: string;
-  category_within_source: string;
-  overall_sentiment_label: string;
-  overall_sentiment_score: number;
+  category: string;
+  datetime: number;
+  headline: string;
   source: string;
-  source_domain: string;
-  summary: string;
-  ticker_sentiment: TickerSentiment[];
-  time_published: string;
-  title: string;
-  topics: string[];
   url: string;
+  id: string;
+  
 }
 
-interface NewsFeedResponse {
-  feed: NewsArticle[];
-}
 
 export const News = () => {
   const [newsFeed, setNewsFeed] = useState<NewsArticle[]>([]);
@@ -34,8 +20,9 @@ export const News = () => {
   useEffect(() => {
     const fetchNews = async () => {
       try {
-        const response = await axios.get<NewsFeedResponse>('http://localhost:5000/news');
-        setNewsFeed(response.data.feed);
+        const response =  await fetch(`/news`);
+        const newsData = await response.json();
+        setNewsFeed(newsData);
       } catch (error) {
         console.error('Error fetching news:', error);
       }
@@ -44,19 +31,21 @@ export const News = () => {
     fetchNews();
   }, []);
 
+  if(!newsFeed){
+    return ("Error Fetching Data");
+    
+    };
+    
   return (
+
     <div className="top-gainers">
       <h1 className="cp">News</h1>
-      <h1>News Feed</h1>
       {newsFeed.map((article, index) => (
-        <div key={index} className="news-article">
-          <h2>{article.title}</h2>
-        
-          <p>By: {article.authors.join(', ')}</p>
-          <p>Source: {article.source} ({article.source_domain})</p>
-          <p>Published: {new Date(article.time_published).toLocaleString()}</p>
-          <p>Sentiment: {article.overall_sentiment_label} ({article.overall_sentiment_score})</p>
-          <a href={article.url} target="_blank" rel="noopener noreferrer">Read more</a>
+        <div key={article.id} className="news-article">
+          <h2>{article.headline}</h2>
+          <p>Source: {article.source}</p>
+          <p>Published: {new Date(article.datetime * 1000 ).toLocaleString()}</p>
+          <a href={article.url} target="_blank" rel="noopener noreferrer">Link to Article</a>
         </div>
       ))}
     </div>

@@ -67,6 +67,17 @@ def get_top_gainers():
     print(data)
     return data
     
+@app.route('/trending')
+def get_trending():
+    url =f'https://financialmodelingprep.com/api/v3/stock_market/actives?apikey={FMP_API_KEY}'
+    r = requests.get(url)
+    data = r.json()
+    print(data)
+    return data
+
+
+
+
 import manage_users
 import user_messages
 import forum_post

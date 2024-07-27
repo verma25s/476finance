@@ -19,6 +19,7 @@ import { SearchBar } from './pages/searchBar';
 import { FullPost } from './pages/post';
 import {TickerPage} from './pages/tickerPage';
 import {News} from './pages/news';
+import { Trending } from './pages/trending';
 //Personal Finance
 import MortgageCalculator from './pages/personalFinance/MortgageCalculator';
 import PersonalLoans from './pages/personalFinance/PersonalLoans';
@@ -87,8 +88,8 @@ const MainContent = () => {
     <main>
       <div className="main-content">
         <div className="tabs-content">
-       
-          <Section id="graphs" title="Graphical analysis" content={<Top_gainers />} />
+        <Section id="graphs" title="Graphical analysis" content={<News />} />
+          <Section id="graphs" title="Graphical analysis" content={<Trending />} />
           <Section id="Top 3's" title="Top 3's" content={<Top_losers />} />
           <Section id="Latest Finance and Business News" title="Latest Finance and Business News" content={<MessageBox />} />
         </div>
