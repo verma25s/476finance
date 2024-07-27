@@ -87,17 +87,20 @@ const CreateAccount = () => {
             required
           />
           <label htmlFor="terms">
-            I accept all terms and conditions and privacy policy
+            Accept terms and conditions
           </label>
         </div>
         {error && <p className="error-message">{error}</p>}
         <button type="submit" className="next-button">
           Next
         </button>
-      </form>
-      <p>
+        <p>
         Already have an account? <Link to="/login">Login here</Link>
       </p>
+      </form>
+
+
+
     </div>
   );
 };

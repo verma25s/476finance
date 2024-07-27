@@ -11,12 +11,10 @@ const Nav: React.FC = () => {
         <li>
           <Link to="/market">Market</Link>
           <ul className="dropdown">
-            <li><Link to="/market/stock-market">Stock Market</Link></li>
             <li><Link to="/market/cryptocurrency">Cryptocurrency</Link></li>
             <li><Link to="/market/trending">Trending</Link></li>
             <li><Link to="/market/losers">Losers</Link></li>
             <li><Link to="/market/mutual-funds">Mutual Funds</Link></li>
-            <li><Link to="/market/futures">Futures</Link></li>
           </ul>
         </li>
         <li>

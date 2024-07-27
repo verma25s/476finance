@@ -44,7 +44,7 @@ const App = () => {
     <Router>
       <div className="App">
         <Header />
-        {cookies.userEmail ? <p>Welcome {cookies.userEmail}</p> : <p>Not logged in</p>}
+        {cookies.userEmail ? <p>Welcome {cookies.userEmail}</p> : <p></p>}
         <Routes>
           <Route path="/" element={< MainContent />}/>
           <Route path="/login" element={<Login />} />
