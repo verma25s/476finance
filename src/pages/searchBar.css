@@ -3,13 +3,14 @@
     width: 300px; /* Adjust width as needed */
   }
   
-  .search-box {
+  .search-box:hover {
     width: 100%;
     padding: 8px;
     font-size: 16px;
-    border: 1px solid #ccc;
+    border: 2px solid #eeeeee;
     border-radius: 4px;
     margin-right: 8px;
+    background-color: rgb(245, 245, 235);
   }
   
   .search-results {
