@@ -1,18 +1,17 @@
 /* Footer.css */
 
 footer {
-  height: 15vh;
+ 
     width: 100%;
     display: flex;
-    justify-content: space-between;
     background-color: #222;
     color: #fff;
     text-align: center;
   }
   
-  .footer-disclaimer {
+  .footer-disclaimer 
+  {
     display: flexbox;
-    justify-content: space-between;
     font-size: 14px;   
   }
   
@@ -20,17 +19,15 @@ footer {
   
   .footer-copyright {
     display: flexbox;
-    justify-content: space-between;
     width: 100%;
     text-align: center;
-    margin: 0px;
+    margin: 2px;
     background-color: #f0f0f0;
   }
   
   .footer-copyright p {
     display: flexbox;
-    justify-content: space-between;
-    font-size: 14px;
-    margin: 0px;
+    font-size: 16px;
+    margin: 2px;
     color: #666;
   }

@@ -35,6 +35,15 @@
     justify-content: center;
     align-items: center;
     padding: 20px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 400px;
+    background-color: #fafafa;
+    padding: 25px;
+    border: 1px solid;
+    box-shadow: 0 5px 10px #f8f8f8;
+    
   }
   
   .login-right h2 {

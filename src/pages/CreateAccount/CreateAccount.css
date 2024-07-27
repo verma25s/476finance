@@ -4,20 +4,20 @@
     align-items: center;
     justify-content: center;
     height: 100vh;
-    background-color: #f0f0f0;
+    background-color: #0E2E3B;
     padding: 20px;
   }
   
   .create-account-container h1 {
     font-size: 36px;
     font-weight: bold;
-    color: #333;
+    color: #0fdd4d;
   }
   
   .create-account-container h2 {
     font-size: 24px;
     font-weight: normal;
-    color: #666;
+    color: #0fdd4d;
     margin-bottom: 20px;
   }
   
@@ -26,10 +26,10 @@
     flex-direction: column;
     width: 100%;
     max-width: 400px;
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #fafafa;
+    padding: 25px;
+    border: 10px solid;
+    box-shadow: 0 5px 10px #0fdd4d;
   }
   
   .create-account-container form label {
@@ -48,6 +48,7 @@
     border: 1px solid #ccc;
     border-radius: 4px;
     font-size: 14px;
+    padding: 2px;
   }
   
   .create-account-container form .terms {
@@ -84,6 +85,7 @@
     font-size: 14px;
     color: #666;
     margin-top: 10px;
+    padding-bottom: 25px;
   }
   
   .create-account-container p a {
