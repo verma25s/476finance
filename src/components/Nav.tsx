@@ -14,7 +14,6 @@ const Nav: React.FC = () => {
           <ul className="dropdown">
             <li><Link to="/market/cryptocurrency">Cryptocurrency</Link></li>
             <li><Link to="/market/trending">Trending</Link></li>
-            <li><Link to="/market/losers">Losers</Link></li>
             <li><Link to="/market/mutual-funds">Mutual Funds</Link></li>
           </ul>
         </li>
@@ -28,31 +27,12 @@ const Nav: React.FC = () => {
             <li><Link to="/personalFinance/taxes">Taxes</Link></li>
           </ul>
         </li>
-        <li>
-          <Link to="/research">Research</Link>
-          <ul className="dropdown">
-            <li><Link to="/research/screeners">Screeners</Link></li>
-            <li><Link to="/research/watchlist">Watchlist</Link></li>
-            <li><Link to="/research/calendar">Calendar</Link></li>
-            <li><Link to="/research/stock-comparison">Stock Comparison</Link></li>
-            <li><Link to="/research/advice-charts">Advice Charts</Link></li>
-            <li><Link to="/research/currency-converter">Currency Converter</Link></li>
-            <li><Link to="/research/investment-ideas">Investment Ideas</Link></li>
-            <li><Link to="/research/research-report">Research Report</Link></li>
-          </ul>
-        </li>
+        
+
+        
         <li>
           <Link to="/news">News</Link>
-          <ul className="dropdown">
-            <li><Link to="/news/latest-news">Latest News</Link></li>
-            <li><Link to="/news/stock-market-news">Stock Market</Link></li>
-            <li><Link to="/news/originals">Originals</Link></li>
-            <li><Link to="/news/economics">Economics</Link></li>
-            <li><Link to="/news/housing">Housing</Link></li>
-            <li><Link to="/news/earnings">Earnings</Link></li>
-            <li><Link to="/news/tech">Tech</Link></li>
-            <li><Link to="/news/crypto-news">Crypto</Link></li>
-          </ul>
+
         </li>
       </ul>
     </nav>
