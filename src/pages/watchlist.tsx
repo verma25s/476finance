@@ -8,7 +8,7 @@ interface Watchlist {
 }
 
 export const Trending = () => {
-  const [trending_stocks, settrending_stocks] = useState<Trending[]>([]);
+  const [trending_stocks, settrending_stocks] = useState<Watchlist[]>([]);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
 
