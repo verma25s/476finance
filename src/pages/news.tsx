@@ -31,23 +31,24 @@ export const News = () => {
     fetchNews();
   }, []);
 
-  if(!newsFeed){
-    return ("Error Fetching Data");
-    
-    };
+
     
   return (
 
     <div className="top-gainers">
       <h1 className="cp">News</h1>
-      {newsFeed.map((article, index) => (
+      {newsFeed.length >0 ? (newsFeed.map((article, index) => (
         <div key={article.id} className="news-article">
           <h2>{article.headline}</h2>
           <p>Source: {article.source}</p>
           <p>Published: {new Date(article.datetime * 1000 ).toLocaleString()}</p>
           <a href={article.url} target="_blank" rel="noopener noreferrer">Link to Article</a>
         </div>
-      ))}
+      
+    ))) : (
+      <p>Loading...</p>
+    )}
+
     </div>
   );
 };
