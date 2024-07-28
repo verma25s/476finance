@@ -8,6 +8,7 @@ const Nav: React.FC = () => {
     <nav>
       <ul>
         <li><Link to="/forum">Forum</Link></li>
+        <li><Link to="/screener">Screener</Link></li>
         <li>
           <Link to="/market">Market</Link>
           <ul className="dropdown">

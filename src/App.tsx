@@ -20,6 +20,9 @@ import { FullPost } from './pages/post';
 import {TickerPage} from './pages/tickerPage';
 import {News} from './pages/news';
 import { Trending } from './pages/trending';
+import { Watchlist } from './pages/watchlist';
+import {Screener} from './pages/screener';
+
 //Personal Finance
 import MortgageCalculator from './pages/personalFinance/MortgageCalculator';
 import PersonalLoans from './pages/personalFinance/PersonalLoans';
@@ -49,6 +52,7 @@ const App = () => {
           <Route path="/" element={< MainContent />}/>
           <Route path="/login" element={<Login />} />
           <Route path="/forum" element={<Forum />} />
+          <Route path="/screener" element={<Screener />} />
           <Route path="/symbol/:symbol" Component={TickerPage} />
           <Route path="/create-account" element={<CreateAccount />} />
           <Route path="/market/*" element={<Market />} />
@@ -89,6 +93,7 @@ const MainContent = () => {
       <div className="main-content">
         <div className="tabs-content">
         <Section id="Top 3's" title="Top 3's" content={<News />} />
+        <Section id="Top 3's" title="Top 3's" content={<Watchlist />} />
         <Section id="Top 3's" title="Top 3's" content={<Top_gainers />} />
           <Section id="graphs" title="Graphical analysis" content={<Trending />} />
           <Section id="Top 3's" title="Top 3's" content={<Top_losers />} />

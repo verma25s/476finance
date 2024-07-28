@@ -1,7 +1,7 @@
 from app import create_app
 import yfinance as yf
 from dotenv import load_dotenv
-from flask import Flask, jsonify, session, redirect, url_for
+from flask import Flask, jsonify, session, redirect, url_for, request
 from flask_pymongo import PyMongo
 from flask_bcrypt import Bcrypt
 import requests
@@ -42,7 +42,7 @@ def search_stock(query):
     url = f'https://finnhub.io/api/v1/search?q={query}&token={FINNHUB_API_KEY}'
     response = requests.get(url)
     if response.status_code == 200:
-        print(jsonify(response.json()))
+        
         return jsonify(response.json())
     else:
         return jsonify({'error': 'Failed to fetch data from Alpha Vantage'}), 500
@@ -55,7 +55,7 @@ def get_top_losers():
     url =f'https://financialmodelingprep.com/api/v3/stock_market/gainers?apikey={FMP_API_KEY}'
     r = requests.get(url)
     data = r.json()
-    print(data)
+
     return data
     
     
@@ -65,7 +65,7 @@ def get_top_gainers():
     url =f'https://financialmodelingprep.com/api/v3/stock_market/losers?apikey={FMP_API_KEY}'
     r = requests.get(url)
     data = r.json()
-    print(data)
+   
     return data
     
 @app.route('/trending')
@@ -73,8 +73,46 @@ def get_trending():
     url =f'https://financialmodelingprep.com/api/v3/stock_market/actives?apikey={FMP_API_KEY}'
     r = requests.get(url)
     data = r.json()
-    print(data)
+    
     return data
+
+@app.route('/screener', methods=['GET'])
+def screener():
+    # Extract query parameters
+    params = {
+        'marketCapMoreThan': request.args.get('marketCapMoreThan'),
+        'marketCapLowerThan': request.args.get('marketCapLowerThan'),
+        'priceMoreThan': request.args.get('priceMoreThan'),
+        'priceLowerThan': request.args.get('priceLowerThan'),
+        'betaMoreThan': request.args.get('betaMoreThan'),
+        'betaLowerThan': request.args.get('betaLowerThan'),
+        'volumeMoreThan': request.args.get('volumeMoreThan'),
+        'volumeLowerThan': request.args.get('volumeLowerThan'),
+        'dividendMoreThan': request.args.get('dividendMoreThan'),
+        'dividendLowerThan': request.args.get('dividendLowerThan'),
+        'isEtf': request.args.get('isEtf'),
+        'isFund': request.args.get('isFund'),
+        'isActivelyTrading': request.args.get('isActivelyTrading'),
+        'sector': request.args.get('sector'),
+        'industry': request.args.get('industry'),
+        'country': request.args.get('country'),
+        'exchange': request.args.get('exchange'),
+        'limit': request.args.get('limit', 10)  # Default to 10 if not provided
+    }
+    
+    # Remove any parameters that are None
+    params = {k: v for k, v in params.items() if v is not None}
+
+    try:
+        # Call the FMP screener API
+        response = requests.get('https://financialmodelingprep.com/api/v3/stock-screener', params={**params, 'apikey': FMP_API_KEY})
+        response.raise_for_status()  # Raise an error for bad status codes
+        data = response.json()
+
+        # Return the data as JSON
+        return jsonify(data)
+    except requests.exceptions.RequestException as e:
+        return jsonify({'error': str(e)}), 500
 
 
 

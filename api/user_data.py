@@ -12,7 +12,7 @@ import manage_users
 
 fn = Client.finance476_database
 messages = fn.messages
-watchlist = fn.watchlist
+
 
 CORS(app, resources={r"/*": {"origins": "*"}})
 
@@ -65,22 +65,19 @@ def add_messages():
 
 @app.route('/get-watchlist', methods=['GET'])
 def get_watchlist():
-    try:
-        
-        watchlist = fn.watchlist.find()
-        formatted_messages = [{
-            
-            'symbol': stock['symbol'],
-            'name': stock['name'],
-        } for stock in watchlist]
-        return jsonify(formatted_messages), 200
-    except Exception as e:
-        return jsonify({'error': 'An error occurred while fetching messages', 'details': str(e)}), 500
+    email = request.args.get('email')
+    if not email:
+        return jsonify({"error": "Email is required"}), 400
+    watchlist = fn.watchlist.find_one({"email": email})
+    if not watchlist:
+         return jsonify({"symbols": []})
+    return jsonify({"symbols": watchlist.get("symbol", [])})
     
 
 @app.route('/check-if-in-watchlist', methods=['GET'])
 def check_if_in_watchlist():
     symbol = request.args.get('symbol')
+    
     email = request.args.get('email')
     if not symbol or not email:
         return jsonify({"error": "Symbol and email are required"}), 400
