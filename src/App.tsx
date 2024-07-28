@@ -83,6 +83,7 @@ const Header = () => {
       </div>
       <Nav />
       <SearchBar/>
+      <Aside />
     </header>
   );
 };
@@ -90,17 +91,21 @@ const Header = () => {
 const MainContent = () => {
   return (
     <main>
+      
       <div className="main-content">
-        <div className="tabs-content">
+        
         <Section id="Top 3's" title="Top 3's" content={<News />} />
         <Section id="Top 3's" title="Top 3's" content={<Watchlist />} />
+        <Section id="graphs" title="Graphical analysis" content={<Trending />} />
+        </div>
+
+        <div className="tabs-content">
         <Section id="Top 3's" title="Top 3's" content={<Top_gainers />} />
-          <Section id="graphs" title="Graphical analysis" content={<Trending />} />
           <Section id="Top 3's" title="Top 3's" content={<Top_losers />} />
           <Section id="Latest Finance and Business News" title="Latest Finance and Business News" content={<MessageBox />} />
         </div>
-        <Aside />
-      </div>
+        
+      
     </main>
   );
 };

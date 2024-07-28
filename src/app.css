@@ -78,10 +78,14 @@ main {
 }
 
 .main-content {
-  display: flex;
-  padding: 0.5rem 1rem;
   flex: 1;
+  
+  position: left;
 
+  width: 70%;
+
+
+ 
 }
 
 .tabs-content {
@@ -100,28 +104,27 @@ main {
 /* Aside */
 
 .auth-buttons-sidebar {
-  display: flex;
-  flex-direction: column;
-  background-color: #fff7f7;
-  display: flex;
-  flex-direction: column;
-  background-color: #fff7f7;
+  position: relative;
+  right: 10px;
   border-radius: 25px;
   background: #e8f6d5;
+  width: 200px;
+  height: 120px;
+
 }
 
 
 .signup-button,
 .create-account-button {
-  margin-bottom: 0.0rem;
-  padding: 0.5rem 1rem;
+  
+
   background-color: #28a745;
   border: none;
   cursor: pointer;
 }
 
 .login-button {
-  padding: 0.5rem 1rem;
+ 
   background-color: #007bff;
   border: none;
   cursor: pointer;
