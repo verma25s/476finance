@@ -5,6 +5,7 @@ interface Gainer {
   changesPercentage: number;
   price: number;
   symbol: string;
+  name: string;
 }
 
 export const Top_gainers = () => {
@@ -56,11 +57,11 @@ export const Top_gainers = () => {
       ) : (
         gainers.length > 0 &&
         gainers.map((gainer) => (
-          <div className="wrapper" key={gainer.symbol}>
-            <div className="h3" onClick={() => handleInputChange(gainer.symbol)}>{gainer.symbol}</div>
+          <div className="wrapper" key={gainer.symbol} onClick={() => handleInputChange(gainer.symbol)}>
+            <div className="h3" >{gainer.symbol}</div>
             <div className="h5">{gainer.price}</div>
-            <div className="h4">{gainer.changesPercentage}</div>
-            <div className="positive h6">{gainer.change}</div>
+            <div className="h4">{gainer.name}</div>
+            <div className="positive h6">{gainer.change}({gainer.changesPercentage}%) </div>
             <hr />
             <hr />
           </div>

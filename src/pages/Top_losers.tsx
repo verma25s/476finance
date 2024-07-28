@@ -5,7 +5,7 @@ interface Loser {
   changesPercentage: number;
   price: number;
   symbol: string;
-    
+    name: string;
   }
 
 export const Top_losers = () =>{
@@ -56,13 +56,13 @@ export const Top_losers = () =>{
         {losers.length > 0 ? (losers.map((loser) => (
             
             
-            <div className="wrapper" key={loser.symbol}> 
+            <div className="wrapper" key={loser.symbol} onClick={() => handleInputChange(loser.symbol)}> 
             
-                <div className="h3" onClick={() => handleInputChange(loser.symbol)}> {loser.symbol}</div>
+                <div className="h3" > {loser.symbol}</div>
                 <div className="h5"> {loser.price} </div>
             
-              <div className="h4">  {loser.changesPercentage}</div>
-                <div className={"positive h6"}> {loser.change}</div>
+              <div className="h4">  {loser.name} </div>
+                <div className={"positive h6"}> {loser.change}({loser.changesPercentage}%) </div>
                 <hr/><hr/>
                 </div>
                
