@@ -28,6 +28,10 @@ interface StockData {
     historical: HistoricalData[];
 }
 
+const getVolumeColor = (volume: number, threshold: number = 50000000) => {
+    return volume > threshold ? 'rgba(0, 128, 0, 0.8)' : 'rgba(255, 0, 0, 0.8)';
+};
+
 export const TickerGraph: React.FC = () => {
     const [chartData, setChartData] = useState<any>(null);
     const [error, setError] = useState<string | null>(null);
@@ -60,8 +64,9 @@ export const TickerGraph: React.FC = () => {
                                 label: 'Volume',
                                 data: volumes,
                                 type: 'bar',
-                                backgroundColor: 'rgba(153, 102, 255, 0.2)',
-                                borderColor: 'rgba(153, 102, 255, 1)',
+                                backgroundColor: volumes.map(volume => getVolumeColor(volume)),
+                                borderColor: volumes.map(volume => getVolumeColor(volume)),
+                                borderWidth: 2, // Make bars bold
                                 yAxisID: 'y1',
                             },
                         ],
@@ -114,6 +119,11 @@ export const TickerGraph: React.FC = () => {
                             },
                             grid: {
                                 drawOnChartArea: false,
+                            },
+                            ticks: {
+                                callback: function(value) {
+                                    return value.toLocaleString(); // Format numbers with thousands separators
+                                }
                             },
                         },
                     },

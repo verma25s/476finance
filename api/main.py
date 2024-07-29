@@ -124,6 +124,16 @@ def get_graph(symbol):
     return data
 
 
+@app.route('/stocknews/<symbol>')
+def get_stocknews(symbol):
+    url=f'https://finnhub.io/api/v1/company-news?symbol={symbol}&from=2023-08-15&to=2024-07-24&token={FINNHUB_API_KEY}'
+    r = requests.get(url)
+    data = r.json()
+    print (symbol)
+    print(data)
+    return data
+
+
 import manage_users
 import user_data
 import forum_post

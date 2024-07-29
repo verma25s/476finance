@@ -2,21 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import './tickerPage.css';
 import { useCookies } from 'react-cookie';
-import {TickerGraph} from './tickergraph';
+import { TickerGraph } from './tickergraph';
+import {StockNews} from './stocknews';
 
-interface NewsItem {
-  title: string;
-  link: string;
-}
-
-interface Officer {
-  name: string;
-  title: string;
-}
 
 interface StockData {
   symbol: string;
-  companyName: string;
+  shortName: string;
   exchange: string;
   currentPrice: number;
   priceChange: number;
@@ -27,10 +19,32 @@ interface StockData {
   marketCap: number;
   "52WeekHigh": number;
   "52WeekLow": number;
-  news: NewsItem[];
-  officers: Officer[];
-  address: string;
+  
+  address1: string;
   website: string;
+  // Add other fields you want to include
+  ask: number;
+  bid: number;
+  bookValue: number;
+  dividendRate: number;
+  dividendYield: number;
+  earningsGrowth: number;
+  earningsQuarterlyGrowth: number;
+  ebitda: number;
+  ebitdaMargins: number;
+  enterpriseValue: number;
+  priceToBook: number;
+  priceToSalesTrailing12Months: number;
+  profitMargins: number;
+  quickRatio: number;
+  returnOnAssets: number;
+  returnOnEquity: number;
+  revenueGrowth: number;
+  revenuePerShare: number;
+  trailingPE: number;
+  trailingPEG: number;
+  twoHundredDayAverage: number;
+  // Add more fields as needed
 }
 
 export const TickerPage = () => {
@@ -48,11 +62,7 @@ export const TickerPage = () => {
         const response = await fetch(`/stock/${symbol}`);
         if (response.ok) {
           const data: StockData = await response.json();
-          setStockData({
-            ...data,
-            news: data.news || [],
-            officers: data.officers || []
-          });
+          setStockData(data);
         } else {
           setError('Error fetching stock data');
         }
@@ -94,7 +104,7 @@ export const TickerPage = () => {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ email:cookies.userEmail, symbol:symbol }),
+        body: JSON.stringify({ email: cookies.userEmail, symbol: symbol }),
       });
       if (response.ok) {
         setIsInWatchlist(true);
@@ -114,7 +124,7 @@ export const TickerPage = () => {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ email:cookies.userEmail, symbol:symbol }),
+        body: JSON.stringify({ email: cookies.userEmail, symbol: symbol }),
       });
       if (response.ok) {
         setIsInWatchlist(false);
@@ -134,63 +144,103 @@ export const TickerPage = () => {
     return <div>Loading...</div>;
   }
 
+  const formatValue = (value: number | undefined) => value !== undefined ? value.toLocaleString() : 'N/A';
+
+  const rows = [
+    { label: 'Symbol', value: stockData.symbol },
+    { label: 'Company Name', value: stockData.shortName },
+    { label: 'Exchange', value: stockData.exchange },
+    { label: 'Current Price', value: `$${formatValue(stockData.currentPrice)}` },
+    { label: 'Price Change', value: `$${formatValue(stockData.priceChange)}` },
+    { label: 'Volume', value: formatValue(stockData.volume) },
+    { label: 'Average Volume', value: formatValue(stockData.averageVolume) },
+    { label: 'Day High', value: `$${formatValue(stockData.dayHigh)}` },
+    { label: 'Day Low', value: `$${formatValue(stockData.dayLow)}` },
+    { label: 'Market Cap', value: `$${formatValue(stockData.marketCap)}` },
+    { label: '52-Week High', value: `$${formatValue(stockData["52WeekHigh"])}` },
+    { label: '52-Week Low', value: `$${formatValue(stockData["52WeekLow"])}` },
+    { label: 'Ask', value: `$${formatValue(stockData.ask)}` },
+    { label: 'Bid', value: `$${formatValue(stockData.bid)}` },
+    { label: 'Book Value', value: `$${formatValue(stockData.bookValue)}` },
+    { label: 'Dividend Rate', value: `$${formatValue(stockData.dividendRate)}` },
+    { label: 'Dividend Yield', value: formatValue(stockData.dividendYield) },
+    { label: 'Earnings Growth', value: formatValue(stockData.earningsGrowth) },
+    { label: 'Earnings Quarterly Growth', value: formatValue(stockData.earningsQuarterlyGrowth) },
+    { label: 'EBITDA', value: formatValue(stockData.ebitda) },
+    { label: 'EBITDA Margins', value: formatValue(stockData.ebitdaMargins) },
+    { label: 'Enterprise Value', value: formatValue(stockData.enterpriseValue) },
+    { label: 'Price to Book', value: formatValue(stockData.priceToBook) },
+    { label: 'Price to Sales (TTM)', value: formatValue(stockData.priceToSalesTrailing12Months) },
+    { label: 'Profit Margins', value: formatValue(stockData.profitMargins) },
+    { label: 'Quick Ratio', value: formatValue(stockData.quickRatio) },
+    { label: 'Return on Assets', value: formatValue(stockData.returnOnAssets) },
+    { label: 'Return on Equity', value: formatValue(stockData.returnOnEquity) },
+    { label: 'Revenue Growth', value: formatValue(stockData.revenueGrowth) },
+    { label: 'Revenue per Share', value: formatValue(stockData.revenuePerShare) },
+    { label: 'Trailing P/E', value: formatValue(stockData.trailingPE) },
+    { label: 'Trailing PEG', value: formatValue(stockData.trailingPEG) },
+    { label: '200-Day Average', value: formatValue(stockData.twoHundredDayAverage) },
+    { label: 'Address', value: stockData.address1 },
+    { label: 'Website', value: stockData.website ? <a href={stockData.website} target="_blank" rel="noopener noreferrer">{stockData.website}</a> : 'N/A' },
+  ];
+
   return (
     <div className="ticker-page">
+      <h4>Symbol: {stockData.symbol}</h4>
+      <h6>Price: {stockData.currentPrice}</h6>
+      {cookies.userEmail ? (
+        <div className="watchlist-controls">
+          {watchlistLoading ? (
+            <p>Loading watchlist status...</p>
+          ) : watchlistError ? (
+            <p>{watchlistError}</p>
+          ) : isInWatchlist ? (
+            <button onClick={handleRemoveFromWatchlist}>Remove from Watchlist</button>
+          ) : (
+            <button onClick={handleAddToWatchlist}>Add to Watchlist</button>
+          )}
+        </div>
+      ) : (
+        <p>Please login to add to watchlist</p>
+      )}
 
-      <TickerGraph/>
+      <TickerGraph />
+      <h1>{stockData.shortName } ({stockData.symbol || 'N/A'})</h1>
+      <table className="stock-table">
+        <thead>
+          <tr>
+            <th>Metric</th>
+            <th>Value</th>
+            <th>Metric</th>
+            <th>Value</th>
+          </tr>
+        </thead>
+        <tbody>
+          {rows.map((row, index) => (
+            <tr key={index}>
+              <td>{row.label}</td>
+              <td>{row.value}</td>
+              {index + 1 < rows.length ? (
+                <>
+                  <td>{rows[index + 1].label}</td>
+                  <td>{rows[index + 1].value}</td>
+                </>
+              ) : (
+                <>
+                  <td></td>
+                  <td></td>
+                </>
+              )}
+            </tr>
+          ))}
+        </tbody>
+      </table>
 
 
-      <h1>{stockData.companyName || 'N/A'} ({stockData.symbol || 'N/A'})</h1>
-      <p>Exchange: {stockData.exchange || 'N/A'}</p>
-      <p>Current Price: ${stockData.currentPrice !== undefined ? stockData.currentPrice : 'N/A'}</p>
-      <p>Price Change: ${stockData.priceChange !== undefined ? stockData.priceChange : 'N/A'}</p>
-      <p>Volume: {stockData.volume !== undefined ? stockData.volume.toLocaleString() : 'N/A'}</p>
-      <p>Average Volume: {stockData.averageVolume !== undefined ? stockData.averageVolume.toLocaleString() : 'N/A'}</p>
-      <p>Day High: ${stockData.dayHigh !== undefined ? stockData.dayHigh : 'N/A'}</p>
-      <p>Day Low: ${stockData.dayLow !== undefined ? stockData.dayLow : 'N/A'}</p>
-      <p>Market Cap: ${stockData.marketCap !== undefined ? stockData.marketCap.toLocaleString() : 'N/A'}</p>
-      <p>52-Week High: ${stockData["52WeekHigh"] !== undefined ? stockData["52WeekHigh"] : 'N/A'}</p>
-      <p>52-Week Low: ${stockData["52WeekLow"] !== undefined ? stockData["52WeekLow"] : 'N/A'}</p>
-      <h2>News</h2>
-      <ul>
-        {stockData.news && stockData.news.length > 0 ? (
-          stockData.news.map((newsItem, index) => (
-            <li key={index}>
-              <a href={newsItem.link} target="_blank" rel="noopener noreferrer">
-                {newsItem.title || 'No Title'}
-              </a>
-            </li>
-          ))
-        ) : (
-          <li>No news available.</li>
-        )}
-      </ul>
-      <h2>Officers</h2>
-      <ul>
-        {stockData.officers && stockData.officers.length > 0 ? (
-          stockData.officers.map((officer, index) => (
-            <li key={index}>
-              {officer.name || 'No Name'} - {officer.title || 'No Title'}
-            </li>
-          ))
-        ) : (
-          <li>No officers available.</li>
-        )}
-      </ul>
-      <p>Address: {stockData.address || 'N/A'}</p>
-      <p>Website: {stockData.website ? <a href={stockData.website} target="_blank" rel="noopener noreferrer">{stockData.website}</a> : 'N/A'}</p>
-      {cookies.userEmail ?  <div className="watchlist-controls">
-        {watchlistLoading ? (
-          <p>Loading watchlist status...</p>
-        ) : watchlistError ? (
-          <p>{watchlistError}</p>
-        ) : isInWatchlist ? (
-          <button onClick={handleRemoveFromWatchlist}>Remove from Watchlist</button>
-        ) : (
-          <button onClick={handleAddToWatchlist}>Add to Watchlist</button>
-        )}
-      </div>
-      : <p>Please login to add to watchlist</p>}
+      <StockNews />
+
+      
+
       
     </div>
   );
