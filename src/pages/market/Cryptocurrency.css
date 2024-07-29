@@ -1,11 +1,9 @@
-/* Cryptocurrency.css */
-.crypto-container {
-    padding: 20px;
-  }
-  
-  .crypto-title {
-    font-size: 24px;
-    font-weight: bold;
-    margin-bottom: 10px;
+
+  .Crypto
+  {
+    background: #f0f0f0; 
+    padding: 15px;
+    border: 1px solid #ccc; 
+    border-radius: 15px;
   }
   
