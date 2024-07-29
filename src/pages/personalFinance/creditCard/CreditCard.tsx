@@ -7,6 +7,7 @@ import CardRecommendationResults from '../../../components/CardRecommendationRes
 
 //Images 
 import amexPlatinum from '../../../components/images/amex_platinum.png';
+import capitalSilver from '../../../components/images/capital_silver.png';
 
 const CreditCard: React.FC = () => {
     const [recommendationCriteria, setRecommendationCriteria] = useState<{ useType: string; benefit: string; annualFee: string } | null>(null);
@@ -24,7 +25,7 @@ const CreditCard: React.FC = () => {
                     <Link to="/personalFinance/creditCard/best-credit-cards" className="card-category">Best Credit Cards</Link>
                     <Link to="/personalFinance/creditCard/best-travel-cards" className="card-category">Best Travel Cards</Link>
                     <Link to="/personalFinance/creditCard/best-cash-back-cards" className="card-category">Best Cash-Back Cards</Link>
-                    <Link to="/personalFinance/creditCard/best-balance-transfer-cards" className="card-category">Best Balance Transfer Cards</Link>
+                    <Link to="/personalFinance/creditCard/best-balance-transfer-card" className="card-category">Best Balance Transfer Cards</Link>
                 </div>
                 <div className="card-categories-2">
                     <Link to="/personalFinance/creditCard/best-sign-up-offers" className="card-category">Best Sign-Up Offers</Link>
@@ -59,7 +60,7 @@ const CreditCard: React.FC = () => {
                     </p>
                 </div>
                 <div className="card">
-                    <img src="/images/capital_one_quicksilver.png" alt="Capital One Quicksilver Student Cash Rewards Credit Card" />
+                    <img src={capitalSilver} alt="Capital One Quicksilver Student Cash Rewards Credit Card" />
                     <p>
                         <strong>Capital One Quicksilver Student Cash Rewards Credit Card</strong><br />
                         <em>Annual Fee:</em> $0<br />

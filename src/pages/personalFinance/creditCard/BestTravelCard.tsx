@@ -1,6 +1,8 @@
 // ./pages/personalFinance/creditCard/BestTravelCard.tsx
 import React from 'react';
 import './CreditCardCategory.css'; // Import the styles
+import scotiaGold from '../../../components/images/scotia_gold.png';
+import amexAeroplanReserve from '../../../components/images/amex_reserveaeroplan.png';
 
 const BestTravelCard: React.FC = () => {
     return (
@@ -17,7 +19,7 @@ const BestTravelCard: React.FC = () => {
                     </p>
                 </div>
                 <div className="card">
-                    <img src="/images/travel_card2.png" alt="Travel Card 2" />
+                    <img src={scotiaGold} alt="Travel Card 2" />
                     <p>
                         <strong>2. Scotiabank® Gold American Express® Card</strong><br />
                         <em>Annual Fee:</em> $120<br />
@@ -35,7 +37,7 @@ const BestTravelCard: React.FC = () => {
                     </p>
                 </div>
                 <div className="card">
-                    <img src="/images/travel_card4.png" alt="Travel Card 4" />
+                    <img src={amexAeroplanReserve} alt="Travel Card 4" />
                     <p>
                         <strong>4. American Express® Aeroplan®* Card</strong><br />
                         <em>Annual Fee:</em> $120<br />

@@ -1,6 +1,8 @@
 // ./pages/personalFinance/creditCard/BestRewardsCard.tsx
 import React from 'react';
 import './CreditCardCategory.css'; // Import the styles
+import amexCobalt from '../../../components/images/amex_cobalt.png';
+import scotiaGold from '../../../components/images/scotia_gold.png';
 
 const BestRewardsCards: React.FC = () => {
     return (
@@ -8,7 +10,7 @@ const BestRewardsCards: React.FC = () => {
             <h1>BEST REWARDS CARDS</h1>
             <div className="ranked-cards">
                 <div className="card">
-                    <img src="/images/rewards_card1.png" alt="Rewards Card 1" />
+                    <img src={amexCobalt}alt="Rewards Card 1" />
                     <p>
                         <strong>1. American Express® Cobalt™ Card</strong><br />
                         <em>Annual Fee:</em> $155.88<br />
@@ -26,7 +28,7 @@ const BestRewardsCards: React.FC = () => {
                     </p>
                 </div>
                 <div className="card">
-                    <img src="/images/rewards_card3.png" alt="Rewards Card 3" />
+                    <img src={scotiaGold} alt="Rewards Card 3" />
                     <p>
                         <strong>3. Scotiabank Gold American Express® Card</strong><br />
                         <em>Annual Fee:</em> $120<br />

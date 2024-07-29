@@ -38,6 +38,7 @@ import BestCashBackCard from './pages/personalFinance/creditCard/BestCashBackCar
 import BestSignUpOffers from './pages/personalFinance/creditCard/BestSignUpOffers'; // Correct import path
 import BestRewardsCards from './pages/personalFinance/creditCard/BestRewardsCards'; // Correct import path
 import BestHomeImprovementCards from './pages/personalFinance/creditCard/BestHomeImprovementCards'; // Correct import path
+import BestBalanceTransferCard from './pages/personalFinance/creditCard/BestBalanceTransferCard'; // Correct import path
 
 // src/App.tsx
 import { useCookies } from 'react-cookie';
@@ -70,6 +71,7 @@ const App = () => {
           <Route path="/personalFinance/creditCard/best-cash-back-cards" element={<BestCashBackCard />} />
           <Route path="/personalFinance/creditCard/best-sign-up-offers" element={<BestSignUpOffers />} />
           <Route path="/personalFinance/creditCard/best-rewards-cards" element={<BestRewardsCards />} />
+          <Route path="/personalFinance/creditCard/best-balance-transfer-card" element={<BestBalanceTransferCard />} />
           <Route path="/personalFinance/creditCard/best-home-improvement-cards" element={<BestHomeImprovementCards />} />
         </Routes>
         <Footer />

@@ -27,6 +27,16 @@ import rbcEliteWestjet from './images/rbc_elitewestjet.png';
 import rbcIonPlus from './images/rbc_ion+.png';
 import rbcPreferred from './images/rbc_preferred.png'
 
+//TD
+import tdBusiness from './images/td_business.png';
+import tdCashBack from './images/td_cashback.png';
+
+//ScotiaBank
+import scotiaGold from './images/scotia_gold.png';
+import scotiaMonentumPlus from './images/scotia_monemtum+.png';
+import scotiaPassportInfinite from './images/scotia_passportinfinite.png';
+import scotiaValue from './images/scotia_value.png';
+
 interface Props {
     useType: string;
     benefit: string;
@@ -236,13 +246,24 @@ const CardRecommendationResults: React.FC<Props> = ({ useType, benefit, annualFe
         {
             name: "TD Cash Back Visa Infinite* Card",
             annualFee: "$120",
-            welcomeOffer: "Up to $350 cash back†",
+            welcomeOffer: "Up to $550 cash back†",
             firstYearValue: "$969",
             interestRates: "20.99% on purchases, 22.99% on cash advances",
             additionalInfo: "Earn up to 6% cash back on gas, groceries, and recurring bills for the first 3 months (up to $2,000). Earn 3% cash back on eligible gas and grocery purchases.",
             useType: "personal",
             benefit: "cashback",
-            image: "/images/td_cash_back_visa_infinite.png"
+            image: tdCashBack
+        },
+        {
+            name: "TD Business Travel Visa* Card",
+            annualFee: "$149",
+            welcomeOffer: "Earn a value of up to $9977, in TD Rewards Points (that's up to 150,000  TD Rewards Points) full Annual Fee Rebates in the first year7",
+            firstYearValue: "$969",
+            interestRates: "19.99% on purchases, 22.99% on cash advances",
+            additionalInfo: "Earn up to 6% cash back on gas, groceries, and recurring bills for the first 3 months (up to $2,000). Earn 3% cash back on eligible gas and grocery purchases.",
+            useType: "Business",
+            benefit: "Travel",
+            image: tdBusiness
         },
         {
             name: "Scotia Momentum® Visa Infinite* Card",
@@ -253,7 +274,7 @@ const CardRecommendationResults: React.FC<Props> = ({ useType, benefit, annualFe
             additionalInfo: "Earn up to 4% cash back on eligible gas and grocery purchases.",
             useType: "personal",
             benefit: "cashback",
-            image: "/images/scotia_momentum_visa_infinite.png"
+            image: scotiaMonentumPlus
         },
         {
             name: "Scotiabank Passport™ Visa Infinite* Card",
@@ -264,7 +285,7 @@ const CardRecommendationResults: React.FC<Props> = ({ useType, benefit, annualFe
             additionalInfo: "Earn up to 2% cash back on eligible gas and grocery purchases.",
             useType: "personal",
             benefit: "travel",
-            image: "/images/scotiabank_passport_visa_infinite.png"
+            image: scotiaPassportInfinite
         },
         {
             name: "Scotiabank Gold American Express® Card",
@@ -275,7 +296,7 @@ const CardRecommendationResults: React.FC<Props> = ({ useType, benefit, annualFe
             additionalInfo: "Earn up to $950* in value in the first 12 months, including up to 45,000 bonus Scene+ points and first year annual fee waived.1",
             useType: "personal",
             benefit: "travel",
-            image: "/images/scotiabank_gold_amex.png"
+            image: scotiaGold
         },
         {
             name: "Scotiabank Value® Visa* Card",
@@ -286,7 +307,7 @@ const CardRecommendationResults: React.FC<Props> = ({ useType, benefit, annualFe
             additionalInfo: "Earn up to 2% cash back on eligible gas and grocery purchases.",
             useType: "personal",
             benefit: "low-interest",
-            image: "/images/scotiabank_value_visa.png"
+            image: scotiaValue
         },
         {
             name: "MBNA Rewards World Elite® Mastercard®",

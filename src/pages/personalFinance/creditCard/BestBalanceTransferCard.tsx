@@ -1,6 +1,8 @@
 // ./pages/personalFinance/creditCard/BestBalanceTransferCard.tsx
 import React from 'react';
 import './CreditCardCategory.css'; // Import the styles
+import scotiaValue from '../../../components/images/scotia_value.png';
+import cibcSelect from '../../../components/images/cibc_select.png';
 
 const BestBalanceTransferCard: React.FC = () => {
     return (
@@ -17,7 +19,7 @@ const BestBalanceTransferCard: React.FC = () => {
                     </p>
                 </div>
                 <div className="card">
-                    <img src="/images/balance_transfer_card2.png" alt="Balance Transfer Card 2" />
+                    <img src={scotiaValue} alt="Balance Transfer Card 2" />
                     <p>
                         <strong>2. Scotiabank® Value® Visa* Card</strong><br />
                         <em>Annual Fee:</em> $29<br />
@@ -26,7 +28,7 @@ const BestBalanceTransferCard: React.FC = () => {
                     </p>
                 </div>
                 <div className="card">
-                    <img src="/images/balance_transfer_card3.png" alt="Balance Transfer Card 3" />
+                    <img src={cibcSelect}alt="Balance Transfer Card 3" />
                     <p>
                         <strong>3. CIBC Select Visa* Card</strong><br />
                         <em>Annual Fee:</em> $29<br />

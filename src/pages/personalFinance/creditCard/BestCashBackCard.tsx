@@ -1,6 +1,8 @@
 // ./pages/personalFinance/creditCard/BestCashBackCard.tsx
 import React from 'react';
 import './CreditCardCategory.css'; // Import the styles
+import scotiaMomenutumPlus from '../../../components/images/scotia_monemtum+.png';
+import amexSimpleCash from '../../../components/images/amex_simplecash.png';
 
 const BestCashBackCard: React.FC = () => {
     return (
@@ -17,7 +19,7 @@ const BestCashBackCard: React.FC = () => {
                     </p>
                 </div>
                 <div className="card">
-                    <img src="/images/cash_back_card2.png" alt="Cash Back Card 2" />
+                    <img src={amexSimpleCash} alt="Cash Back Card 2" />
                     <p>
                         <strong>2. SimplyCash™ Preferred Card from American Express</strong><br />
                         <em>Annual Fee:</em> $99<br />
@@ -35,7 +37,7 @@ const BestCashBackCard: React.FC = () => {
                     </p>
                 </div>
                 <div className="card">
-                    <img src="/images/cash_back_card4.png" alt="Cash Back Card 4" />
+                    <img src={scotiaMomenutumPlus} alt="Cash Back Card 4" />
                     <p>
                         <strong>4. Scotia Momentum® Visa Infinite* Card</strong><br />
                         <em>Annual Fee:</em> $120<br />

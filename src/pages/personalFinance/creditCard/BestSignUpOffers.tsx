@@ -1,6 +1,9 @@
 // ./pages/personalFinance/creditCard/BestSignUpOffer.tsx
 import React from 'react';
 import './CreditCardCategory.css'; // Import the styles
+import scotiaPassport from '../../../components/images/scotia_passportinfinite.png';
+import cibcAventureInfinite from '../../../components/images/cibc_aventurainfinite.png';
+import amexGold from '../../../components/images/amex_gold.png';
 
 const BestSignUpOffers: React.FC = () => {
     return (
@@ -8,7 +11,7 @@ const BestSignUpOffers: React.FC = () => {
             <h1>BEST SIGN-UP OFFERS</h1>
             <div className="ranked-cards">
                 <div className="card">
-                    <img src="/images/sign_up_offer_card1.png" alt="Sign Up Offer Card 1" />
+                    <img src={amexGold}alt="Sign Up Offer Card 1" />
                     <p>
                         <strong>1. American Express® Gold Rewards Card</strong><br />
                         <em>Annual Fee:</em> $150<br />
@@ -17,16 +20,7 @@ const BestSignUpOffers: React.FC = () => {
                     </p>
                 </div>
                 <div className="card">
-                    <img src="/images/sign_up_offer_card2.png" alt="Sign Up Offer Card 2" />
-                    <p>
-                        <strong>2. TD® Aeroplan® Visa Infinite* Card</strong><br />
-                        <em>Annual Fee:</em> $139<br />
-                        <em>Welcome Offer:</em> Earn up to 30,000 Aeroplan points<br />
-                        <em>Rewards Rate:</em> 1.5X points on eligible grocery, gas, and Air Canada purchases, 1X on everything else
-                    </p>
-                </div>
-                <div className="card">
-                    <img src="/images/sign_up_offer_card3.png" alt="Sign Up Offer Card 3" />
+                    <img src={scotiaPassport} alt="Sign Up Offer Card 2" />
                     <p>
                         <strong>3. Scotiabank Passport™ Visa Infinite* Card</strong><br />
                         <em>Annual Fee:</em> $139<br />
@@ -35,7 +29,7 @@ const BestSignUpOffers: React.FC = () => {
                     </p>
                 </div>
                 <div className="card">
-                    <img src="/images/sign_up_offer_card4.png" alt="Sign Up Offer Card 4" />
+                    <img src={cibcAventureInfinite} alt="Sign Up Offer Card 3" />
                     <p>
                         <strong>4. CIBC Aventura® Visa Infinite* Card</strong><br />
                         <em>Annual Fee:</em> $139<br />

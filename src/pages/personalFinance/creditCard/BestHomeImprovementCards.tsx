@@ -1,6 +1,10 @@
 // ./pages/personalFinance/creditCard/BestHomeImprovementCard.tsx
 import React from 'react';
 import './CreditCardCategory.css'; // Import the styles
+import scotiaScene from '../../../components/images/scotia_scene.png';
+import homedepotCustomerCreditCard from '../../../components/images/homedepot_customercard.png';
+import lowesAdvantage from '../../../components/images/lowes_advantage.png';
+import canadiantireTriangle from '../../../components/images/canadiantire_triangle.png';
 
 const BestHomeImprovementCard: React.FC = () => {
     return (
@@ -8,7 +12,7 @@ const BestHomeImprovementCard: React.FC = () => {
             <h1>BEST HOME IMPROVEMENT CARDS</h1>
             <div className="ranked-cards">
                 <div className="card">
-                    <img src="/images/home_improvement_card1.png" alt="Home Improvement Card 1" />
+                    <img src={canadiantireTriangle} alt="Home Improvement Card 1" />
                     <p>
                         <strong>1. Canadian Tire Triangle™ Mastercard®</strong><br />
                         <em>Annual Fee:</em> $0<br />
@@ -17,7 +21,7 @@ const BestHomeImprovementCard: React.FC = () => {
                     </p>
                 </div>
                 <div className="card">
-                    <img src="/images/home_improvement_card2.png" alt="Home Improvement Card 2" />
+                    <img src={lowesAdvantage} alt="Home Improvement Card 2" />
                     <p>
                         <strong>2. Lowe’s Advantage Card</strong><br />
                         <em>Annual Fee:</em> $0<br />
@@ -26,7 +30,7 @@ const BestHomeImprovementCard: React.FC = () => {
                     </p>
                 </div>
                 <div className="card">
-                    <img src="/images/home_improvement_card3.png" alt="Home Improvement Card 3" />
+                    <img src={homedepotCustomerCreditCard} alt="Home Improvement Card 3" />
                     <p>
                         <strong>3. The Home Depot Consumer Credit Card</strong><br />
                         <em>Annual Fee:</em> $0<br />
@@ -35,7 +39,7 @@ const BestHomeImprovementCard: React.FC = () => {
                     </p>
                 </div>
                 <div className="card">
-                    <img src="/images/home_improvement_card4.png" alt="Home Improvement Card 4" />
+                    <img src={scotiaScene} alt="Home Improvement Card 4" />
                     <p>
                         <strong>4. Scotiabank SCENE Visa Card</strong><br />
                         <em>Annual Fee:</em> $0<br />

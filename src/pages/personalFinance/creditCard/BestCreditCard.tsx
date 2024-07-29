@@ -1,6 +1,7 @@
 // ./pages/personalFinance/creditCard/BestCreditCard.tsx
 import React from 'react';
 import './CreditCardCategory.css'; // Import the styles
+import amexPlatinum from '../../../components/images/amex_platinum.png';
 
 const BestCreditCard: React.FC = () => {
     return (
@@ -8,7 +9,7 @@ const BestCreditCard: React.FC = () => {
             <h1>Best Credit Cards</h1>
             <div className="ranked-cards">
                 <div className="card">
-                    <img src="/images/amex_platinum.png" alt="The Platinum Card from American Express" />
+                    <img src={amexPlatinum} alt="The Platinum Card from American Express" />
                     <p>
                         <strong>1. The Platinum Card® from American Express</strong><br />
                         <em>Annual Fee:</em> $799<br />
@@ -32,15 +33,6 @@ const BestCreditCard: React.FC = () => {
                         <em>Annual Fee:</em> $95<br />
                         <em>Welcome Offer:</em> Earn 120,000 points after spending $8,000 in the first 3 months (that's $1,200 cash back or $1,500 toward travel when redeemed through Chase TravelSM)<br />
                         <em>Rewards Rate:</em> 1X - 3X points
-                    </p>
-                </div>
-                <div className="card">
-                    <img src="/images/some_other_card.png" alt="Another Credit Card" />
-                    <p>
-                        <strong>4. Another Credit Card</strong><br />
-                        <em>Annual Fee:</em> $X<br />
-                        <em>Welcome Offer:</em> Earn X points after spending $Y in the first Z months<br />
-                        <em>Rewards Rate:</em> AX - BX points
                     </p>
                 </div>
             </div>
