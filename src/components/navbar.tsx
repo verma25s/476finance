@@ -24,7 +24,7 @@ return (
   <nav className="nav-container">
         <NavLink to="/" className="logo" onClick={closeMenuonMobile}>
    
-    <img src={require('../Assets/logo.png')}/>
+
        </NavLink>
        
        <div  className={`nav-options ${showMenu ? "showmenu" :  "hidemenu"}`}>

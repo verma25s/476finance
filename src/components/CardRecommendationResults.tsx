@@ -2,6 +2,25 @@
 import React from 'react';
 import './CardRecommendationResults.css'; // Import styles
 
+//Images
+//Amex
+import amexPlatinum from './images/amex_platinum.png';
+import amexGold from './images/amex_gold.png';
+import amexReserveAeroplan from './images/amex_reserveaeroplan.png';
+import amexCobalt from './images/amex_cobalt.png';
+import amexPreferredCash from './images/amex_prederredcash.png';
+import amexSimpleCash from './images/amex_simplecash.png';
+import amexAeroplan from './images/amex_aeroplan.png';
+import amexGreen from './images/amex_green.png';
+import amexMariott from './images/amex_mariott.png';
+
+//Cibc
+import cibcDividentInfinite from './images/cibc_dividentinfinite.png';
+import cibcAventuraGold from './images/cibc_aventuragold.png';
+import cibcInfinitePrivilege from './images/cibc_infiniteprivilege.png';
+import cibcAventuraInfinite from './images/cibc_aventurainfinite.png';
+import cibcSelect from './images/cibc_select.png';
+
 interface Props {
     useType: string;
     benefit: string;
@@ -11,7 +30,7 @@ interface Props {
 const CardRecommendationResults: React.FC<Props> = ({ useType, benefit, annualFee }) => {
     const cards = [
         {
-            name: "The Platinum Card®",
+            name: "American Express®  Platinum Card®",
             annualFee: "$799",
             welcomeOffer: "Earn up to 100,000 Membership Rewards® points – that’s up to $1,000 in value.",
             firstYearValue: "1370",
@@ -19,7 +38,7 @@ const CardRecommendationResults: React.FC<Props> = ({ useType, benefit, annualFe
             additionalInfo: "Enjoy a $200 Annual Dining Credit at some of Canada’s best restaurants. Access to a $200 Annual Travel Credit. Unlock access to more than 1,400 airport lounges worldwide with the Global Lounge Collection.",
             useType: "personal",
             benefit: "travel",
-            image: "/images/amex_platinum.png"
+            image: amexPlatinum
         },
         {
             name: "American Express® Gold Rewards Card",
@@ -30,7 +49,7 @@ const CardRecommendationResults: React.FC<Props> = ({ useType, benefit, annualFe
             additionalInfo: "Earn 2x the points on eligible travel and everyday purchases. Access to a $100 Annual Travel Credit. Enjoy 4 complimentary visits per year to Plaza Premium Lounges.",
             useType: "personal",
             benefit: "travel",
-            image: "/images/amex_gold_rewards.png"
+            image: amexGold
         },
         {
             name: "American Express Cobalt® Card",
@@ -41,7 +60,7 @@ const CardRecommendationResults: React.FC<Props> = ({ useType, benefit, annualFe
             additionalInfo: "Earn 5X the points on eligible eats & drinks. Earn 3X the points on eligible streaming subscriptions. Earn 2X the points on eligible travel & transit.",
             useType: "personal",
             benefit: "rewards",
-            image: "/images/amex_cobalt.png"
+            image: amexCobalt
         },
         {
             name: "American Express® Aeroplan®* Reserve Card",
@@ -52,7 +71,7 @@ const CardRecommendationResults: React.FC<Props> = ({ useType, benefit, annualFe
             additionalInfo: "Enjoy benefits like Maple Leaf Lounge Access, an Annual Worldwide Companion Pass, Priority Airport Services, and accelerated earn rates. Earn up to $2,600 or more in value within your first 13 months.",
             useType: "personal",
             benefit: "travel",
-            image: "/images/amex_aeroplan_reserve.png"
+            image: amexReserveAeroplan
         },
         {
             name: "American Express® Aeroplan®* Card",
@@ -63,7 +82,7 @@ const CardRecommendationResults: React.FC<Props> = ({ useType, benefit, annualFe
             additionalInfo: "Enjoy your first eligible checked bag free, flight reward deals with preferred pricing, and the joy of earning and redeeming with accelerated earn rates. Earn up to $1,100 or more in value within your first 13 months.",
             useType: "personal",
             benefit: "travel",
-            image: "/images/amex_aeroplan.png"
+            image: amexAeroplan
         },
         {
             name: "Marriott Bonvoy® American Express®* Card",
@@ -74,62 +93,95 @@ const CardRecommendationResults: React.FC<Props> = ({ useType, benefit, annualFe
             additionalInfo: "Earn 5 points for every $1 spent in eligible Card purchases at hotels participating in Marriott Bonvoy. Enjoy an Annual Free Night Award. Receive complimentary Marriott Bonvoy Silver Elite status.",
             useType: "personal",
             benefit: "travel",
-            image: "/images/marriott_bonvoy.png"
+            image: amexMariott
         },
         {
             name: "SimplyCash® Preferred Card from American Express",
-            annualFee: "$9.99 monthly ($119.88 annually)",
+            annualFee: "$119.88 annually ($9.99 monthly)",
             welcomeOffer: "Earn up to $400 in Statement Credits in your first 10 months",
-            firstYearValue: "N/A",
+            firstYearValue: "Earn up to $400 in Statement Credits in your first 10 months",
             interestRates: "21.99% on purchases, 21.99% on funds advances",
             additionalInfo: "Earn up to 4% cash back on eligible gas and grocery purchases. Earn 2% cash back on everything else. Elevated benefits and insurances.",
             useType: "personal",
             benefit: "cashback",
-            image: "/images/simplycash_preferred.png"
+            image: amexPreferredCash
         },
         {
             name: "SimplyCash® Card from American Express",
-            annualFee: "No annual fee",
+            annualFee: "$0",
             welcomeOffer: "Earn up to $100 in Statement Credits in your first 10 months",
             firstYearValue: "N/A",
             interestRates: "21.99% on purchases, 21.99% on funds advances",
             additionalInfo: "Earn up to 2% cash back on eligible gas and grocery purchases. Earn 1.25% cash back on everything else. No limit to the amount of cash back you can earn.",
             useType: "personal",
             benefit: "cashback",
-            image: "/images/simplycash.png"
+            image: amexSimpleCash
         },
         {
             name: "American Express® Green Card",
-            annualFee: "No annual fee",
+            annualFee: "$0",
             welcomeOffer: "Earn a Welcome Bonus of 10,000 Membership Rewards® points – that’s $100 in value.",
             firstYearValue: "N/A",
             interestRates: "21.99% on purchases, 21.99% on funds advances",
             additionalInfo: "Earn 1X the points for every $1 in eligible Card purchases. Pay for almost anything charged to your Card with points. Access to American Express® Experiences.",
             useType: "personal",
             benefit: "rewards",
-            image: "/images/amex_green.png"
-        },
-        {
-            name: "CIBC Aventura® Visa Infinite*",
-            annualFee: "$139 (First Year Rebated†)",
-            welcomeOffer: "$900 CIBC Aventura Rewards points",
-            firstYearValue: "$1536",
-            interestRates: "20.99% on purchases, 22.99% on cash advances",
-            additionalInfo: "This offer is not available for residents of Quebec. Earn points on all purchases and redeem on travel or statement credits.",
-            useType: "personal",
-            benefit: "travel",
-            image: "/images/cibc_aventura_visa_infinite.png"
+            image: amexGreen
         },
         {
             name: "CIBC Aventura® Gold Visa* Card",
-            annualFee: "$139 (First Year Rebated†)",
+            annualFee: "$139",
+            welcomeOffer: "Join and get up to $1,300 in value†!",
+            firstYearValue: "$1335",
+            interestRates: "20.99% on purchases, 22.99% on cash advances",
+            additionalInfo: "Experience more of the world with our most flexible travel rewards program. 2 points per $1 on travel booked through the CIBC Rewards Centre, 1.5 points per $1 on eligible gas, electric vehicle charging, grocery and drugstore purchases, Lounge access3 | NEXUSTM, † fee rebate8",
+            useType: "personal",
+            benefit: "travel",
+            image: cibcAventuraGold
+        },
+        {
+            name: "CIBC Aventura® Visa Infinite*",
+            annualFee: "$139",
             welcomeOffer: "$900 CIBC Aventura Rewards points",
             firstYearValue: "$1536",
             interestRates: "20.99% on purchases, 22.99% on cash advances",
-            additionalInfo: "This offer is not available for residents of Quebec. Redeem points on travel or statement credits.",
+            additionalInfo: "(First Year Rebated† , This offer is not available for residents of Quebec. Earn points on all purchases and redeem on travel or statement credits.",
             useType: "personal",
             benefit: "travel",
-            image: "/images/cibc_aventura_gold_visa.png"
+            image: cibcAventuraInfinite
+        },
+        {
+            name: "CIBC Dividend® Visa Infinite* Card",
+            annualFee: "$120",
+            welcomeOffer: "$900 CIBC Aventura Rewards points",
+            firstYearValue: "$1536",
+            interestRates: "20.99% on purchases, 22.99% on cash advances",
+            additionalInfo: "Get a first-year annual fee rebate for you and up to three Authorized Users† and earn 10% cash back for the first 4 statements on net purchases of up to $3,000†.",
+            benefit: "cashback",
+            useType: "personal",
+            image: cibcDividentInfinite
+        },
+        {
+            name: "CIBC Aventura® Visa Infinite Privilege* Card",
+            annualFee: "$499",
+            welcomeOffer: "Join and get over $2,200 in value.†",
+            firstYearValue: "$1536",
+            interestRates: "20.99% on purchases, 22.99% on cash advances",
+            additionalInfo: "3 points per $1 on travel booked through the CIBC Rewards Centre, 2 points on eligible dining, transportation, gas, electric vehicle charging and groceries, Annual travel credit3 | Lounge access2 | NEXUSTM, † fee rebate5 and more",
+            benefit: "travel",
+            useType: "personal",
+            image: cibcInfinitePrivilege
+        },
+        {
+            name: "CIBC Select Visa* Card",
+            annualFee: "$29",
+            welcomeOffer: "Get 0% interest on balance transfers for up to 10 months†",
+            firstYearValue: "$29",
+            interestRates: "20.99% on purchases, 22.99% on cash advances",
+            additionalInfo: "Earn up to 2% cash back on eligible gas and grocery purchases.",
+            useType: "personal",
+            benefit: "low-interest",
+            image: cibcSelect
         },
         {
             name: "RBC Avion Visa Infinite Privilege",
@@ -152,17 +204,6 @@ const CardRecommendationResults: React.FC<Props> = ({ useType, benefit, annualFe
             useType: "personal",
             benefit: "cashback",
             image: "/images/td_cash_back_visa_infinite.png"
-        },
-        {
-            name: "CIBC Dividend® Visa Infinite* Card",
-            annualFee: "$120",
-            welcomeOffer: "Up to $300 cash back†",
-            firstYearValue: "$931",
-            interestRates: "20.99% on purchases, 22.99% on cash advances",
-            additionalInfo: "Earn up to 4% cash back on eligible gas and grocery purchases.",
-            useType: "personal",
-            benefit: "cashback",
-            image: "/images/cibc_dividend_visa_infinite.png"
         },
         {
             name: "Scotia Momentum® Visa Infinite* Card",
@@ -207,17 +248,6 @@ const CardRecommendationResults: React.FC<Props> = ({ useType, benefit, annualFe
             useType: "personal",
             benefit: "cashback",
             image: "/images/rogers_red_mastercard.png"
-        },
-        {
-            name: "CIBC Aventura® Visa* Card",
-            annualFee: "No annual fee",
-            welcomeOffer: "Up to 10,000 Aventura Points †",
-            firstYearValue: "$314",
-            interestRates: "20.99% on purchases, 22.99% on cash advances",
-            additionalInfo: "Earn up to 2% cash back on eligible gas and grocery purchases.",
-            useType: "personal",
-            benefit: "rewards",
-            image: "/images/cibc_aventura_visa.png"
         },
         {
             name: "RBC ION Visa Card",
@@ -284,17 +314,6 @@ const CardRecommendationResults: React.FC<Props> = ({ useType, benefit, annualFe
             useType: "personal",
             benefit: "travel",
             image: "/images/scotiabank_gold_amex.png"
-        },
-        {
-            name: "CIBC Select Visa* Card",
-            annualFee: "$29",
-            welcomeOffer: "Get 0% interest on balance transfers for up to 10 months†",
-            firstYearValue: "$29",
-            interestRates: "20.99% on purchases, 22.99% on cash advances",
-            additionalInfo: "Earn up to 2% cash back on eligible gas and grocery purchases.",
-            useType: "personal",
-            benefit: "low-interest",
-            image: "/images/cibc_select_visa.png"
         },
         {
             name: "National Bank Syncro Mastercard",

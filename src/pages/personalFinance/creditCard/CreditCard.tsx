@@ -5,6 +5,9 @@ import './CreditCard.css'; // Import the styles
 import CardRecommendationForm from '../../../components/CardRecommendationForm';
 import CardRecommendationResults from '../../../components/CardRecommendationResults';
 
+//Images 
+import amexPlatinum from '../../../components/images/amex_platinum.png';
+
 const CreditCard: React.FC = () => {
     const [recommendationCriteria, setRecommendationCriteria] = useState<{ useType: string; benefit: string; annualFee: string } | null>(null);
 
@@ -44,12 +47,15 @@ const CreditCard: React.FC = () => {
             <h2>Featured Credit Card Reviews</h2>
             <div className="featured-cards">
                 <div className="card">
-                    <img src="/images/amex_platinum.png" alt="The Platinum Card from American Express" />
+                   <img src={amexPlatinum} alt="The Platinum Card from American Express" />
                     <p>
                         <strong>The Platinum Card® from American Express</strong><br />
-                        <em>Annual Fee:</em> $695<br />
-                        <em>Welcome Offer:</em> Earn 80,000 points after spending $8,000 in the first six months<br />
+                        <em>Annual Fee:</em> $799<br />
+                        <em>Welcome Offer:</em> Earn 100,000 points after spending $8,000 in the first six months<br />
                         <em>Rewards Rate:</em> 1X on all purchases, 5X on flights booked directly with airlines or with American Express Travel
+                        Enjoy a $200 Annual Dining Credit at some of Canada’s best restaurants40
+                        Access to a $200 Annual Travel Credit6
+                        Unlock access to more than 1,400 airport lounges worldwide with the Global Lounge Collection7
                     </p>
                 </div>
                 <div className="card">
