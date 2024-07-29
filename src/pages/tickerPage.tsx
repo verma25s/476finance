@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import './tickerPage.css';
 import { useCookies } from 'react-cookie';
-
+import {TickerGraph} from './tickergraph';
 
 interface NewsItem {
   title: string;
@@ -45,7 +45,7 @@ export const TickerPage = () => {
   useEffect(() => {
     const fetchStockData = async () => {
       try {
-        const response = await fetch(`http://localhost:5000/stock/${symbol}`);
+        const response = await fetch(`/stock/${symbol}`);
         if (response.ok) {
           const data: StockData = await response.json();
           setStockData({
@@ -136,6 +136,10 @@ export const TickerPage = () => {
 
   return (
     <div className="ticker-page">
+
+      <TickerGraph/>
+
+
       <h1>{stockData.companyName || 'N/A'} ({stockData.symbol || 'N/A'})</h1>
       <p>Exchange: {stockData.exchange || 'N/A'}</p>
       <p>Current Price: ${stockData.currentPrice !== undefined ? stockData.currentPrice : 'N/A'}</p>

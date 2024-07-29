@@ -114,6 +114,14 @@ def screener():
     except requests.exceptions.RequestException as e:
         return jsonify({'error': str(e)}), 500
 
+@app.route('/graph/<symbol>')
+def get_graph(symbol):
+    url=f'https://financialmodelingprep.com/api/v3/historical-price-full/{symbol}?apikey={FMP_API_KEY}'
+    r = requests.get(url)
+    data = r.json()
+    print (symbol)
+  
+    return data
 
 
 import manage_users
