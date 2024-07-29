@@ -22,6 +22,7 @@ import {News} from './pages/news';
 import { Trending } from './pages/trending';
 import { Watchlist } from './pages/watchlist';
 import {Screener} from './pages/screener';
+import {Crypto} from './pages/crypto'
 
 //Personal Finance
 import MortgageCalculator from './pages/personalFinance/MortgageCalculator';
@@ -47,10 +48,11 @@ const App = () => {
     <Router>
       <div className="App">
         <Header />
-        {cookies.userEmail ? <p>Welcome {cookies.userEmail}</p> : <p></p>}
+        {cookies.userEmail ? <p className="welcome-label">Welcome {cookies.userEmail}</p> : <p></p>}
         <Routes>
           <Route path="/" element={< MainContent />}/>
           <Route path="/login" element={<Login />} />
+          <Route path="/news" element={<News />} />
           <Route path="/forum" element={<Forum />} />
           <Route path="/screener" element={<Screener />} />
           <Route path="/symbol/:symbol" Component={TickerPage} />

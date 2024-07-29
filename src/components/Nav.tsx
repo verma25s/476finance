@@ -14,7 +14,9 @@ const Nav: React.FC = () => {
           <ul className="dropdown">
             <li><Link to="/market/cryptocurrency">Cryptocurrency</Link></li>
             <li><Link to="/market/trending">Trending</Link></li>
-            <li><Link to="/market/mutual-funds">Mutual Funds</Link></li>
+            <li><Link to="/market/Top Gainers">Top Gainers</Link></li>
+            <li><Link to="/market/Top Losers">Top Losers</Link></li>
+            
           </ul>
         </li>
         <li>

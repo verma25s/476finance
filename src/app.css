@@ -33,7 +33,12 @@ body {
   overflow: hidden;
 }
 
+.welcome-label{
 
+padding-left: 15px;
+font-weight: bold;
+
+}
 
 /* Header */
 header {

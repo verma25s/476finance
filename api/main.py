@@ -119,8 +119,6 @@ def get_graph(symbol):
     url=f'https://financialmodelingprep.com/api/v3/historical-price-full/{symbol}?apikey={FMP_API_KEY}'
     r = requests.get(url)
     data = r.json()
-    print (symbol)
-  
     return data
 
 
@@ -129,10 +127,15 @@ def get_stocknews(symbol):
     url=f'https://finnhub.io/api/v1/company-news?symbol={symbol}&from=2023-08-15&to=2024-07-24&token={FINNHUB_API_KEY}'
     r = requests.get(url)
     data = r.json()
-    print (symbol)
-    print(data)
     return data
 
+@app.route('/getcryptolist')
+def get_crypto():
+    url=f'https://financialmodelingprep.com/api/v3/symbol/available-cryptocurrencies?apikey={FMP_API_KEY}'
+    r = requests.get(url)
+    data = r.json()
+    print(data)
+    return data
 
 import manage_users
 import user_data
