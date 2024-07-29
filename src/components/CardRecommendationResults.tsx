@@ -21,6 +21,12 @@ import cibcInfinitePrivilege from './images/cibc_infiniteprivilege.png';
 import cibcAventuraInfinite from './images/cibc_aventurainfinite.png';
 import cibcSelect from './images/cibc_select.png';
 
+//rbc
+import rbcAvionInfinite from './images/rbc_avioninfinite.png';
+import rbcEliteWestjet from './images/rbc_elitewestjet.png';
+import rbcIonPlus from './images/rbc_ion+.png';
+import rbcPreferred from './images/rbc_preferred.png'
+
 interface Props {
     useType: string;
     benefit: string;
@@ -192,7 +198,40 @@ const CardRecommendationResults: React.FC<Props> = ({ useType, benefit, annualFe
             additionalInfo: "Premium card earning travellers valuable points at an impressive rate. Includes comprehensive travel insurance and many other exclusive travel perks.",
             useType: "personal",
             benefit: "travel",
-            image: "/images/rbc_avion_visa_infinite_privilege.png"
+            image: rbcAvionInfinite
+        },
+        {
+            name: "RBC ION+ Visa Card",
+            annualFee: "$48",
+            welcomeOffer: "12,000 Points",
+            firstYearValue: "$486",
+            interestRates: "20.99% on purchases, 22.99% on cash advances",
+            additionalInfo: "Earn 3X Avion points for every $1 spent on groceries, gas, dining, food delivery, rides, streaming, subscriptions, digital gaming and more.",
+            useType: "personal",
+            benefit: "rewards",
+            image: rbcIonPlus
+        },
+        {
+            name: "RBC Cash Back Preferred World Elite Mastercard",
+            annualFee: "$99",
+            welcomeOffer: "6,000 Points",
+            firstYearValue: "$243",
+            interestRates: "20.99% on purchases, 22.99% on cash advances",
+            additionalInfo: "Earn up to 2% cash back on eligible gas and grocery purchases.",
+            useType: "personal",
+            benefit: "cashback",
+            image: rbcPreferred
+        },
+        {
+            name: "WestJet RBC World Elite Mastercard",
+            annualFee: "$119",
+            welcomeOffer: "Get up to 450 WestJet dollars (a value of up to $450 off the base fare) when you spend a minimum of $5,000 in the first 3 months on your card",
+            firstYearValue: "$243",
+            interestRates: "20.99% on purchases, 22.99% on cash advances",
+            additionalInfo: "Receive a round-trip companion voucher – every year – for any WestJet destination starting from $119 CAD2 (plus taxes, fees, charges and other ATC) or choose to exchange it for 4 lounge vouchers.",
+            useType: "personal",
+            benefit: "travel",
+            image: rbcEliteWestjet
         },
         {
             name: "TD Cash Back Visa Infinite* Card",
@@ -217,6 +256,39 @@ const CardRecommendationResults: React.FC<Props> = ({ useType, benefit, annualFe
             image: "/images/scotia_momentum_visa_infinite.png"
         },
         {
+            name: "Scotiabank Passport™ Visa Infinite* Card",
+            annualFee: "$150",
+            welcomeOffer: "Up to 35,000 Scene+ points",
+            firstYearValue: "$747",
+            interestRates: "20.99% on purchases, 22.99% on cash advances",
+            additionalInfo: "Earn up to 2% cash back on eligible gas and grocery purchases.",
+            useType: "personal",
+            benefit: "travel",
+            image: "/images/scotiabank_passport_visa_infinite.png"
+        },
+        {
+            name: "Scotiabank Gold American Express® Card",
+            annualFee: "$139",
+            welcomeOffer: "Up to 35,000 Scene+ points",
+            firstYearValue: "$950",
+            interestRates: "20.99% on purchases, 22.99% on cash advances",
+            additionalInfo: "Earn up to $950* in value in the first 12 months, including up to 45,000 bonus Scene+ points and first year annual fee waived.1",
+            useType: "personal",
+            benefit: "travel",
+            image: "/images/scotiabank_gold_amex.png"
+        },
+        {
+            name: "Scotiabank Value® Visa* Card",
+            annualFee: "$29",
+            welcomeOffer: "0% introductory interest rate on Balance Transfers for the first 10 months",
+            firstYearValue: "N/A",
+            interestRates: "20.99% on purchases, 22.99% on cash advances",
+            additionalInfo: "Earn up to 2% cash back on eligible gas and grocery purchases.",
+            useType: "personal",
+            benefit: "low-interest",
+            image: "/images/scotiabank_value_visa.png"
+        },
+        {
             name: "MBNA Rewards World Elite® Mastercard®",
             annualFee: "$120",
             welcomeOffer: "Up to 20,000 Points",
@@ -237,28 +309,6 @@ const CardRecommendationResults: React.FC<Props> = ({ useType, benefit, annualFe
             useType: "personal",
             benefit: "cashback",
             image: "/images/tangerine_world_mastercard.png"
-        },
-        {
-            name: "Rogers Red Mastercard®",
-            annualFee: "No annual fee",
-            welcomeOffer: "$60 cash back",
-            firstYearValue: "$300",
-            interestRates: "20.99% on purchases, 22.99% on cash advances",
-            additionalInfo: "Earn up to 2% cash back on eligible gas and grocery purchases.",
-            useType: "personal",
-            benefit: "cashback",
-            image: "/images/rogers_red_mastercard.png"
-        },
-        {
-            name: "RBC ION Visa Card",
-            annualFee: "No annual fee",
-            welcomeOffer: "6,000 Points",
-            firstYearValue: "$243",
-            interestRates: "20.99% on purchases, 22.99% on cash advances",
-            additionalInfo: "Earn up to 2% cash back on eligible gas and grocery purchases.",
-            useType: "personal",
-            benefit: "rewards",
-            image: "/images/rbc_ion_visa.png"
         },
         {
             name: "Tangerine Money-Back Credit Card",
@@ -283,39 +333,6 @@ const CardRecommendationResults: React.FC<Props> = ({ useType, benefit, annualFe
             image: "/images/national_bank_world_elite_mastercard.png"
         },
         {
-            name: "BMO Ascend™ World Elite®* Mastercard®*",
-            annualFee: "$150",
-            welcomeOffer: "Up to 100,000 Points",
-            firstYearValue: "$1,256",
-            interestRates: "20.99% on purchases, 22.99% on cash advances",
-            additionalInfo: "Earn up to 2% cash back on eligible gas and grocery purchases.",
-            useType: "personal",
-            benefit: "rewards",
-            image: "/images/bmo_ascend_world_elite_mastercard.png"
-        },
-        {
-            name: "Scotiabank Passport™ Visa Infinite* Card",
-            annualFee: "$150",
-            welcomeOffer: "Up to 35,000 Scene+ points",
-            firstYearValue: "$747",
-            interestRates: "20.99% on purchases, 22.99% on cash advances",
-            additionalInfo: "Earn up to 2% cash back on eligible gas and grocery purchases.",
-            useType: "personal",
-            benefit: "travel",
-            image: "/images/scotiabank_passport_visa_infinite.png"
-        },
-        {
-            name: "Scotiabank Gold American Express® Card",
-            annualFee: "$139",
-            welcomeOffer: "Up to 35,000 Scene+ points",
-            firstYearValue: "$950",
-            interestRates: "20.99% on purchases, 22.99% on cash advances",
-            additionalInfo: "Earn up to $950* in value in the first 12 months, including up to 45,000 bonus Scene+ points and first year annual fee waived.1",
-            useType: "personal",
-            benefit: "travel",
-            image: "/images/scotiabank_gold_amex.png"
-        },
-        {
             name: "National Bank Syncro Mastercard",
             annualFee: "$35",
             welcomeOffer: "No Welcome Offer",
@@ -327,6 +344,17 @@ const CardRecommendationResults: React.FC<Props> = ({ useType, benefit, annualFe
             image: "/images/national_bank_syncro_mastercard.png"
         },
         {
+            name: "BMO Ascend™ World Elite®* Mastercard®*",
+            annualFee: "$150",
+            welcomeOffer: "Up to 100,000 Points",
+            firstYearValue: "$1,256",
+            interestRates: "20.99% on purchases, 22.99% on cash advances",
+            additionalInfo: "Earn up to 2% cash back on eligible gas and grocery purchases.",
+            useType: "personal",
+            benefit: "rewards",
+            image: "/images/bmo_ascend_world_elite_mastercard.png"
+        },
+        {
             name: "BMO Preferred Rate Mastercard®*",
             annualFee: "$20",
             welcomeOffer: "Get 0.99% interest for up to 9 months on balance transfers",
@@ -336,17 +364,6 @@ const CardRecommendationResults: React.FC<Props> = ({ useType, benefit, annualFe
             useType: "personal",
             benefit: "low-interest",
             image: "/images/bmo_preferred_rate_mastercard.png"
-        },
-        {
-            name: "Scotiabank Value® Visa* Card",
-            annualFee: "$29",
-            welcomeOffer: "0% introductory interest rate on Balance Transfers for the first 10 months",
-            firstYearValue: "N/A",
-            interestRates: "20.99% on purchases, 22.99% on cash advances",
-            additionalInfo: "Earn up to 2% cash back on eligible gas and grocery purchases.",
-            useType: "personal",
-            benefit: "low-interest",
-            image: "/images/scotiabank_value_visa.png"
         },
         {
             name: "KOHO Everything Mastercard® Prepaid Card",
@@ -371,6 +388,17 @@ const CardRecommendationResults: React.FC<Props> = ({ useType, benefit, annualFe
             image: "/images/koho_extra_prepaid_mastercard.png"
         },
         {
+            name: "KOHO Essential Mastercard® Prepaid Card",
+            annualFee: "No annual fee",
+            welcomeOffer: "$20 cash back",
+            firstYearValue: "$104",
+            interestRates: "N/A",
+            additionalInfo: "Earn up to 2% cash back on eligible gas and grocery purchases.",
+            useType: "personal",
+            benefit: "low-interest",
+            image: "/images/koho_essential_prepaid_mastercard.png"
+        },
+        {
             name: "Neo Money Card",
             annualFee: "No annual fee",
             welcomeOffer: "No Welcome Offer",
@@ -393,15 +421,15 @@ const CardRecommendationResults: React.FC<Props> = ({ useType, benefit, annualFe
             image: "/images/eq_bank_card.png"
         },
         {
-            name: "KOHO Essential Mastercard® Prepaid Card",
+            name: "Rogers Red Mastercard®",
             annualFee: "No annual fee",
-            welcomeOffer: "$20 cash back",
-            firstYearValue: "$104",
-            interestRates: "N/A",
+            welcomeOffer: "$60 cash back",
+            firstYearValue: "$300",
+            interestRates: "20.99% on purchases, 22.99% on cash advances",
             additionalInfo: "Earn up to 2% cash back on eligible gas and grocery purchases.",
             useType: "personal",
-            benefit: "low-interest",
-            image: "/images/koho_essential_prepaid_mastercard.png"
+            benefit: "cashback",
+            image: "/images/rogers_red_mastercard.png"
         },
     ];
 
