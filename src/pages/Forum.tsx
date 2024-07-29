@@ -94,50 +94,50 @@ export const Forum = () => {
 
   
 
-  return (
-    <div>
-      <h1>Forum</h1>
-      {error && <p style={{ color: 'red' }}>{error}</p>}
-      {success && <p style={{ color: 'green' }}>{success}</p>}
-      <div>
-      {posts.length > 0 ? (
+  return  (
+    <div className="forum-container">
+      <div className="new-post-form">
+        <h1>Forum</h1>
+        {error && <p className="error-message">{error}</p>}
+        {success && <p className="success-message">{success}</p>}
+        <form onSubmit={handleAddPost}>
+          <input
+            type="text"
+            placeholder="Title"
+            value={newPost.title}
+            onChange={(e) => setNewPost({ ...newPost, title: e.target.value })}
+            required
+          />
+          <input
+            type="text"
+            placeholder="Your Post"
+            value={newPost.content}
+            onChange={(e) => setNewPost({ ...newPost, content: e.target.value })}
+            required
+          />
+          <button type="submit">Add Post</button>
+        </form>
+      </div>
+      <div className="posts-list">
+        {posts.length > 0 ? (
           posts.map((post) => (
-            <div key={post.title} className="post" onClick={() => handlePostClick(post.title)}>
+            <div key={post._id} className="post" onClick={() => handlePostClick(post.title)}>
               <p><strong>Title:</strong> {post.title}</p>
               <p><strong>User:</strong> {post.email}</p>
-              <p className ="postContent"><strong>Content:</strong> {post.content}</p>
-              <p ><strong>Timestamp:</strong> {new Date(post.timestamp).toLocaleString()}</p>
+              <p className="postContent"><strong>Content:</strong> {post.content}</p>
+              <p><strong>Timestamp:</strong> {new Date(post.timestamp).toLocaleString()}</p>
               {post.email === cookies.userEmail && (
                 <button onClick={(e) => { e.stopPropagation(); handleDeletePost(post["_id"]); }}>Delete</button>
               )}
-
-
-            <br></br><br></br>
             </div>
           ))
         ) : (
           <p>No posts available</p>
         )}
       </div>
-      <form onSubmit={handleAddPost}>
-         <input
-          type="text"
-          placeholder="Title"
-          value={newPost.title}
-          onChange={(e) => setNewPost({ ...newPost, title: e.target.value })}
-          required
-        />
-        <input
-          type="text"
-          placeholder="Your Post"
-          value={newPost.content}
-          onChange={(e) => setNewPost({ ...newPost, content: e.target.value })}
-          required
-        />
-        <button type="submit">Add Post</button>
-      </form>
     </div>
   );
 };
+
 
 export default Forum;
