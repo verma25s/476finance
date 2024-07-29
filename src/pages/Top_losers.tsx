@@ -1,5 +1,7 @@
 import  { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import './tickerPage.css';
+
 interface Loser {
   change: number;
   changesPercentage: number;
@@ -62,7 +64,7 @@ export const Top_losers = () =>{
                 <div className="h5"> {loser.price} </div>
             
               <div className="h4">  {loser.name} </div>
-                <div className={"positive h6"}> {loser.change}({loser.changesPercentage}%) </div>
+                <div className={"negative h6"}> {loser.change}({loser.changesPercentage}%) </div>
                 <hr/><hr/>
                 </div>
                
