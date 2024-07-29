@@ -43,7 +43,8 @@ const Aside = () => {
 
 
   return (
-    <aside className="auth-sidebar">
+
+    <div className="auth-sidebar">
       
       {message && <p className="logout-message">{message}</p>}
       {!cookies.userEmail &&
@@ -71,7 +72,7 @@ const Aside = () => {
 
 
 
-    </aside>
+    </div>
   );
 }
 

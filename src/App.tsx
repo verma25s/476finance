@@ -77,14 +77,24 @@ const App = () => {
 
 const Header = () => {
   return (
-    <header>
+    <div>
+
+<header>
       <div>
         <Link to="/" className="logo"><h1><strong>476 Finance</strong></h1></Link>
       </div>
       <Nav />
-      <SearchBar/>
+   
       <Aside />
     </header>
+
+
+    <SearchBar/>
+
+
+    </div>
+   
+     
   );
 };
 

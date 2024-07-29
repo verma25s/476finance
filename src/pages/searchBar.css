@@ -1,8 +1,9 @@
 .search-auth {
     position: relative;
-    width: 300px; /* Adjust width as needed */
+    width: 100%;
+    padding: 10px;;
   }
-  
+  .cancel-search-button{width:20%;}
   .search-box:hover {
     width: 100%;
     padding: 8px;

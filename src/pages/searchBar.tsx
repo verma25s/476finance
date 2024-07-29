@@ -54,6 +54,12 @@ export const SearchBar: React.FC = () => {
   };
 
 
+  const handleCancel = () => {
+    setSearchQuery('');
+    setSearchResults([]);
+ 
+  };
+
   return (
     <div className="search-auth">
       <input
@@ -74,8 +80,12 @@ export const SearchBar: React.FC = () => {
               </li>
             ))}
           </ul>
+          
         </div>
       )}
+
+{searchResults.length > 0 && (<div className="cancel-search-button"><button onClick={() => handleCancel()}>Cancel</button></div>)}
+     
     </div>
   );
 };
