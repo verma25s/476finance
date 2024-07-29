@@ -78,23 +78,15 @@ const App = () => {
 const Header = () => {
   return (
     <div>
-
-<header>
+      <header>
       <div>
         <Link to="/" className="logo"><h1><strong>476 Finance</strong></h1></Link>
       </div>
-      <Nav />
-   
-      <Aside />
-    </header>
-
-
-    <SearchBar/>
-
-
-    </div>
-   
-     
+      <Nav/> 
+      <Aside/>
+      </header>
+      <SearchBar/>
+    </div>     
   );
 };
 
@@ -107,13 +99,13 @@ const MainContent = () => {
         <Section id="Top 3's" title="Top 3's" content={<News />} />
         <Section id="Top 3's" title="Top 3's" content={<Watchlist />} />
         <Section id="graphs" title="Graphical analysis" content={<Trending />} />
-        </div>
+      </div>
 
-        <div className="tabs-content">
+      <div className="tabs-content">
         <Section id="Top 3's" title="Top 3's" content={<Top_gainers />} />
           <Section id="Top 3's" title="Top 3's" content={<Top_losers />} />
           <Section id="Latest Finance and Business News" title="Latest Finance and Business News" content={<MessageBox />} />
-        </div>
+      </div>
         
       
     </main>
