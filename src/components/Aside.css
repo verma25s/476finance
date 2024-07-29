@@ -1,20 +1,17 @@
 .auth-sidebar {
-  width: 250px;
-  height: 190px;
-  background-color: #f4f4f4;
-  display: fixed;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
-  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  position: relative;
+  margin-left: 18%;
+  right:5px;
+  box-shadow: 2px 0 5px rgba(39, 2, 2, 0.1);
 }
 
 .auth-buttons-sidebar {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  width: 100%;
+
+  
+  width: 50%;
+  
+  
+  right:0px;
 }
 
 .logout-message{color: #28a745;}

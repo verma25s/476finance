@@ -59,7 +59,8 @@ header {
 
 .search-box {
   padding: .5rem;
-  margin-right: 1rem;
+  margin: 1rem;
+ 
 }
 
 .search-button {
@@ -117,6 +118,7 @@ padding: 17px;
   background-color: #e8f6d5; 
   border: none;
   color: white;
+  width:20px;
   padding: 10px 20px;
   text-align: center;
   text-decoration: none;
@@ -128,7 +130,12 @@ padding: 17px;
   transition: background-color 0.3s;
 
 }
+.auth-sidebar{
 
+width:20%;
+
+
+}
 
 .signup-button,.create-account-button {
   

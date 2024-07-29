@@ -1,13 +1,14 @@
 .login-container {
-    display: flex;
+    
     height: 100vh;
+    width:20px;
   }
   
   .login-left {
     flex: 1;
     background-color: black;
     color: white;
-    display: flex;
+
     flex-direction: column;
     justify-content: center;
     align-items: center;
