@@ -1,12 +1,15 @@
-// ./components/Nav.tsx
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './Nav.css';
 
-const Nav: React.FC = () => {
+interface NavProps {
+  menuOpen: boolean;
+}
+
+const Nav: React.FC<NavProps> = ({ menuOpen }) => {
   return (
     <nav>
-      <ul>
+      <ul className={menuOpen ? 'show' : ''}>
         <li><Link to="/forum">Forum</Link></li>
         <li><Link to="/screener">Screener</Link></li>
         <li>
@@ -16,7 +19,6 @@ const Nav: React.FC = () => {
             <li><Link to="/market/trending">Trending</Link></li>
             <li><Link to="/market/Top Gainers">Top Gainers</Link></li>
             <li><Link to="/market/Top Losers">Top Losers</Link></li>
-            
           </ul>
         </li>
         <li>
@@ -29,13 +31,7 @@ const Nav: React.FC = () => {
             <li><Link to="/personalFinance/taxes">Taxes</Link></li>
           </ul>
         </li>
-        
-
-        
-        <li>
-          <Link to="/news">News</Link>
-
-        </li>
+        <li><Link to="/news">News</Link></li>
       </ul>
     </nav>
   );

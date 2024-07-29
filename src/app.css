@@ -195,3 +195,100 @@ nav ul li ul li a {
   font-size: 18px;
   margin-bottom: 10px;
 }
+
+/* Ensure viewport scaling on mobile devices */
+html {
+  box-sizing: border-box;
+  font-size: 16px; /* base font size */
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+header, footer, aside, main {
+  padding: 1rem;
+}
+
+/* Default styles for desktop (unchanged) */
+.container {
+  width: 80%;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.main-content, .tabs-content {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.main-content > .section, .tabs-content > .section {
+  flex: 1 1 calc(33.333% - 1rem); /* 3 items per row */
+}
+
+/* Mobile styles */
+@media (max-width: 600px) {
+  .container {
+    width: 100%;
+    padding: 1rem;
+  }
+
+  /* Adjust font sizes for better readability on small screens */
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  h2 {
+    font-size: 1.25rem;
+  }
+
+  p {
+    font-size: 1rem;
+  }
+
+  /* Stack elements vertically */
+  header, footer, aside, main {
+    width: 100%;
+    padding: 1rem;
+    margin: 0;
+  }
+
+  /* Stack sections vertically */
+  .main-content > .section, .tabs-content > .section {
+    flex: 1 1 100%; /* 1 item per row */
+  }
+
+  /* Adjust images and media to fit the screen */
+  img, video {
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* Ensure buttons are easy to tap */
+  button {
+    width: 100%;
+    padding: 1rem;
+    font-size: 1rem;
+  }
+}
+
+/* Additional styles for navigation and other elements */
+.navbar, .sidebar, .footer{
+  width: 100%;
+  padding: 1rem;
+  margin: 0;
+}

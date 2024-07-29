@@ -45,3 +45,28 @@
   display: block;
   text-align: center;
 }
+
+/* Mobile styles */
+@media (max-width: 600px) {
+  .auth-sidebar {
+    width: 100%;
+    box-shadow: none; /* Remove shadow on smaller screens */
+    padding: 10px; /* Add some padding for better spacing */
+    margin-bottom: 20px; /* Add margin to separate from other elements */
+  }
+
+  .auth-buttons-sidebar {
+    flex-direction: row; /* Change direction to row for better layout */
+    gap: 10px;
+    justify-content: space-between; /* Space buttons evenly */
+  }
+
+  .auth-buttons-sidebar button {
+    font-size: 14px; /* Adjust font size for smaller screens */
+    padding: 8px; /* Adjust padding for smaller screens */
+  }
+
+  .auth-buttons-sidebar .login-button, .auth-buttons-sidebar .create-account-button {
+    width: 48%; /* Make buttons take half the width each */
+  }
+}
