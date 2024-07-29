@@ -42,3 +42,15 @@
   color: white;
   transform: scale(1.05);
 }
+
+/*Background Image*/
+.background-container {
+  background-image: url('./PFfinance.png'); 
+  background-size: cover; 
+  background-position: center; 
+  background-repeat: no-repeat; 
+  height: 100vh; 
+  width: 100%; 
+  padding: 20px; /* Add some padding */
+  box-sizing: border-box; /* Ensure padding doesn't affect the overall size */
+}

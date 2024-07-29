@@ -9,17 +9,19 @@ header {
 .logo {
   display: flex;
   align-items: center;
+  gap : 10px;
 }
 
 .logo img {
-  height: 50px;
+  height: 125px;
+  width: auto;
   margin-right: 10px;
 }
 
 .logo p {
   font-style: italic;
   margin: 0;
-  color: #D8D7C3;
+  color: #44410f;
 }
 
 .search-auth {

@@ -2,7 +2,6 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
- 
 }
 
 /* Global Styles */
@@ -21,6 +20,7 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  background-color: #ccc;
 }
 
 .video-background {
@@ -33,11 +33,10 @@ body {
   overflow: hidden;
 }
 
-.welcome-label{
-
+.welcome-label
+{
 padding-left: 15px;
 font-weight: bold;
-
 }
 
 /* Header */
@@ -52,7 +51,7 @@ header {
 .logo h1 {
   font-size: 2.5rem;
   text-decoration: underline;
-  color: #ffffff
+  color: #ffffff;
 }
 
 
@@ -64,6 +63,8 @@ header {
 .search-box {
   padding: .5rem;
   margin-right: 1rem;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .search-button {
@@ -75,10 +76,8 @@ header {
 
 /* Main Content */
 main {
- 
   display: flex;
-  background-color: #000000;
-
+  background-color: #94c6c1;
 }
 
 .main-content {
@@ -133,20 +132,27 @@ padding: 17px;
 
 }
 
-
-.signup-button,.create-account-button {
-  
-
-  background-color: #28a745;
+.signup-button,.create-account-button 
+{
+  background-color: #166678;
   border: none;
   cursor: pointer;
 }
 
-.login-button {
- 
-  background-color: #007bff;
+.login-button 
+{ 
+  background-color: #166678;
   border: none;
   cursor: pointer;
+}
+
+.graph, .news-section 
+{
+  background-color: #fff;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  height: 300px;
 }
 
 /* Nav */
@@ -161,12 +167,7 @@ nav ul li {
   left: 15px;
   font-size: 18px;
 
-
 }
-
-
-
-
 
 nav ul li:hover ul {
   display: block;
@@ -181,31 +182,16 @@ nav ul li ul li a {
 }
 
 /* Footer */
-footer {
-  flex: 1;
-  height: 15vh;
-  background-color: #333;
-  color: #fff;
-  padding: 1rem;
-  text-align: center;
+.footer-disclaimer, .contact-us, .get-in-touch {
+  flex: 1 1 300px;
+  margin: 10px;
 }
 
-.footer-disclaimer {
-  margin-bottom: 1rem;
+.footer-disclaimer p, .contact-us p {
+  font-size: 14px;
 }
 
-.contact-us {
-  margin-bottom: 1rem;
+.contact-us h3, .get-in-touch h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
 }
-
-.get-in-touch {
-  margin-bottom: 1rem;
-}
-   
-.footer-copyright {
-  margin-bottom: 1rem;
-}
-
-.footer-copyright p {
-  margin-bottom: 0rem;
-}  

@@ -5,6 +5,7 @@ import './pages/home.css';
 import Nav from './components/Nav';
 import Footer from './components/Footer';
 import Aside from './components/Aside';
+import Header from './components/Header';
 
 //Pages
 import Login from './pages/Login/Login';
@@ -77,20 +78,6 @@ const App = () => {
   );
 };
 
-const Header = () => {
-  return (
-    <div>
-      <header>
-      <div>
-        <Link to="/" className="logo"><h1><strong>476 Finance</strong></h1></Link>
-      </div>
-      <Nav/> 
-      <Aside/>
-      </header>
-      <SearchBar/>
-    </div>     
-  );
-};
 
 const MainContent = () => {
   return (

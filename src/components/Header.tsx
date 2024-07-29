@@ -2,26 +2,24 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Nav from './Nav'; 
 import './Header.css';
+import { SearchBar } from '../pages/searchBar';
+import Aside from './Aside'; 
+import logo from './logo1.png';
 
 const Header: React.FC = () => {
   return (
+    <div>
     <header>
-      <div className="logo">
-        <Link to="/">
-          <img src="/components/logo.png" alt="476 Finance Logo" />
-        </Link>
-        <p><i>Welcome to the new financial world</i></p>
+    <div className="logo">
+          <Link to="/" className="logo">
+            <img src={logo} alt="476 Finance Logo" className="logo-image" /> 
+          </Link>
       </div>
-      <Nav />
-      <div className="search-auth">
-        <input type="text" placeholder="Search..." className="search-box" />
-        <button className="search-button">Search</button>
-        <div className="auth-buttons">
-          <Link to="/login" className="login-button">Login</Link>
-          <Link to="/create-account" className="create-account-button">Create New Account</Link>
-        </div>
+          <Nav />
+          <Aside/>
+          </header>
+          <SearchBar/>
       </div>
-    </header>
   );
 }
 

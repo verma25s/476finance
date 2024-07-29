@@ -10,7 +10,7 @@ import './PersonalFinance.css';
 
 const PersonalFinance: React.FC = () => {
   return (
-    <div>
+    <div className="personal-finance-container"> 
       <h1>Personal Finance</h1>
       <p>Here you can find information about managing your personal finances.</p>
       <div className="finance-options">

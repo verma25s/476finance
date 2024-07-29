@@ -136,19 +136,6 @@ nav ul li:hover > ul {
     display: block;
 }
 
-.signup-button, .login-button, .create-account-button {
-    background-color: #007BFF;
-    color: #fff;
-    border: none;
-    padding: 10px;
-    cursor: pointer;
-    font-size: 16px;
-}
-
-.signup-button:hover, .login-button:hover, .create-account-button:hover {
-    background-color: #0056b3;
-}
-
 .main-content {
     display: flex;
     gap: 20px;
@@ -174,14 +161,6 @@ section h2 {
     margin-bottom: 10px;
 }
 
-.graph, .news-section {
-    background-color: #fff;
-    padding: 20px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    height: 300px;
-}
-
 footer {
     background-color: #333;
     color: #fff;
@@ -191,16 +170,3 @@ footer {
     flex-wrap: wrap;
 }
 
-.footer-disclaimer, .contact-us, .get-in-touch {
-    flex: 1 1 300px;
-    margin: 10px;
-}
-
-.footer-disclaimer p, .contact-us p {
-    font-size: 14px;
-}
-
-.contact-us h3, .get-in-touch h3 {
-    font-size: 18px;
-    margin-bottom: 10px;
-}
