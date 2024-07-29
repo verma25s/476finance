@@ -2,7 +2,7 @@
 
 border: 1px;
 border-radius: 10px;
-border-width: 90%;
+border-width: 80%;
 border-style: double;
 
 
@@ -10,11 +10,12 @@ border-style: double;
 }
 .post:hover {
     transform: translateZ(10px);
-    background-color: yellow;
+    background-color: rgb(243, 243, 178);
     cursor: pointer;
+   
   }
 p.post{
-max-height: 20px;;
+max-height: 10px;;
 
 
 }
@@ -28,8 +29,5 @@ max-height: 20px;;
          overflow:hidden;
         white-space: wrap;
         
-        
-    
-
 
 }

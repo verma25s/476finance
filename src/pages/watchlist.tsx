@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useCookies } from 'react-cookie';
+import './tickerPage.css';
 
 interface StockItem {
   priceChange: number;
@@ -109,6 +110,10 @@ export const Watchlist = () => {
     navigate(`/symbol/${symbol}`);
   };
 
+  const getSymbolClass = (change: number) => {
+    return change < 0 ? 'symbol-losing' : 'symbol-gaining';
+  };
+
   return (
     <div className="top-trending">
       <h1 className="cp">Watchlist</h1>
@@ -116,15 +121,14 @@ export const Watchlist = () => {
       <hr />
       {stocks.length > 0 ? (
         stocks.map((watchlistItem) => (
-          <div
-            className="wrapper"
+          <div className="wrapper"
             key={watchlistItem.symbol}
-            onClick={() => handleInputChange(watchlistItem.symbol)}
-          >
+            onClick={() => handleInputChange(watchlistItem.symbol)}>
             <div className="h3">{watchlistItem.symbol}</div>
             <div className="h5">{watchlistItem.currentPrice}</div>
             <div className="h4">{watchlistItem.longName}</div>
             <div className="positive h6">{(watchlistItem.currentPrice - watchlistItem.previousClose).toFixed(3)}</div>
+            
             <hr />
             <hr />
           </div>
