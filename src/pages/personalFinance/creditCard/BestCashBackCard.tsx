@@ -3,6 +3,8 @@ import React from 'react';
 import './CreditCardCategory.css'; // Import the styles
 import scotiaMomenutumPlus from '../../../components/images/scotia_monemtum+.png';
 import amexSimpleCash from '../../../components/images/amex_simplecash.png';
+import bmoPreferredRate from '../../../components/images/bmo_preferredrate.png';
+import tangerineMoneyBack from '../../../components/images/tangerine_moneyback.png';
 
 const BestCashBackCard: React.FC = () => {
     return (
@@ -10,7 +12,7 @@ const BestCashBackCard: React.FC = () => {
             <h1>BEST CASH-BACK CARDS</h1>
             <div className="ranked-cards">
                 <div className="card">
-                    <img src="/images/cash_back_card1.png" alt="Cash Back Card 1" />
+                    <img src={tangerineMoneyBack} alt="Cash Back Card 1" />
                     <p>
                         <strong>1. Tangerine Money-Back Credit Card</strong><br />
                         <em>Annual Fee:</em> $0<br />
@@ -28,7 +30,7 @@ const BestCashBackCard: React.FC = () => {
                     </p>
                 </div>
                 <div className="card">
-                    <img src="/images/cash_back_card3.png" alt="Cash Back Card 3" />
+                    <img src={bmoPreferredRate} alt="Cash Back Card 3" />
                     <p>
                         <strong>3. BMO CashBack® World Elite®* Mastercard®*</strong><br />
                         <em>Annual Fee:</em> $120<br />

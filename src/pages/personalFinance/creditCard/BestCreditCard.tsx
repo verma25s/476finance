@@ -2,6 +2,8 @@
 import React from 'react';
 import './CreditCardCategory.css'; // Import the styles
 import amexPlatinum from '../../../components/images/amex_platinum.png';
+import capitalSilver from '../../../components/images/capital_silver.png';
+import cibcInfinite from '../../../components/images/cibc_infiniteprivilege.png';
 
 const BestCreditCard: React.FC = () => {
     return (
@@ -18,22 +20,21 @@ const BestCreditCard: React.FC = () => {
                     </p>
                 </div>
                 <div className="card">
-                    <img src="/images/capital_one_quicksilver.png" alt="Capital One Quicksilver Student Cash Rewards Credit Card" />
+                    <img src={capitalSilver} alt="Capital One Quicksilver Student Cash Rewards Credit Card" />
                     <p>
-                        <strong>2. Capital One Quicksilver Student Cash Rewards Credit Card</strong><br />
+                        <strong>Capital One Quicksilver Student Cash Rewards Credit Card</strong><br />
                         <em>Annual Fee:</em> $0<br />
                         <em>Welcome Offer:</em> Earn a one-time $50 cash bonus if you spend $100 or more on purchases within three months of opening an account<br />
-                        <em>Rewards Rate:</em> 1.5% cash back
+                        <em>Rewards Rate:</em> 1.5% cash back on every purchase, every day
                     </p>
                 </div>
                 <div className="card">
-                    <img src="/images/ink_business_preferred.png" alt="Ink Business Preferred Credit Card" />
+                    <img src={cibcInfinite} alt="Ink Business Preferred Credit Card" />
                     <p>
-                        <strong>3. Ink Business Preferred® Credit Card</strong><br />
-                        <em>Annual Fee:</em> $95<br />
-                        <em>Welcome Offer:</em> Earn 120,000 points after spending $8,000 in the first 3 months (that's $1,200 cash back or $1,500 toward travel when redeemed through Chase TravelSM)<br />
-                        <em>Rewards Rate:</em> 1X - 3X points
-                    </p>
+                        <strong>CIBC Aventura® Visa Infinite Privilege* Card</strong><br />
+                        <em>Annual Fee:</em> $488<br />
+                        <em>Welcome Offer:</em> Join and get over $2,200 in value.†<br />
+                        <em>Rewards Rate:</em> 3 points per $1 on travel booked through the CIBC Rewards Centre, 2 points on eligible dining, transportation, gas, electric vehicle charging and groceries, Annual travel credit | Lounge access2 | NEXUSTM, † fee rebate and more</p>
                 </div>
             </div>
         </div>

@@ -2,7 +2,10 @@
 import React from 'react';
 import './CreditCardCategory.css'; // Import the styles
 import scotiaGold from '../../../components/images/scotia_gold.png';
-import amexAeroplanReserve from '../../../components/images/amex_reserveaeroplan.png';
+import amexAeroplan from '../../../components/images/amex_aeroplan.png';
+import rbcEliteWestjet from '../../../components/images/rbc_elitewestjet.png';
+import cibcAventuraInfinite from '../../../components/images/cibc_aventurainfinite.png';
+
 
 const BestTravelCard: React.FC = () => {
     return (
@@ -10,12 +13,12 @@ const BestTravelCard: React.FC = () => {
             <h1>BEST TRAVEL CARDS</h1>
             <div className="ranked-cards">
                 <div className="card">
-                    <img src="/images/travel_card1.png" alt="Travel Card 1" />
+                    <img src={rbcEliteWestjet} alt="Travel Card 1" />
                     <p>
-                        <strong>1. TD® First Class Travel® Visa Infinite* Card</strong><br />
+                        <strong>1. WestJet RBC World Elite Mastercard</strong><br />
                         <em>Annual Fee:</em> $120<br />
-                        <em>Welcome Offer:</em> Earn up to 80,000 TD Points<br />
-                        <em>Rewards Rate:</em> 9X points on travel booked through Expedia for TD, 3X on all other travel, 1X on everything else
+                        <em>Welcome Offer:</em> Get up to 450 WestJet dollars (a value of up to $450 off the base fare) when you spend a minimum of $5,000 in the first 3 months on your card<br />
+                        <em>Rewards Rate:</em> Receive a round-trip companion voucher – every year – for any WestJet destination starting from $119 CAD2 (plus taxes, fees, charges and other ATC) or choose to exchange it for 4 lounge vouchers.
                     </p>
                 </div>
                 <div className="card">
@@ -28,16 +31,16 @@ const BestTravelCard: React.FC = () => {
                     </p>
                 </div>
                 <div className="card">
-                    <img src="/images/travel_card3.png" alt="Travel Card 3" />
+                    <img src={cibcAventuraInfinite} alt="Travel Card 3" />
                     <p>
-                        <strong>3. BMO World Elite®* Mastercard®*</strong><br />
-                        <em>Annual Fee:</em> $150<br />
-                        <em>Welcome Offer:</em> Earn up to 50,000 points<br />
-                        <em>Rewards Rate:</em> 3X points on travel, 2X on dining and entertainment, 1X on everything else
+                        <strong>CIBC Aventura® Visa Infinite*</strong><br />
+                        <em>Annual Fee:</em> $139<br />
+                        <em>Welcome Offer:</em> $900 CIBC Aventura Rewards points<br />
+                        <em>Rewards Rate:</em> First Year Rebated† , This offer is not available for residents of Quebec. Earn points on all purchases and redeem on travel or statement credits.
                     </p>
                 </div>
                 <div className="card">
-                    <img src={amexAeroplanReserve} alt="Travel Card 4" />
+                    <img src={amexAeroplan} alt="Travel Card 4" />
                     <p>
                         <strong>4. American Express® Aeroplan®* Card</strong><br />
                         <em>Annual Fee:</em> $120<br />

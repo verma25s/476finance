@@ -8,6 +8,8 @@ import CardRecommendationResults from '../../../components/CardRecommendationRes
 //Images 
 import amexPlatinum from '../../../components/images/amex_platinum.png';
 import capitalSilver from '../../../components/images/capital_silver.png';
+import cibcInfinite from '../../../components/images/cibc_infiniteprivilege.png';
+
 
 const CreditCard: React.FC = () => {
     const [recommendationCriteria, setRecommendationCriteria] = useState<{ useType: string; benefit: string; annualFee: string } | null>(null);
@@ -54,9 +56,8 @@ const CreditCard: React.FC = () => {
                         <em>Annual Fee:</em> $799<br />
                         <em>Welcome Offer:</em> Earn 100,000 points after spending $8,000 in the first six months<br />
                         <em>Rewards Rate:</em> 1X on all purchases, 5X on flights booked directly with airlines or with American Express Travel
-                        Enjoy a $200 Annual Dining Credit at some of Canada’s best restaurants40
-                        Access to a $200 Annual Travel Credit6
-                        Unlock access to more than 1,400 airport lounges worldwide with the Global Lounge Collection7
+                        Enjoy a $200 Annual Dining Credit at some of Canada’s best restaurants
+                        Access to a $200 Annual Travel Credit
                     </p>
                 </div>
                 <div className="card">
@@ -69,13 +70,12 @@ const CreditCard: React.FC = () => {
                     </p>
                 </div>
                 <div className="card">
-                    <img src="/images/ink_business_preferred.png" alt="Ink Business Preferred Credit Card" />
+                    <img src={cibcInfinite} alt="Ink Business Preferred Credit Card" />
                     <p>
-                        <strong>Ink Business Preferred® Credit Card</strong><br />
-                        <em>Annual Fee:</em> $95<br />
-                        <em>Welcome Offer:</em> Earn 120,000 points after spending $8,000 in the first 3 months (that's $1,200 cash back or $1,500 toward travel when redeemed through Chase TravelSM)<br />
-                        <em>Rewards Rate:</em> 3X points on the first $150,000 spent in combined purchases on travel, shipping, internet, cable, and phone services, and advertising purchases made with social media sites and search engines each account anniversary year; 1X on all other purchases
-                    </p>
+                        <strong>CIBC Aventura® Visa Infinite Privilege* Card</strong><br />
+                        <em>Annual Fee:</em> $488<br />
+                        <em>Welcome Offer:</em> Join and get over $2,200 in value.†<br />
+                        <em>Rewards Rate:</em> 3 points per $1 on travel booked through the CIBC Rewards Centre, 2 points on eligible dining, transportation, gas, electric vehicle charging and groceries, Annual travel credit | Lounge access2 | NEXUSTM, † fee rebate and more</p>
                 </div>
             </div>
         </div>

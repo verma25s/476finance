@@ -37,6 +37,27 @@ import scotiaMonentumPlus from './images/scotia_monemtum+.png';
 import scotiaPassportInfinite from './images/scotia_passportinfinite.png';
 import scotiaValue from './images/scotia_value.png';
 
+//MBNa
+import mbnaElite from './images/mbna_elite.png';
+
+//BMO
+import bmoPreferredRate from './images/bmo_preferredrate.png';
+import bmoAscend from './images/bmo_ascend.png';
+
+//Tangerine
+import tangerineMoneyBack from './images/tangerine_moneyback.png';
+import tangerineWorldElite from './images/tangerine_worldelite.png';
+
+//National Bank
+import nationalSyncro from './images/national_Syncro.png';
+import nationalWorldElite from './images/national_worldelite.png';
+
+//Others
+import rogers from './images/rogers.png';
+import kohoEveything from './images/koho_everything.png';
+import eqbank from './images/eqbank.png';
+import neo from './images/neo.png';
+
 interface Props {
     useType: string;
     benefit: string;
@@ -318,29 +339,29 @@ const CardRecommendationResults: React.FC<Props> = ({ useType, benefit, annualFe
             additionalInfo: "Earn up to 2% cash back on eligible gas and grocery purchases.",
             useType: "personal",
             benefit: "rewards",
-            image: "/images/mbna_rewards_world_elite_mastercard.png"
+            image: mbnaElite
         },
         {
             name: "Tangerine World Mastercard",
-            annualFee: "No annual fee",
+            annualFee: "$0",
             welcomeOffer: "Up to $100 cash back",
             firstYearValue: "$220",
             interestRates: "20.99% on purchases, 22.99% on cash advances",
             additionalInfo: "Earn up to 2% cash back on eligible gas and grocery purchases.",
             useType: "personal",
             benefit: "cashback",
-            image: "/images/tangerine_world_mastercard.png"
+            image: tangerineWorldElite
         },
         {
             name: "Tangerine Money-Back Credit Card",
-            annualFee: "No annual fee",
+            annualFee: "$0",
             welcomeOffer: "Up to $100 cash back",
             firstYearValue: "$220",
             interestRates: "20.99% on purchases, 22.99% on cash advances",
             additionalInfo: "Earn up to 2% cash back on eligible gas and grocery purchases.",
             useType: "personal",
             benefit: "cashback",
-            image: "/images/tangerine_money_back.png"
+            image: tangerineMoneyBack
         },
         {
             name: "National Bank World Elite Mastercard",
@@ -351,7 +372,7 @@ const CardRecommendationResults: React.FC<Props> = ({ useType, benefit, annualFe
             additionalInfo: "Earn up to 2% cash back on eligible gas and grocery purchases.",
             useType: "personal",
             benefit: "rewards",
-            image: "/images/national_bank_world_elite_mastercard.png"
+            image: nationalWorldElite
         },
         {
             name: "National Bank Syncro Mastercard",
@@ -362,7 +383,7 @@ const CardRecommendationResults: React.FC<Props> = ({ useType, benefit, annualFe
             additionalInfo: "Earn up to 2% cash back on eligible gas and grocery purchases.",
             useType: "personal",
             benefit: "low-interest",
-            image: "/images/national_bank_syncro_mastercard.png"
+            image: nationalSyncro
         },
         {
             name: "BMO Ascend™ World Elite®* Mastercard®*",
@@ -373,84 +394,84 @@ const CardRecommendationResults: React.FC<Props> = ({ useType, benefit, annualFe
             additionalInfo: "Earn up to 2% cash back on eligible gas and grocery purchases.",
             useType: "personal",
             benefit: "rewards",
-            image: "/images/bmo_ascend_world_elite_mastercard.png"
+            image: bmoAscend
         },
         {
             name: "BMO Preferred Rate Mastercard®*",
-            annualFee: "$20",
+            annualFee: "$29",
             welcomeOffer: "Get 0.99% interest for up to 9 months on balance transfers",
             firstYearValue: "$29",
             interestRates: "20.99% on purchases, 22.99% on cash advances",
             additionalInfo: "Earn up to 2% cash back on eligible gas and grocery purchases.",
             useType: "personal",
             benefit: "low-interest",
-            image: "/images/bmo_preferred_rate_mastercard.png"
+            image: bmoPreferredRate
         },
         {
             name: "KOHO Everything Mastercard® Prepaid Card",
-            annualFee: "No annual fee",
+            annualFee: "$0",
             welcomeOffer: "$20 cash back",
             firstYearValue: "$182",
             interestRates: "N/A",
             additionalInfo: "Earn up to 2% cash back on eligible gas and grocery purchases.",
             useType: "personal",
             benefit: "low-interest",
-            image: "/images/koho_everything_mastercard.png"
+            image: kohoEveything
         },
         {
             name: "KOHO Extra Prepaid Mastercard",
-            annualFee: "No annual fee",
+            annualFee: "$0",
             welcomeOffer: "3 months free + $20 cash back",
             firstYearValue: "$128",
             interestRates: "N/A",
             additionalInfo: "Earn up to 2% cash back on eligible gas and grocery purchases.",
             useType: "personal",
             benefit: "low-interest",
-            image: "/images/koho_extra_prepaid_mastercard.png"
+            image: kohoEveything
         },
         {
             name: "KOHO Essential Mastercard® Prepaid Card",
-            annualFee: "No annual fee",
+            annualFee: "$0",
             welcomeOffer: "$20 cash back",
             firstYearValue: "$104",
             interestRates: "N/A",
             additionalInfo: "Earn up to 2% cash back on eligible gas and grocery purchases.",
             useType: "personal",
             benefit: "low-interest",
-            image: "/images/koho_essential_prepaid_mastercard.png"
+            image: kohoEveything
         },
         {
             name: "Neo Money Card",
-            annualFee: "No annual fee",
+            annualFee: "$0",
             welcomeOffer: "No Welcome Offer",
             firstYearValue: "$120",
             interestRates: "N/A",
             additionalInfo: "Earn up to 2% cash back on eligible gas and grocery purchases.",
             useType: "personal",
             benefit: "low-interest",
-            image: "/images/neo_money_card.png"
+            image: neo
         },
         {
             name: "EQ Bank Card",
-            annualFee: "No annual fee",
+            annualFee: "$0",
             welcomeOffer: "No Welcome Offer",
             firstYearValue: "$120",
             interestRates: "N/A",
             additionalInfo: "Earn up to 2% cash back on eligible gas and grocery purchases.",
             useType: "personal",
             benefit: "low-interest",
-            image: "/images/eq_bank_card.png"
+            image: eqbank
         },
         {
             name: "Rogers Red Mastercard®",
-            annualFee: "No annual fee",
+            annualFee: "$0",
             welcomeOffer: "$60 cash back",
             firstYearValue: "$300",
             interestRates: "20.99% on purchases, 22.99% on cash advances",
             additionalInfo: "Earn up to 2% cash back on eligible gas and grocery purchases.",
             useType: "personal",
             benefit: "cashback",
-            image: "/images/rogers_red_mastercard.png"
+            image: rogers
         },
     ];
 

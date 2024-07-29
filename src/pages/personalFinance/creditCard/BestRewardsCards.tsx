@@ -3,6 +3,8 @@ import React from 'react';
 import './CreditCardCategory.css'; // Import the styles
 import amexCobalt from '../../../components/images/amex_cobalt.png';
 import scotiaGold from '../../../components/images/scotia_gold.png';
+import bmoAscend from '../../../components/images/bmo_ascend.png';
+import rbcAvionInfinite from '../../../components/images/rbc_avioninfinite.png';
 
 const BestRewardsCards: React.FC = () => {
     return (
@@ -19,12 +21,12 @@ const BestRewardsCards: React.FC = () => {
                     </p>
                 </div>
                 <div className="card">
-                    <img src="/images/rewards_card2.png" alt="Rewards Card 2" />
+                    <img src={rbcAvionInfinite} alt="Rewards Card 2" />
                     <p>
-                        <strong>2. TD® First Class Travel® Visa Infinite* Card</strong><br />
-                        <em>Annual Fee:</em> $120<br />
-                        <em>Welcome Offer:</em> Earn up to 80,000 TD Points<br />
-                        <em>Rewards Rate:</em> 9X points on travel booked through Expedia for TD, 3X on all other travel, 1X on everything else
+                        <strong>2. RBC Avion Visa Infinite Privilege</strong><br />
+                        <em>Annual Fee:</em> $399<br />
+                        <em>Welcome Offer:</em> Premium card earning travellers valuable points at an impressive rate. Includes comprehensive travel insurance and many other exclusive travel perks.<br />
+                        <em>Rewards Rate:</em> 9X points on travel booked through Expedia for RBC, 3X on all other travel, 1X on everything else
                     </p>
                 </div>
                 <div className="card">
@@ -37,12 +39,12 @@ const BestRewardsCards: React.FC = () => {
                     </p>
                 </div>
                 <div className="card">
-                    <img src="/images/rewards_card4.png" alt="Rewards Card 4" />
+                    <img src={bmoAscend} alt="Rewards Card 4" />
                     <p>
-                        <strong>4. BMO World Elite®* Mastercard®*</strong><br />
+                        <strong>4. BMO Ascend™ World Elite®* Mastercard®</strong><br />
                         <em>Annual Fee:</em> $150<br />
-                        <em>Welcome Offer:</em> Earn up to 50,000 points<br />
-                        <em>Rewards Rate:</em> 3X points on travel, 2X on dining and entertainment, 1X on everything else
+                        <em>Welcome Offer:</em>"Up to 100,000 Points"<br />
+                        <em>Rewards Rate:</em> "Earn up to 2% cash back on eligible gas and grocery purchases.
                     </p>
                 </div>
             </div>
