@@ -1,4 +1,3 @@
-// src/components/importImages.ts
 function importAll(requireContext: { keys: () => string[]; (id: string): string }) {
     return requireContext.keys().map(requireContext);
 }

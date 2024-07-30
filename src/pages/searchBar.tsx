@@ -1,5 +1,3 @@
-
-import './searchBar.css';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -9,7 +7,7 @@ interface Stock {
 }
 
 
-export const SearchBar: React.FC = () => {
+export const SearchBar = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [searchResults, setSearchResults] = useState<Stock[]>([]);
   const [loading, setLoading] = useState(false);
@@ -27,7 +25,7 @@ export const SearchBar: React.FC = () => {
       setLoading(true);
       setError(null);
       try {
-        const response = await fetch(`http://localhost:5000/search/${query}`);
+        const response = await fetch(`/search/${query}`);
         const data = await response.json();
         if (response.ok) {
           setSearchResults(data.result);
@@ -61,7 +59,7 @@ export const SearchBar: React.FC = () => {
   };
 
   return (
-    <div className="search-auth">
+    <div >
       <input
         type="text"
         placeholder="Search (minimum 2 words)..."
@@ -69,6 +67,7 @@ export const SearchBar: React.FC = () => {
         value={searchQuery}
         onChange={handleSearchInputChange}
       />
+     {searchResults.length > 0 && (<div className="cancel-search-button"><button onClick={() => handleCancel()}>Cancel</button></div>)}
       {loading && <div>Loading...</div>}
       {error && <div>{error}</div>}
       {searchResults.length > 0 && (
@@ -84,7 +83,7 @@ export const SearchBar: React.FC = () => {
         </div>
       )}
 
-{searchResults.length > 0 && (<div className="cancel-search-button"><button onClick={() => handleCancel()}>Cancel</button></div>)}
+
      
     </div>
   );

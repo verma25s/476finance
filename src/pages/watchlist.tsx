@@ -62,7 +62,7 @@ export const Watchlist = () => {
 
   useEffect(() => {
     const fetchStockDetails = async () => {
-      console.log('Watchlist in fetchStockDetails:', watchlist);
+     
       const stockDetails: StockItem[] = [];
 
       for (const symbol of watchlist) {
