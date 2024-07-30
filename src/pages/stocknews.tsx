@@ -4,14 +4,12 @@ import './news.css';
 
 interface NewsArticle {
   id: number;
-  category: string;
   datetime: number;
   headline: string;
   source: string;
   summary: string;
   url: string;
-  image: string;
-  related: string;
+
 }
 
 export const StockNews: React.FC = () => {

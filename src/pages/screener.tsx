@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import './screener.css';
+
+
 interface Stock {
   symbol: string;
   companyName: string;
@@ -15,6 +16,9 @@ interface Stock {
 export const Screener: React.FC = () => {
   const [stocks, setStocks] = useState<Stock[]>([]);
   const [filters, setFilters] = useState({
+    // All this data is returned by the Financial Modeling perp api
+
+
     marketCapMoreThan: '',
     marketCapLowerThan: '',
     priceMoreThan: '',
@@ -32,7 +36,8 @@ export const Screener: React.FC = () => {
     industry: '',
     country: '',
     exchange: '',
-    limit: 10,
+    limit: 20,
+    
   });
   const [error, setError] = useState<string | null>(null);
 
@@ -227,7 +232,7 @@ export const Screener: React.FC = () => {
         <label>
           Limit:
           <select name="limit" onChange={handleFilterChange}>
-            <option value="10">10</option>
+            
             <option value="20">20</option>
             <option value="50">50</option>
             <option value="100">100</option>

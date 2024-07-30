@@ -23,23 +23,22 @@ export const Top_gainers = () => {
 
   const fetchTopGainers = async () => {
     try {
-      const response = await fetch('/top-gainers'); // Adjust API endpoint as needed
+      const response = await fetch('/top-gainers'); 
       if (!response.ok) {
         throw new Error('Network response was not ok');
       }
       const data = await response.json();
 
-      // Ensure data.top_gainers is an array and set it to state
       if (Array.isArray(data)) {
         setGainers(data);
-        setLoading(false); // Set loading to false once data is fetched
+        setLoading(false); 
       } else {
         throw new Error('Fetched data is not an array');
       }
     } catch (error) {
       setError('Error fetching top gainers');
       console.error('Error fetching top gainers:', error);
-      setLoading(false); // Set loading to false on error
+      setLoading(false); 
     }
   };
 

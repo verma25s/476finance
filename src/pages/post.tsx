@@ -12,7 +12,7 @@ export const FullPost = () => {
   const { title } = useParams<{ title: string }>();
   const [post, setPost] = useState<Post | null>(null);
   const [error, setError] = useState<string | null>(null);
-  const history =  useNavigate();
+  const navigate =  useNavigate();
 
   useEffect(() => {
     fetchPost();
@@ -20,7 +20,7 @@ export const FullPost = () => {
 
   const fetchPost = async () => {
     try {
-      const response = await fetch(`http://localhost:5000/forum-posts/${title}`);
+      const response = await fetch(`/forum-posts/${title}`);
       if (response.ok) {
         const data = await response.json();
         setPost(data);
@@ -35,7 +35,7 @@ export const FullPost = () => {
 
   return (
     <div>
-      <button onClick={() => history('/forum')}>Back to Forum</button>
+      <button onClick={() => navigate('/forum')}>Back to Forum</button>
       {error && <p style={{ color: 'red' }}>{error}</p>}
       {post ? (
         <div className="detailed_post">

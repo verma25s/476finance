@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+
 interface Trending {
     change: number;
     changesPercentage: number;
@@ -13,41 +14,47 @@ export const Trending = () => {
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const navigate = useNavigate();
+  
+  
   useEffect(() => {
     fetchToptrending_stocks();
   }, []);
 
+  
   const fetchToptrending_stocks = async () => {
     try {
-      const response = await fetch('/trending'); // Adjust API endpoint as needed
+      const response = await fetch('/trending'); 
       if (!response.ok) {
         throw new Error('Network response was not ok');
       }
       const data = await response.json();
 
-      // Ensure data.top_trending_stocks is an array and set it to state
       if (Array.isArray(data)) {
         settrending_stocks(data);
-        setLoading(false); // Set loading to false once data is fetched
+        setLoading(false); 
       } else {
         throw new Error('Fetched data is not an array');
       }
     } catch (error) {
       setError('Error fetching top trending_stocks');
       console.error('Error fetching top trending_stocks:', error);
-      setLoading(false); // Set loading to false on error
+      setLoading(false); 
     }
   };
+
+
   const handleInputChange = (symbol: string) => {
-      
+    //Navigate to the tickerPage    
     navigate(`/symbol/${symbol}`);
   };
 
   return (
+
+
     <div className="top-trending">
       <h1 className="cp">Trending</h1>
-      <hr />
-      <hr />
+        <hr />
+        <hr />
       {loading ? (
         <p>Loading...</p>
       ) : error ? (

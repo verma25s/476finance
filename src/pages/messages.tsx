@@ -21,7 +21,7 @@ export const MessageBox: React.FC = () => {
 
   const fetchMessages = async () => {
     try {
-      const response = await fetch('http://localhost:5000/messages');
+      const response = await fetch('/messages');
       if (response.ok) {
         const data = await response.json();
         setMessages(data);

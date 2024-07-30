@@ -204,8 +204,11 @@ export const TickerPage = () => {
         <p>Please login to add to watchlist</p>
       )}
 
-      <TickerGraph />
-      <h1>{stockData.shortName } ({stockData.symbol || 'N/A'})</h1>
+      <TickerGraph /> // Graph Component
+
+
+
+      <h1>{stockData.shortName } ({stockData.symbol })</h1>
       <table className="stock-table">
         <thead>
           <tr>
@@ -237,11 +240,9 @@ export const TickerPage = () => {
       </table>
 
 
-      <StockNews />
+      <StockNews /> // News Component
 
-      
 
-      
     </div>
   );
 };

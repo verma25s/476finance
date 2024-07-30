@@ -62,7 +62,7 @@ export const SearchBar = () => {
     <div >
       <input
         type="text"
-        placeholder="Search (minimum 2 words)..."
+        placeholder="Search (Minimum 2 words)..."
         className="search-box"
         value={searchQuery}
         onChange={handleSearchInputChange}
@@ -83,8 +83,6 @@ export const SearchBar = () => {
         </div>
       )}
 
-
-     
     </div>
   );
 };

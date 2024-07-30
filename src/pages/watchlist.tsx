@@ -38,7 +38,7 @@ export const Watchlist = () => {
           if (Array.isArray(data.symbols)) {
             symbols = data.symbols;
           } else if (typeof data.symbols === 'string') {
-            // If it's a single string, wrap it in an array
+            // If it's a single string, wrap it in an array - Was errored out when there only one item in the list
             symbols = [data.symbols];
           } else {
             throw new Error('Unexpected watchlist format');
@@ -71,7 +71,6 @@ export const Watchlist = () => {
           const response = await fetch(`/stock/${symbol}`);
           if (response.ok) {
             const data = await response.json();
-            console.log('Fetched stock data:', data);
             stockDetails.push({
               symbol: data.symbol,
               longName: data.longName,
@@ -94,7 +93,6 @@ export const Watchlist = () => {
     if (watchlist.length > 0) {
       fetchStockDetails();
     } else {
-      console.log('Watchlist is empty');
     }
   }, [watchlist]);
 

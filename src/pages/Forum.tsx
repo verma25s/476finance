@@ -23,7 +23,7 @@ export const Forum = () => {
 
   const fetchPosts = async () => {
     try {
-      const response = await fetch('http://localhost:5000/forum-posts');
+      const response = await fetch('/forum-posts');
       if (response.ok) {
         const data = await response.json();
         setPosts(data);

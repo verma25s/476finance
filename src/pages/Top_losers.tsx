@@ -7,38 +7,38 @@ interface Loser {
   changesPercentage: number;
   price: number;
   symbol: string;
-    name: string;
+  name: string;
   }
 
 export const Top_losers = () =>{
   const [losers, setLosers] = useState<Loser[]>([]);
   const [error, setError] = useState<string | null>(null);
-  const [loading, setLoading] = useState<boolean>(true); // Add loading state
+  const [loading, setLoading] = useState<boolean>(true);
   const navigate = useNavigate();
+  
   useEffect(() => {
     fetchTopLosers();
   }, []);
 
   const fetchTopLosers = async () => {
     try {
-      const response = await fetch('/top-losers'); // Adjust API endpoint as needed
+      const response = await fetch('/top-losers'); 
       if (!response.ok) {
         throw new Error('Network response was not ok');
       }
       const data = await response.json();
 
-      // Ensure data.top_Losers is an array and set it to state
       if (Array.isArray(data)) {
         
         setLosers(data);
-        setLoading(false); // Set loading to false once data is fetched
+        setLoading(false); 
       } else {
         throw new Error('Fetched data is not an array');
       }
     } catch (error) {
       setError('Error fetching top Losers');
       
-      setLoading(false); // Set loading to false on error
+      setLoading(false); 
     }
 
     

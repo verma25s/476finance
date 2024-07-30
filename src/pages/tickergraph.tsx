@@ -4,7 +4,6 @@ import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import { Chart, LineElement, BarElement, PointElement, LinearScale, CategoryScale, Title, Tooltip, Legend } from 'chart.js';
 
-// Register the necessary components with Chart.js
 Chart.register(LineElement, BarElement, PointElement, LinearScale, CategoryScale, Title, Tooltip, Legend);
 
 interface HistoricalData {
@@ -66,12 +65,11 @@ export const TickerGraph: React.FC = () => {
                                 type: 'bar',
                                 backgroundColor: volumes.map(volume => getVolumeColor(volume)),
                                 borderColor: volumes.map(volume => getVolumeColor(volume)),
-                                borderWidth: 2, // Make bars bold
+                                borderWidth: 2, 
                                 yAxisID: 'y1',
                             },
                         ],
                     });
-                    setError(null); // Clear any previous error
                 }
             })
             .catch(error => {
@@ -105,7 +103,7 @@ export const TickerGraph: React.FC = () => {
                             },
                             ticks: {
                                 callback: function(value) {
-                                    return value.toLocaleString(); // Format numbers with thousands separators
+                                    return value.toLocaleString(); 
                                 }
                             },
                         },
@@ -122,7 +120,7 @@ export const TickerGraph: React.FC = () => {
                             },
                             ticks: {
                                 callback: function(value) {
-                                    return value.toLocaleString(); // Format numbers with thousands separators
+                                    return value.toLocaleString();
                                 }
                             },
                         },
