@@ -8,7 +8,7 @@ interface Message {
   timestamp: Date;
 }
 
-export const MessageBox: React.FC = () => {
+export const MessageBox = () => {
   const [messages, setMessages] = useState<Message[]>([]);
   const [newMessage, setNewMessage] = useState<string>('');
   const [error, setError] = useState<string | null>(null);
@@ -78,18 +78,18 @@ export const MessageBox: React.FC = () => {
         <button type="submit">Send</button>
       </form>
       <h1>Message Board</h1>
-      {error && <p style={{ color: 'red' }}>{error}</p>}
-      {success && <p style={{ color: 'green' }}>{success}</p>}
+      {error && <p>{error}</p>}
+      {success && <p>{success}</p>}
       <div>
         {messages.length > 0 ? (
           messages.map((message) => (
             <div className="message" key={message._id}>
-              <p><strong>User:</strong> {message.email}</p>
-              {message.timestamp && <p><strong>Timestamp:</strong> {new Date(message.timestamp).toLocaleString()}</p>}
-              <p><strong>Content:</strong> {message.content}</p>
+               {message.timestamp && <p> {message.email}   {new Date(message.timestamp).toLocaleString()}</p>}
+               <br></br>
+              {message.content}
             </div>
-          ))
-        ) : (
+          ))) : 
+(
           <p>No messages available</p>
         )}
       </div>

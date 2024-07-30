@@ -52,83 +52,31 @@ margin-left: 10px;
 
 }
 
-.losers{
-    flex-grow: 2;
-    box-sizing: border-box;
-    position: relative;
-    height: 66vh;
-    width: 32%;
-    border:3px solid rgb(255, 0, 0);
-    border-radius: 10px;
-    margin-top: 10px;
-margin-left: 10px;
-}
-.news{
-
-    box-sizing: border-box;
-    position: relative;
-    min-height: 150px;
-    height: 100vh;
-    width: 32%;
-    border:2px solid black;
-    border-radius: 10px;
-    margin-
-.messages{
-flex-grow: 2;
-    box-sizing: border-box;
-
-    min-height: 150px;
-    height: 100vh;
-    width: 60%;
-    border:2px solid black;
-    border-radius: 10px;
-    margin-top: 10px;
-margin-left: 10px;
-.cp{
-position: fixed;top: 10px;
-margin-left: 10px;
-
-}
 
 
-}
-}
 .top-gainers{
-    color: rgb(200, 0, 0);
+
     height: 100%;
     
     overflow-y: scroll;}
 .top-losers{
-    color: rgb(182, 0, 0);
+
     height: 100%;
     
     overflow-y: scroll;}
 .top-trending{
 
-    color: rgb(198, 0, 0);
+
     height: 100%;
     overflow-y: scroll;
 
 }
 
 
-
-
-
-.message-board .messages{
-        color: red;
-        height: 100%;
-        overflow-y: scroll;
-
-
-
-    }
-.message-board{color: rgb(221, 0, 0);
-    height: 100%;
-    overflow-y: scroll;}
 .messages{color: black;
     height: 100%;
-    overflow-y: scroll;}
+    overflow-y: scroll;
+    }
 .wrapper{
     display: grid;
     grid-template-columns: auto auto;
@@ -136,6 +84,25 @@ margin-left: 10px;
     font-weight: bold;
 
 }
+  .messages form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; 
+  }
+  .messages button:hover {
+    background-color: #0056b3; 
+  }
+
+  .message {
+    
+    padding: 15px;
+    border: 1px solid #dee2e6; 
+    border-radius: 5px; 
+    background-color: #ffdcdc; 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+    margin-bottom: 10px; 
+  }
+
 
 .top-gainers  .h3{ font-size: 20px;  text-align: left;}
 .top-gainers  .h5{font-size: 20px;   text-align: right;}

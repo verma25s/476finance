@@ -23,7 +23,8 @@ max-height: 10px;;
 .forum-container {
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  height: 100%;
+  overflow-y: scroll;
   padding: 20px;
   box-sizing: border-box;
 }

@@ -1,9 +1,9 @@
-/* Footer.css */
+
 
 footer {
  
     width: 100%;
-    display: flex;
+    position: relative;
     background-color: #222;
     color: #fff;
     text-align: center;
