@@ -187,7 +187,7 @@ export const TickerPage = () => {
   return (
     <div className="ticker-page">
       <h4 className="stock-header">Symbol: {stockData.symbol}</h4>
-      <h6 className="stock-header">Price: {stockData.currentPrice}</h6>
+      <h4 className="stock-header">{stockData.currentPrice}</h4>
       {cookies.userEmail ? (
         <div className="watchlist-controls">
           {watchlistLoading ? (
@@ -204,7 +204,7 @@ export const TickerPage = () => {
         <p>Please login to add to watchlist</p>
       )}
 
-      <TickerGraph /> // Graph Component
+      <TickerGraph /> /* Graph Component */
 
 
 
