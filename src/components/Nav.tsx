@@ -9,7 +9,7 @@ interface NavProps {
 const Nav: React.FC<NavProps> = ({ menuOpen }) => {
   return (
     <nav>
-      <ul className={menuOpen ? 'show' : ''}>
+      <ul className={menuOpen ? 'show' : 'hide'}>
         <li><Link to="/forum">Forum</Link></li>
         <li><Link to="/screener">Screener</Link></li>
         <li>
@@ -26,7 +26,6 @@ const Nav: React.FC<NavProps> = ({ menuOpen }) => {
           <ul className="dropdown">
             <li><Link to="/personalFinance/credit-card">Credit Card</Link></li>
             <li><Link to="/personalFinance/personal-loans">Personal Loans</Link></li>
-            <li><Link to="/personalFinance/insurance">Insurance</Link></li>
             <li><Link to="/personalFinance/mortgage-calculator">Mortgage Calculator</Link></li>
             <li><Link to="/personalFinance/taxes">Taxes</Link></li>
           </ul>

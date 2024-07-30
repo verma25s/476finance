@@ -23,7 +23,7 @@ export const Watchlist = () => {
   useEffect(() => {
     const fetchWatchlist = async () => {
       if (!cookies.userEmail) {
-        setError('Please Login First');
+        setError('Please Login to see your Watchlist');
         setLoading(false);
         return;
       }

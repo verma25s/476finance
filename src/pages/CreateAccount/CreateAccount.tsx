@@ -25,14 +25,17 @@ const CreateAccount = () => {
     });
 
     const data = await response.json();
-    console.log(data);
-    console.log(data.type);
+  
     if (response.ok) {
       alert(data.success);
     } else {
       alert(data.error);
     }
   };
+
+  
+
+
 
   return (
     <div className="create-account-container">

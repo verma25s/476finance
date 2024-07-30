@@ -96,6 +96,12 @@ nav ul li ul.dropdown li a:hover {
     display: flex; /* Show menu when toggled */
   }
 
+  .hide{
+    opacity: 0;
+
+  }
+
+
   nav ul li {
     width: 100%;
     margin: 0;

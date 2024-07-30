@@ -47,7 +47,7 @@
 }
 
 /* Mobile styles */
-@media (max-width: 600px) {
+@media (max-width: 900px) {
   .auth-sidebar {
     width: 100%;
     box-shadow: none; /* Remove shadow on smaller screens */
@@ -56,7 +56,7 @@
   }
 
   .auth-buttons-sidebar {
-    flex-direction: row; /* Change direction to row for better layout */
+    flex-direction: column; /* Change direction to row for better layout */
     gap: 10px;
     justify-content: space-between; /* Space buttons evenly */
   }

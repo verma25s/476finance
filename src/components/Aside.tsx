@@ -33,9 +33,8 @@ const Aside = () => {
           setIsLoggedIn(false); // Update isLoggedInState using setIsLoggedIn function
           localStorage.removeItem('isLoggedIn');
           setMessage("Logged Out Successfully");
-          navigate('/')
+          navigate('/');// Navigate back to home page
 
-          console.log(getIsLoggedIn());
       } else {
          
       }
@@ -69,9 +68,6 @@ const Aside = () => {
         
         </div>
         }
-
-
-
     </div>
   );
 }

@@ -1,4 +1,3 @@
-/* Reset some basic elements */
 body, h1, h2, p, ul, li, a {
     margin: 0;
     padding: 0;
@@ -14,28 +13,6 @@ body {
     color: #333;
 }
 
-/* Video Background */
-.video-background {
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    overflow: hidden;
-    z-index: -1;
-}
-
-.video-background iframe {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 100vw;
-    height: 100vh;
-    -webkit-transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
-    pointer-events: none;
-}
 
 header {
     background-color: #333;
@@ -47,7 +24,7 @@ header {
 }
 
 .logo h1 {
-    font-size: 24px;
+    height: fit-content;
 }
 
 nav ul {
@@ -164,6 +141,7 @@ section h2 {
 footer {
     background-color: #333;
     color: #fff;
+    bottom: 0px;
     padding: 20px;
     display: flex;
     justify-content: space-between;

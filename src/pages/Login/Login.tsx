@@ -26,7 +26,7 @@ export const Login = () => {
 
     try {
       
-      const response = await fetch('http://localhost:5000/login', {
+      const response = await fetch('/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -93,9 +93,7 @@ export const Login = () => {
             Sign In
           </button>
         </form>
-        <p>
-          <a href="/reset-password">Forgot password?</a>
-        </p>
+       
         <p>
           Don't have an account? <Link to="/create-account">Create new account</Link>
         </p>

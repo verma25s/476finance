@@ -1,7 +1,7 @@
 import React from 'react';
 import './Footer.css';
 
-const Footer: React.FC = () => {
+export const Footer = () => {
   return (
     <footer>
       <div className="footer-disclaimer">
