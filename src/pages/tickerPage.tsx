@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import './tickerPage.css';
+
 import { useCookies } from 'react-cookie';
 import { TickerGraph } from './tickergraph';
 import {StockNews} from './stocknews';
@@ -54,7 +54,7 @@ export const TickerPage = () => {
   const [isInWatchlist, setIsInWatchlist] = useState<boolean>(false);
   const [watchlistLoading, setWatchlistLoading] = useState<boolean>(true);
   const [watchlistError, setWatchlistError] = useState<string | null>(null);
-  const [cookies, setCookie, removeCookie] = useCookies(['userEmail']);
+  const [cookies] = useCookies(['userEmail']);
 
   useEffect(() => {
     const fetchStockData = async () => {
