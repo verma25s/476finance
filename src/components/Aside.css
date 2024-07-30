@@ -1,14 +1,14 @@
-.auth-sidebar {
+.auth-sidebar { 
   width:15%;
   box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
-}
+} /*login and log out button*/
 
 .auth-buttons-sidebar {
   display: flex;
   flex-direction: column;
   gap: 15px;
  
-}
+} /*login and log out button*/
 
 .logout-message{color: #28a745;}
 .auth-buttons-sidebar button {
@@ -19,7 +19,7 @@
   border-radius: 4px;
   cursor: pointer;
   transition: background-color 0.3s, color 0.3s;
-}
+} /*login and log out button*/
 
 .auth-buttons-sidebar .login-button {
   background-color: #166678;

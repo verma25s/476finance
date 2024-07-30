@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-
+import './news.css';
 import { useCookies } from 'react-cookie';
 import { TickerGraph } from './tickergraph';
 import {StockNews} from './stocknews';
@@ -186,8 +186,8 @@ export const TickerPage = () => {
 
   return (
     <div className="ticker-page">
-      <h4>Symbol: {stockData.symbol}</h4>
-      <h6>Price: {stockData.currentPrice}</h6>
+      <h4 className="stock-header">Symbol: {stockData.symbol}</h4>
+      <h6 className="stock-header">Price: {stockData.currentPrice}</h6>
       {cookies.userEmail ? (
         <div className="watchlist-controls">
           {watchlistLoading ? (

@@ -34,3 +34,19 @@
         text-decoration: underline;
         background-color: #0084ff;
       }
+
+
+      .stock-header {
+        
+        color: black; 
+        padding: 15px;
+        border-radius: 5px;
+        display: inline-block;
+        text-align: center;
+      }
+      
+      .stock-header h4,
+      .stock-header h6 {
+        font-size: 10px;
+        margin: 2px;
+      }

@@ -64,7 +64,7 @@ const PersonalLoans: React.FC = () => {
   };
 
   return (
-    <div className="tabs">
+    <div className="tabs-p">
       <nav className="tabs-nav">
         <button className={`tab-link ${activeInfoTab === 'whatIs' ? 'active' : ''}`} onClick={() => setActiveInfoTab('whatIs')}>What is a Personal Loan?</button>
         <button className={`tab-link ${activeInfoTab === 'tips' ? 'active' : ''}`} onClick={() => setActiveInfoTab('tips')}>Tips</button>
