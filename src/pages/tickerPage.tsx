@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import './tickerPage.css';
 import { useCookies } from 'react-cookie';
 import { TickerGraph } from './tickergraph';
 import {StockNews} from './stocknews';

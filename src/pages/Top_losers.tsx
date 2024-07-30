@@ -1,6 +1,6 @@
 import  { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './tickerPage.css';
+
 
 interface Loser {
   change: number;
