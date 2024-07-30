@@ -1,4 +1,3 @@
-// src/components/YourComponent.tsx
 import React from 'react';
 import images from './importImages';
 
