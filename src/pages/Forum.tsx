@@ -124,8 +124,10 @@ export const Forum = () => {
             <div key={post._id} className="post" onClick={() => handlePostClick(post.title)}>
               <p><strong>Title:</strong> {post.title}</p>
               <p><strong>User:</strong> {post.email}</p>
-              <p className="postContent"><strong>Content:</strong> {post.content}</p>
               <p><strong>Timestamp:</strong> {new Date(post.timestamp).toLocaleString()}</p>
+              <br></br>
+              <p className="postContent"><strong>Content:</strong> {post.content}</p>
+              
               {post.email === cookies.userEmail && (
                 <button onClick={(e) => { e.stopPropagation(); handleDeletePost(post["_id"]); }}>Delete</button>
               )}
