@@ -1,13 +1,17 @@
+// import the react
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './Nav.css';
 
+// Nav Component function defination
 interface NavProps {
   menuOpen: boolean;
 }
-
+// New Nav Component
 const Nav: React.FC<NavProps> = ({ menuOpen }) => {
   return (
+    // Creating of the Unordered List for menu store
+    // 2 Dropdown menus for Market & Personal Finance
     <nav>
       <ul className={menuOpen ? 'show' : 'hide'}>
         <li><Link to="/forum">Forum</Link></li>
