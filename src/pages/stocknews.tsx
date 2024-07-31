@@ -1,7 +1,11 @@
+// import React and attributes for side effects and state management
 import React, { useEffect, useState } from 'react';
+// import useParams hook for accessing URL parameters
 import { useParams } from 'react-router-dom';
+// import CSS file for proper styling
 import './news.css';
 
+// define TypeScript interface for NewsArticle
 interface NewsArticle {
   id: number;
   datetime: number;
@@ -12,10 +16,12 @@ interface NewsArticle {
 
 }
 
+// define the StockNews component as a functional React component
 export const StockNews: React.FC = () => {
   const [newsFeed, setNewsFeed] = useState<NewsArticle[]>([]);
   const { symbol } = useParams<{ symbol: string }>();
 
+  // effect hook to fetch news when the component mounts or the symbol changes
   useEffect(() => {
     const fetchNews = async () => {
       try {
@@ -51,5 +57,5 @@ export const StockNews: React.FC = () => {
     </div>
   );
 };
-
+// export the StockNews component as default
 export default StockNews;

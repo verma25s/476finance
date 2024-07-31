@@ -1,7 +1,9 @@
+// import necessary React component
 import React, { useState } from 'react';
+// import axios for making HTTP requests
 import axios from 'axios';
 
-
+//define the Stock interface for TypeScript
 interface Stock {
   symbol: string;
   companyName: string;
@@ -13,6 +15,7 @@ interface Stock {
   industry: string;
 }
 
+// define the Screener component
 export const Screener: React.FC = () => {
   const [stocks, setStocks] = useState<Stock[]>([]);
   const [filters, setFilters] = useState({
@@ -41,6 +44,7 @@ export const Screener: React.FC = () => {
   });
   const [error, setError] = useState<string | null>(null);
 
+  // function to fetch data from the server based on the filters
   const fetchData = async () => {
     try {
       const response = await axios.get('/screener', {
@@ -55,6 +59,7 @@ export const Screener: React.FC = () => {
     }
   };
 
+  // handler function to update filters state when a filter is changed
   const handleFilterChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const { name, value } = e.target;
     setFilters({
@@ -63,6 +68,7 @@ export const Screener: React.FC = () => {
     });
   };
 
+  // handler function to initiate data fetch based on the filters
   const handleSearch = () => {
     fetchData();
   };
@@ -278,5 +284,5 @@ export const Screener: React.FC = () => {
     </div>
   );
 };
-
+// export the Screener component as default
 export default Screener;

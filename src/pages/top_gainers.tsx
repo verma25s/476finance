@@ -1,8 +1,10 @@
+// import React attributes for managing side effects and state
 import { useEffect, useState } from 'react';
+// import useNavigate hook for programmatic navigation
 import { useNavigate } from 'react-router-dom';
 
 
-
+// define TypeScript interface for Gainer data
 interface Gainer {
   change: number;
   changesPercentage: number;
@@ -11,6 +13,7 @@ interface Gainer {
   name: string;
 }
 
+// define the Top_gainers component as a functional React component
 export const Top_gainers = () => {
   const [gainers, setGainers] = useState<Gainer[]>([]);
   const [error, setError] = useState<string | null>(null);
@@ -21,13 +24,14 @@ export const Top_gainers = () => {
     fetchTopGainers();
   }, []);
 
+  // function to fetch top gainers from the server
   const fetchTopGainers = async () => {
     try {
       const response = await fetch('/top-gainers'); 
       if (!response.ok) {
         throw new Error('Network response was not ok');
       }
-      const data = await response.json();
+      const data = await response.json();// parse response JSON
 
       if (Array.isArray(data)) {
         setGainers(data);
@@ -42,6 +46,7 @@ export const Top_gainers = () => {
     }
   };
 
+  // function to handle click event on a gainer item and navigate to detailed view
   const handleInputChange = (symbol: string) => {
       
     navigate(`/symbol/${symbol}`);
@@ -72,5 +77,5 @@ export const Top_gainers = () => {
     </div>
   );
 };
-
+// export the Top_gainers component as default
 export default Top_gainers;

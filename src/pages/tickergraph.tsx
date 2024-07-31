@@ -1,11 +1,18 @@
+// import React and attributes for side effects and state management
 import React, { useEffect, useState } from 'react';
+// import Line chart component from react-chartjs-2
 import { Line } from 'react-chartjs-2';
+// import axios for making HTTP requests
 import axios from 'axios';
+// import useParams hook for accessing URL parameters
 import { useParams } from 'react-router-dom';
+// import Chart.js components
 import { Chart, LineElement, BarElement, PointElement, LinearScale, CategoryScale, Title, Tooltip, Legend } from 'chart.js';
 
+// register Chart.js components to be used
 Chart.register(LineElement, BarElement, PointElement, LinearScale, CategoryScale, Title, Tooltip, Legend);
 
+// define TypeScript interface for historical stock data
 interface HistoricalData {
     date: string;
     open: number;
@@ -22,15 +29,18 @@ interface HistoricalData {
     changeOverTime: number;
 }
 
+// define TypeScript interface for stock data
 interface StockData {
     symbol: string;
     historical: HistoricalData[];
 }
 
+// function to determine color based on volume
 const getVolumeColor = (volume: number, threshold: number = 50000000) => {
     return volume > threshold ? 'rgba(0, 128, 0, 0.8)' : 'rgba(255, 0, 0, 0.8)';
 };
 
+// define the TickerGraph component as a functional React component
 export const TickerGraph: React.FC = () => {
     const [chartData, setChartData] = useState<any>(null);
     const [error, setError] = useState<string | null>(null);
@@ -130,5 +140,5 @@ export const TickerGraph: React.FC = () => {
         </div>
     );
 };
-
+// export the TickerGraph component as default
 export default TickerGraph;

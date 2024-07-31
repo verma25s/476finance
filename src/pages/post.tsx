@@ -1,6 +1,9 @@
+// import necessary React component
 import React, { useEffect, useState } from 'react';
+// import hooks for accessing route parameters and navigation
 import { useParams, useNavigate } from 'react-router-dom';
 
+// define the Post interface for TypeScript
 interface Post {
   title: string;
   email: string;
@@ -8,16 +11,19 @@ interface Post {
   timestamp: string;
 }
 
+// define the FullPost component
 export const FullPost = () => {
   const { title } = useParams<{ title: string }>();
   const [post, setPost] = useState<Post | null>(null);
   const [error, setError] = useState<string | null>(null);
   const navigate =  useNavigate();
 
+  // useEffect part to fetch the post data
   useEffect(() => {
     fetchPost();
   }, [title]);
 
+// function to fetch post data from the server
   const fetchPost = async () => {
     try {
       const response = await fetch(`/forum-posts/${title}`);
@@ -50,5 +56,5 @@ export const FullPost = () => {
     </div>
   );
 };
-
+// export the FullPost component as default
 export default FullPost;
