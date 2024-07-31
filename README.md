@@ -15,8 +15,8 @@ For the API's to work
 
 create a .env file in the api/ folder that looks like below:
 
-FLASK_APP=main.py
-secret_key= {FLASK Sesstion secret key}
-FINNHUB_API_KEY = 
-FMP_API_KEY = 
+FLASK_APP=main.py/n
+secret_key= {FLASK Sesstion secret key}/n
+FINNHUB_API_KEY = /n
+FMP_API_KEY = /n
 
