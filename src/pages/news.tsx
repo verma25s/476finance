@@ -1,8 +1,9 @@
+// import necessary React components
 import React, { useEffect, useState } from 'react';
+// import CSS for styling the component
 import './news.css';
 
-
-
+// defining the NewsArticle interface for TypeScript
 interface NewsArticle {
   category: string;
   datetime: number;
@@ -13,14 +14,16 @@ interface NewsArticle {
   
 }
 
-
+// defining the News component
 export const News = () => {
   const [newsFeed, setNewsFeed] = useState<NewsArticle[]>([]);
 
+  // useEffect part to fetch news when the component mounts
   useEffect(() => {
     const fetchNews = async () => {
       try {
         const response =  await fetch(`/news`);
+        // parse the JSON response
         const newsData = await response.json();
         setNewsFeed(newsData);
       } catch (error) {
@@ -30,8 +33,6 @@ export const News = () => {
 
     fetchNews();
   }, []);
-
-
     
   return (
 
@@ -52,5 +53,5 @@ export const News = () => {
     </div>
   );
 };
-
+// export the News component as default
 export default News;
