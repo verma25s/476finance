@@ -1,24 +1,31 @@
+// importing react
 import React, { useState } from 'react';
+// importing the CSS file 
 import './Taxes.css';
 
+// defining the TaxBracket interface with income and rate properties
 interface TaxBracket {
   income: string;
   rate: number;
 }
-
+// defining the ProvincialTaxBrackets interface as a dictionary with 
+// string keys and TaxBracket arrays as values
 interface ProvincialTaxBrackets {
   [key: string]: TaxBracket[];
 }
 
+// defining the Address interface with name and address properties
 interface Address {
   name: string;
   address: string;
 }
 
+// defining the ProvinceAddresses interface as a dictionary with string keys and Address arrays as values
 interface ProvinceAddresses {
   [key: string]: Address[];
 }
 
+// federal tax brackets array
 const federalTaxBrackets: TaxBracket[] = [
   { income: '$15,000 - $50,197', rate: 15 },
   { income: '$50,198 - $100,392', rate: 20.5 },
@@ -27,6 +34,7 @@ const federalTaxBrackets: TaxBracket[] = [
   { income: 'Over $221,708', rate: 33 }
 ];
 
+// provincial tax brackets for each province
 const provincialTaxBrackets: ProvincialTaxBrackets = {
   Alberta: [
     { income: 'Up to $15,705', rate: 0 },
@@ -115,7 +123,7 @@ const provincialTaxBrackets: ProvincialTaxBrackets = {
   ]
 };
 
-
+// province addresses for each province
 const provinceAddresses: ProvinceAddresses = {
   Alberta: [
     { name: "Alberta Tax Services Office", address: "9833 109 St NW, Edmonton, AB T5K 2E8" },
@@ -177,6 +185,7 @@ const taxServiceCompanies = [
   { name: 'KPMG', description: 'Professional services for complex tax situations.', link: 'https://home.kpmg/ca' }
 ];
 
+// defining functional component Taxes
 const Taxes: React.FC = () => {
   const [selectedProvince, setSelectedProvince] = useState<string>('Alberta');
   const [income, setIncome] = useState<string>('');
@@ -207,7 +216,7 @@ const Taxes: React.FC = () => {
       remainingIncome -= taxableIncome;
       return acc + (taxableIncome * bracket.rate / 100);
     }, 0);
-
+    // Tax calculater 
     setCalculatedTax(`Federal Tax: $${federalTax.toFixed(2)}, Provincial Tax: $${provincialTax.toFixed(2)}, Total Tax: $${(federalTax + provincialTax).toFixed(2)}`);
   };
 
@@ -362,5 +371,5 @@ const Taxes: React.FC = () => {
     </div>
   );
 };
-
+// exporting the Taxes component as the default export
 export default Taxes;
