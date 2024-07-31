@@ -1,7 +1,9 @@
+// import React attributes for managing side effects and state
 import  { useEffect, useState } from 'react';
+// import useNavigate attribute for programmatic navigation
 import { useNavigate } from 'react-router-dom';
 
-
+// define TypeScript interface for Loser data
 interface Loser {
   change: number;
   changesPercentage: number;
@@ -10,16 +12,19 @@ interface Loser {
   name: string;
   }
 
+// define the Top_losers component as a functional React component
 export const Top_losers = () =>{
   const [losers, setLosers] = useState<Loser[]>([]);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const navigate = useNavigate();
   
+  // effect component to fetch top losers when the component mounts
   useEffect(() => {
     fetchTopLosers();
   }, []);
 
+  // function to fetch top losers from the server
   const fetchTopLosers = async () => {
     try {
       const response = await fetch('/top-losers'); 
@@ -43,6 +48,8 @@ export const Top_losers = () =>{
 
     
   };
+
+  // function to handle click event on a loser item and navigate to detailed view
   const handleInputChange = (symbol: string) => {
       
     navigate(`/symbol/${symbol}`);
@@ -74,8 +81,7 @@ export const Top_losers = () =>{
 
 </div>
 
-
   );
  };
-
+// export the Top_losers component as default export 
 export default Top_losers;

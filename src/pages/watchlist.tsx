@@ -1,8 +1,11 @@
+// import React attributes for managing side effects and state
 import { useEffect, useState } from 'react';
+// import useNavigate attribute for programmatic navigation
 import { useNavigate } from 'react-router-dom';
+// import useCookies attribute for cookies management
 import { useCookies } from 'react-cookie';
 
-
+// define TypeScript interface for StockItem data
 interface StockItem {
   priceChange: number;
   currentPrice: number;
@@ -11,6 +14,7 @@ interface StockItem {
   previousClose:number;
 }
 
+// define the Watchlist component as a functional React component
 export const Watchlist = () => {
   const [watchlist, setWatchlist] = useState<string[]>([]);
   const [stocks, setStocks] = useState<StockItem[]>([]);
@@ -31,7 +35,7 @@ export const Watchlist = () => {
       try {
         const response = await fetch(`/get-watchlist?email=${cookies.userEmail}`);
         if (response.ok) {
-          const data = await response.json();
+          const data = await response.json();// parse response JSON
           console.log('Raw watchlist data:', data);
 
           let symbols: string[];
@@ -60,6 +64,7 @@ export const Watchlist = () => {
     fetchWatchlist();
   }, [cookies.userEmail]);
 
+  // effect hook to fetch stock details when the watchlist changes
   useEffect(() => {
     const fetchStockDetails = async () => {
      
@@ -78,6 +83,7 @@ export const Watchlist = () => {
               priceChange: data.priceChange,
               previousClose: data.previousClose
             });
+            // add stock details to the array
           } else {
             console.error(`Error fetching stock details for symbol: ${symbol}`);
           }
@@ -96,6 +102,7 @@ export const Watchlist = () => {
     }
   }, [watchlist]);
 
+  // handle loading state
   if (loading) {
     return <div className="top-trending">Loading...</div>;
   }
@@ -104,10 +111,12 @@ export const Watchlist = () => {
     return <div  className="top-trending">{error}</div>;
   }
 
+  // function to handle click event on a stock item and navigate to detailed view
   const handleInputChange = (symbol: string) => {
     navigate(`/symbol/${symbol}`);
   };
 
+  // function to determine CSS class based on price change
   const getSymbolClass = (change: number) => {
     return change < 0 ? 'symbol-losing' : 'symbol-gaining';
   };
@@ -137,5 +146,5 @@ export const Watchlist = () => {
     </div>
   );
 };
-
+// export the Watchlist component as default
 export default Watchlist;
