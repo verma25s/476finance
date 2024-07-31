@@ -1,6 +1,6 @@
-Project for course CS476 in University of Regina
+Project for course CS476 in University of Regina< br / >
 
-Requirements for back-end:
+Requirements for back-end:< br / >
 1. Flask
 2. bcrypt
 3. pymongo
@@ -8,15 +8,14 @@ Requirements for back-end:
 5. yfinance
 6. dotenv
 
-Requirements for front end:
+Requirements for front end:< br / >
 npm
 
-For the API's to work
+For the API's to work< br / >
 
-create a .env file in the api/ folder that looks like below:
+create a .env file in the api/ folder that looks like below:< br / >
 
-FLASK_APP=main.py/n
-secret_key= {FLASK Sesstion secret key}/n
-FINNHUB_API_KEY = /n
-FMP_API_KEY = /n
-
+FLASK_APP=main.py< br / >
+secret_key= {FLASK Sesstion secret key}< br / >
+FINNHUB_API_KEY = < br / >
+FMP_API_KEY = < br / >
