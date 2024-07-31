@@ -1,9 +1,9 @@
+// Necessary Import from React
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './CreateAccount.css';
 
-
-
+// react type function module (function creation)
 const CreateAccount = () => {
   const navigate = useNavigate();
   const [name, setName] = useState('');
@@ -13,30 +13,29 @@ const CreateAccount = () => {
   const [termsAccepted, setTermsAccepted] = useState(false);
   const [error, setError] = useState<string | null>(null);
   
-  
+  // form submission handling 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    // POST request data
     const response = await fetch('/register', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
+      // parse object as JSON
       body: JSON.stringify({ name, password, email, dob }),
     });
 
     const data = await response.json();
   
     if (response.ok) {
-      alert(data.success);
+      alert(data.success);// success alert
     } else {
-      alert(data.error);
+      alert(data.error);// error alert
     }
   };
-
   
-
-
-
+  
   return (
     <div className="create-account-container">
       <h1>476Finance</h1>
@@ -101,8 +100,6 @@ const CreateAccount = () => {
         Already have an account? <Link to="/login">Login here</Link>
       </p>
       </form>
-
-
 
     </div>
   );
