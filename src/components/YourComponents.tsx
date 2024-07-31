@@ -1,6 +1,8 @@
+// import the react library
 import React from 'react';
+// import the image from images library
 import images from './importImages';
-
+// fuctional defination of YourComponent(react component)
 const YourComponent: React.FC = () => {
     return (
         <div>
@@ -10,6 +12,6 @@ const YourComponent: React.FC = () => {
         </div>
     );
 };
-
+// export the YourComponent 
 export default YourComponent;
 
