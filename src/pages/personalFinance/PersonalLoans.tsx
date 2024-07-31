@@ -1,6 +1,9 @@
+// importing React
 import React, { useState } from 'react';
+// imorting CSS for personal loans
 import './PersonalLoans.css';
 
+// list of loan providers
 const providers = [
   {
     name: "TD",
@@ -40,10 +43,12 @@ const providers = [
   },
 ];
 
+// functional component for Personal Loans
 const PersonalLoans: React.FC = () => {
   const [activeInfoTab, setActiveInfoTab] = useState<string>('whatIs');
   const [activeProviderTab, setActiveProviderTab] = useState<string | null>(null);
 
+  // function to makeup for info tabs
   const renderInfoContent = () => {
     switch (activeInfoTab) {
       case 'whatIs':
@@ -55,6 +60,7 @@ const PersonalLoans: React.FC = () => {
     }
   };
 
+  // function to makeup for provider tabs
   const renderProviderContent = () => {
     if (activeProviderTab) {
       const provider = providers.find(p => p.name === activeProviderTab);
@@ -91,6 +97,7 @@ const PersonalLoans: React.FC = () => {
   );
 };
 
+// functional component for WhatIsTab
 const WhatIsTab: React.FC = () => (
   <div className="tab-pane">
     <h2>What is a Personal Loan?</h2>
@@ -101,7 +108,7 @@ const WhatIsTab: React.FC = () => (
     <p>Consider your loan purpose, interest rates, and repayment terms before applying.</p>
   </div>
 );
-
+// functional component for Tips Tab
 const TipsTab: React.FC = () => (
   <div className="tab-pane">
     <h2>Tips on Personal Loans</h2>
@@ -114,7 +121,7 @@ const TipsTab: React.FC = () => (
     </ul>
   </div>
 );
-
+// functional component for Provider Tab
 const ProviderTab: React.FC<{ provider: typeof providers[0] }> = ({ provider }) => (
   <div className="tab-pane">
     <h2>{provider.name}</h2>
@@ -124,5 +131,6 @@ const ProviderTab: React.FC<{ provider: typeof providers[0] }> = ({ provider }) 
   </div>
 );
 
+// exporting the PersonalLoans component as the default export
 export default PersonalLoans;
 
