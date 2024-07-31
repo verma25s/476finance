@@ -1,6 +1,9 @@
+//importing the react components for state & effect
 import React, { useState, useEffect } from 'react';
+// importing useCookies for cookie management
 import { useCookies } from 'react-cookie';
 
+// define the Message interface for TypeScript
 interface Message {
   _id: string;
   email: string;
@@ -8,17 +11,21 @@ interface Message {
   timestamp: Date;
 }
 
+// define the MessageBox component
 export const MessageBox = () => {
   const [messages, setMessages] = useState<Message[]>([]);
   const [newMessage, setNewMessage] = useState<string>('');
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<string | null>(null);
+  // use cookie hook to get the user email cookie
   const [cookies] = useCookies(['userEmail']); // Assuming you have set 'userEmail' cookie in your application
 
+  // fetch messages on component mount
   useEffect(() => {
     fetchMessages();
   }, []);
 
+  // function to fetch messages from the server
   const fetchMessages = async () => {
     try {
       const response = await fetch('/messages');
@@ -34,6 +41,7 @@ export const MessageBox = () => {
     }
   };
 
+  // function to handle the form submission
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if( cookies.userEmail){
@@ -97,4 +105,5 @@ export const MessageBox = () => {
   );
 };
 
+// exporting the MessageBox as the default export
 export default MessageBox;
