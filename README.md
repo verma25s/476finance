@@ -1,4 +1,4 @@
-Project for course CS476 in University of Regina< br / >
+Project for course CS476 in University of Regina<br/>
 
 Requirements for back-end:< br / >
 1. Flask
