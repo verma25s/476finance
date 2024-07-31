@@ -8,15 +8,15 @@ import './index.css';
 import App from './App';
 // import CookiesProvider for managing cookies in the app
 import { CookiesProvider } from "react-cookie";
- 
+
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 
 root.render(
 
-    <CookiesProvider>
+  <CookiesProvider>
     <App />
-    </CookiesProvider>
-    
+  </CookiesProvider>
+
 );

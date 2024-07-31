@@ -5,11 +5,11 @@ import { useNavigate } from 'react-router-dom';
 
 // define TypeScript interface for Trending stock data
 interface Trending {
-    change: number;
-    changesPercentage: number;
-    price: number;
-    symbol: string;
-    name:string;
+  change: number;
+  changesPercentage: number;
+  price: number;
+  symbol: string;
+  name: string;
 }
 
 // define the Trending component as a functional React component
@@ -18,8 +18,8 @@ export const Trending = () => {
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const navigate = useNavigate();
-  
-  
+
+
   useEffect(() => {
     fetchToptrending_stocks();
   }, []);
@@ -27,7 +27,7 @@ export const Trending = () => {
   // function to fetch trending stocks from the server
   const fetchToptrending_stocks = async () => {
     try {
-      const response = await fetch('/trending'); 
+      const response = await fetch('/trending');
       if (!response.ok) {
         throw new Error('Network response was not ok');
       }
@@ -35,14 +35,14 @@ export const Trending = () => {
 
       if (Array.isArray(data)) {
         settrending_stocks(data);
-        setLoading(false); 
+        setLoading(false);
       } else {
         throw new Error('Fetched data is not an array');
       }
     } catch (error) {
       setError('Error fetching top trending_stocks');
       console.error('Error fetching top trending_stocks:', error);
-      setLoading(false); 
+      setLoading(false);
     }
   };
 
@@ -55,8 +55,8 @@ export const Trending = () => {
   return (
     <div className="top-trending">
       <h1 className="cp">Trending</h1>
-        <hr />
-        <hr />
+      <hr />
+      <hr />
       {loading ? (
         <p>Loading...</p>
       ) : error ? (

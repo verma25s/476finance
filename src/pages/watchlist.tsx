@@ -11,7 +11,7 @@ interface StockItem {
   currentPrice: number;
   symbol: string;
   longName: string;
-  previousClose:number;
+  previousClose: number;
 }
 
 // define the Watchlist component as a functional React component
@@ -67,7 +67,7 @@ export const Watchlist = () => {
   // effect hook to fetch stock details when the watchlist changes
   useEffect(() => {
     const fetchStockDetails = async () => {
-     
+
       const stockDetails: StockItem[] = [];
 
       for (const symbol of watchlist) {
@@ -108,7 +108,7 @@ export const Watchlist = () => {
   }
 
   if (error) {
-    return <div  className="top-trending">{error}</div>;
+    return <div className="top-trending">{error}</div>;
   }
 
   // function to handle click event on a stock item and navigate to detailed view
@@ -135,7 +135,7 @@ export const Watchlist = () => {
             <div className="h5">{watchlistItem.currentPrice}</div>
             <div className="h4">{watchlistItem.longName}</div>
             <div className="positive h6">{(watchlistItem.currentPrice - watchlistItem.previousClose).toFixed(3)}</div>
-            
+
             <hr />
             <hr />
           </div>
