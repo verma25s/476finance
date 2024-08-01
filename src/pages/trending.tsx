@@ -1,9 +1,6 @@
-// import React atributes for managing side effects and state
 import { useEffect, useState } from 'react';
-// import useNavigate atribute for programmatic navigation
 import { useNavigate } from 'react-router-dom';
 
-// define TypeScript interface for Trending stock data
 interface Trending {
   change: number;
   changesPercentage: number;
@@ -12,7 +9,6 @@ interface Trending {
   name: string;
 }
 
-// define the Trending component as a functional React component
 export const Trending = () => {
   const [trending_stocks, settrending_stocks] = useState<Trending[]>([]);
   const [error, setError] = useState<string | null>(null);
@@ -24,7 +20,6 @@ export const Trending = () => {
     fetchToptrending_stocks();
   }, []);
 
-  // function to fetch trending stocks from the server
   const fetchToptrending_stocks = async () => {
     try {
       const response = await fetch('/trending');
@@ -46,7 +41,6 @@ export const Trending = () => {
     }
   };
 
-  // function to handle click event on a trending stock item and navigate to detailed view
   const handleInputChange = (symbol: string) => {
     //Navigate to the tickerPage    
     navigate(`/symbol/${symbol}`);
@@ -77,5 +71,4 @@ export const Trending = () => {
     </div>
   );
 };
-// export the Trending component as default export
 export default Trending;

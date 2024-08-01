@@ -1,8 +1,5 @@
-// importing react
 import React, { useState } from 'react';
-// import CSS styling
 import './MortgageCalculator.css';
-// list of canadian provinces and territories
 const provinces = [
   "Alberta", "British Columbia", "Manitoba", "New Brunswick",
   "Newfoundland and Labrador", "Northwest Territories", "Nova Scotia",
@@ -23,7 +20,6 @@ const MortgageCalculator: React.FC = () => {
   const [propertyTax, setPropertyTax] = useState<number | string>(1336.87);
   const [heatingCost, setHeatingCost] = useState<number | string>(175);
   const [errors, setErrors] = useState<{ income?: string, downPayment?: string }>({});
-  // function to validate user inputs
   const validateInputs = () => {
     let isValid = true;
     const newErrors: { income?: string, downPayment?: string } = {};
@@ -45,7 +41,6 @@ const MortgageCalculator: React.FC = () => {
     return isValid;
   };
 
-  //function to calculate affordable mortgage
   const calculateAffordability = () => {
     if (!validateInputs()) return;
 
@@ -177,5 +172,4 @@ const MortgageCalculator: React.FC = () => {
     </div>
   );
 };
-// export the MortgageCalculator as default export
 export default MortgageCalculator;

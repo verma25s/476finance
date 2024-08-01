@@ -1,15 +1,13 @@
-// import necessary React component
 import React, { useState } from 'react';
-// import useNavigate hook from react-router-dom
 import { useNavigate } from 'react-router-dom';
 
-// define the Stock interface for TypeScript
+
 interface Stock {
   symbol: string;
   description: string;
 }
 
-// define the SearchBar component
+ 
 export const SearchBar = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [searchResults, setSearchResults] = useState<Stock[]>([]);
@@ -17,7 +15,7 @@ export const SearchBar = () => {
   const [error, setError] = useState<string | null>(null);
   const navigate = useNavigate();
 
-  // handler function for search input changes
+   
   const handleSearchInputChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
     const query = event.target.value;
     setSearchQuery(query);
@@ -47,14 +45,14 @@ export const SearchBar = () => {
 
   };
 
-  // handler function for when a search result is clicked
+   
   const handleClick = (symbol: string) => {
     setSearchQuery('');
     setSearchResults([]);
     navigate(`/symbol/${symbol}`);
   };
 
-  // handler function to cancel the search
+   
   const handleCancel = () => {
     setSearchQuery('');
     setSearchResults([]);
@@ -89,5 +87,4 @@ export const SearchBar = () => {
     </div>
   );
 };
-// export the SearchBar component as default
 export default SearchBar;

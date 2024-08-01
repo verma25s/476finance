@@ -1,16 +1,12 @@
-// Necessary Imports for react, navigation, css and cookies
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './Login.css';
 import { useCookies } from 'react-cookie';
 
-//global login status 
 let isLoggedInState = false;
-// function to access the global login state
 export const getIsLoggedIn = () => {
   return isLoggedInState;
 };
-// function to modify the global login state
 export const setIsLoggedIn = (loggedIn: boolean) => {
   isLoggedInState = loggedIn;
 };
@@ -25,7 +21,6 @@ export const Login = () => {
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    // send POST request to endpoint with user credentials
     try {
       const response = await fetch('/login', {
         method: 'POST',

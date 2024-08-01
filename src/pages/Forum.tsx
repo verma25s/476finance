@@ -1,13 +1,9 @@
-// importing React and attributes for state and effect
 import React, { useState, useEffect } from 'react';
-// importing useCookies for cookie management
 import { useCookies } from 'react-cookie';
-// importing Link and useNavigate from react-router-dom for navigation
 import {Link, useNavigate} from 'react-router-dom';
-// importing CSS for styling
 import "./Forum.css";
 
-// defining the ForumPost interface  
+
 interface ForumPost {
   _id: string;
   email: string;
@@ -16,7 +12,7 @@ interface ForumPost {
   timestamp: Date;
 }
 
-// function component defining
+
 export const Forum = () => {
   const [posts, setPosts] = useState<ForumPost[]>([]);
   const [newPost, setNewPost] = useState<{ title: string; content: string }>({ title: '', content: '' });
@@ -28,7 +24,7 @@ export const Forum = () => {
     fetchPosts();
   }, []);
 
-  // function to fetch posts from the server
+
   const fetchPosts = async () => {
     try {
       const response = await fetch('/forum-posts');
@@ -44,7 +40,6 @@ export const Forum = () => {
     }
   };
 
-  // function to handle adding a new post
   const handleAddPost = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if( cookies.userEmail) {try {
@@ -71,7 +66,6 @@ export const Forum = () => {
     else{setError('Please Login First')}
   };
 
-// function to handle deleting a post
   const handleDeletePost = async (postId: string) => {
     if( cookies.userEmail) {
          try {
@@ -95,7 +89,6 @@ export const Forum = () => {
     
   };
 
-  // function to handle clicking on a post to view its details
   const handlePostClick = (postTitle: string) => {
     navigate(`/forum/${postTitle}`);
   };
@@ -147,5 +140,4 @@ export const Forum = () => {
   );
 };
 
-// exporting the Forum as the default export
 export default Forum;

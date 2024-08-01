@@ -1,12 +1,10 @@
 // Market.tsx
-// imports necessary react libraries
 import React from 'react';
 import { Routes, Route, Link } from 'react-router-dom';
 import {Top_gainers} from '../top_gainers';
 import {Top_losers} from '../Top_losers';
 import {Crypto} from '../crypto';
 import Trending from '../trending';
-// function component defination 
 export const Market = () => {
   return (
     <div>
@@ -29,5 +27,4 @@ export const Market = () => {
     </div>
   );
 }
-// exports the market component as a default export
 export default Market;

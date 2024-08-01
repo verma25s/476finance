@@ -1,18 +1,10 @@
-// import React library
 import React from 'react';
-// import React Router components for routing
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
-// import global CSS styles for the app
 import './app.css';
-// import CSS styles specific to the home page
 import './pages/home.css';
-// import Nav component
 import Nav from './components/Nav';
-// import Footer Component
 import Footer from './components/Footer';
-// import Aside Component
 import Aside from './components/Aside';
-// import Header Component
 import Header from './components/Header';
 
 //Pages
@@ -51,7 +43,6 @@ import BestBalanceTransferCard from './pages/personalFinance/creditCard/BestBala
 // src/App.tsx
 import { useCookies } from 'react-cookie';
 
-// define the main App component
 const App = () => {
   const [cookies, setCookie, removeCookie] = useCookies(['userEmail']);
   return (
@@ -88,7 +79,6 @@ const App = () => {
   );
 };
 
-// define MainContent component to display main sections of the app
 const MainContent = () => {
   return (
     <main>
@@ -111,14 +101,12 @@ const MainContent = () => {
   );
 };
 
-// define SectionProps interface for Section component props
 interface SectionProps {
   id: string;
   title: string;
   content: React.ReactNode;
 }
 
-// define Section component to render a section of content
 const Section: React.FC<SectionProps> = ({ id, title, content }) => {
   return (
     <section id={id}>
@@ -127,5 +115,4 @@ const Section: React.FC<SectionProps> = ({ id, title, content }) => {
   );
 };
 
-// export the App component as default 
 export default App;

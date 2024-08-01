@@ -1,20 +1,12 @@
 // ./pages/personalFinance/PersonalFinance.tsx
-// importing react 
 import React from 'react';
-// importing react's (link,routes,route) part
 import { Link, Routes, Route } from 'react-router-dom';
-// importing component of  credit cards
 import CreditCard from './creditCard/CreditCard'; 
-// importing component of  personal loans
 import PersonalLoans from './PersonalLoans';
-// importing component of  mortgage calculator
 import MortgageCalculator from './MortgageCalculator';
-// importing component of  taxes
 import Taxes from './Taxes';
-// importing CSS component of PersonalFinance
 import './PersonalFinance.css';
 
-// function component for Personal FInance
 const PersonalFinance: React.FC = () => {
   return (
     <div className="personal-finance-container"> 
@@ -35,5 +27,4 @@ const PersonalFinance: React.FC = () => {
     </div>
   );
 };
-// exporting the PersonalFinance component as the default export
 export default PersonalFinance;

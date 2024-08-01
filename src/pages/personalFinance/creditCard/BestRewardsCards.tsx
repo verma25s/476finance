@@ -1,14 +1,11 @@
 // ./pages/personalFinance/creditCard/BestRewardsCard.tsx
-// import react library
 import React from 'react';
 import './CreditCardCategory.css'; // Import the styles
-// import credit card images
 import amexCobalt from '../../../components/images/amex_cobalt.png';
 import scotiaGold from '../../../components/images/scotia_gold.png';
 import bmoAscend from '../../../components/images/bmo_ascend.png';
 import rbcAvionInfinite from '../../../components/images/rbc_avioninfinite.png';
 
-// define the BestRewardsCards functional component
 const BestRewardsCards: React.FC = () => {
     return (
         <div className="credit-card-category-container">
@@ -54,5 +51,4 @@ const BestRewardsCards: React.FC = () => {
         </div>
     );
 };
-// export the BestRewardsCards component as default export
 export default BestRewardsCards;

@@ -1,17 +1,10 @@
-// import React and attributes for managing state and side effects
 import React, { useState, useEffect } from 'react';
-// import useParams hook for accessing URL parameters
 import { useParams } from 'react-router-dom';
-// import CSS for styling
 import './news.css';
-// import useCookies hook for handling cookies
 import { useCookies } from 'react-cookie';
-// import the TickerGraph component
 import { TickerGraph } from './tickergraph';
-// import the StockNews component
 import {StockNews} from './stocknews';
 
-// define TypeScript interface for stock data
 interface StockData {
   symbol: string;
   shortName: string;
@@ -53,7 +46,6 @@ interface StockData {
   // Add more fields as needed
 }
 
-// define the TickerPage component as a functional React component
 export const TickerPage = () => {
   const { symbol } = useParams<{ symbol: string }>();
   const [stockData, setStockData] = useState<StockData | null>(null);
@@ -63,8 +55,7 @@ export const TickerPage = () => {
   const [watchlistError, setWatchlistError] = useState<string | null>(null);
   const [cookies] = useCookies(['userEmail']);
 
-  // effect hook to fetch stock data when the component mounts or the symbol changes
-  useEffect(() => {
+   useEffect(() => {
     const fetchStockData = async () => {
       try {
         const response = await fetch(`/stock/${symbol}`);
@@ -82,8 +73,7 @@ export const TickerPage = () => {
     fetchStockData();
   }, [symbol]);
 
-  // effect hook to check if the stock is in the user's watchlist
-  useEffect(() => {
+   useEffect(() => {
     const checkIfInWatchlist = async () => {
       if (!symbol) return;
       setWatchlistLoading(true);
@@ -105,8 +95,7 @@ export const TickerPage = () => {
     checkIfInWatchlist();
   }, [symbol]);
 
-  // function to handle adding stock to the watchlist
-  const handleAddToWatchlist = async () => {
+   const handleAddToWatchlist = async () => {
     if (!symbol) return;
     try {
       const response = await fetch('/add-to-watchlist', {
@@ -126,8 +115,7 @@ export const TickerPage = () => {
     }
   };
 
-  // function to handle removing stock from the watchlist
-  const handleRemoveFromWatchlist = async () => {
+   const handleRemoveFromWatchlist = async () => {
     if (!symbol) return;
     try {
       const response = await fetch('/remove-from-watchlist', {
@@ -158,7 +146,7 @@ export const TickerPage = () => {
   // function to format number values
   const formatValue = (value: number | undefined) => value !== undefined ? value.toLocaleString() : 'N/A';
 
-  // define rows for displaying stock metrics in a table
+  // rows for displaying stock metrics in a table
   const rows = [
     { label: 'Symbol', value: stockData.symbol },
     { label: 'Company Name', value: stockData.shortName },
@@ -259,5 +247,4 @@ export const TickerPage = () => {
     </div>
   );
 };
-// export the TickerPage component as default
 export default TickerPage;

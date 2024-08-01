@@ -1,9 +1,7 @@
-// Necessary Import from React
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './CreateAccount.css';
 
-// react type function module (function creation)
 const CreateAccount = () => {
   const navigate = useNavigate();
   const [name, setName] = useState('');

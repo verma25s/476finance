@@ -1,14 +1,10 @@
-// ./pages/personalFinance/creditCard/BestBalanceTransferCard.tsx
 import React from 'react';
-// import the CSS file for styling
 import './CreditCardCategory.css'; // Import the styles
-// importing images for various card
 import scotiaValue from '../../../components/images/scotia_value.png';
 import cibcSelect from '../../../components/images/cibc_select.png';
 import mbnaElite from '../../../components/images/mbna_elite.png';
 import bmoPreferredRate from '../../../components/images/bmo_preferredrate.png';
 
-// define the functional component BestBalanceTransferCard
 const BestBalanceTransferCard: React.FC = () => {
     return (
         <div className="credit-card-category-container">
@@ -54,5 +50,4 @@ const BestBalanceTransferCard: React.FC = () => {
         </div>
     );
 };
-// export the component for use in other parts of the application
 export default BestBalanceTransferCard;

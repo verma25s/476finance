@@ -1,12 +1,10 @@
 // ./pages/personalFinance/creditCard/BestCreditCard.tsx
 import React from 'react';
 import './CreditCardCategory.css'; // Import the styles
-// import credit cards images
 import amexPlatinum from '../../../components/images/amex_platinum.png';
 import capitalSilver from '../../../components/images/capital_silver.png';
 import cibcInfinite from '../../../components/images/cibc_infiniteprivilege.png';
 
-// define the BestCreditCard functional component
 const BestCreditCard: React.FC = () => {
     return (
         <div className="credit-card-category-container">
@@ -42,5 +40,4 @@ const BestCreditCard: React.FC = () => {
         </div>
     );
 };
-// export the BestCreditCard component as default export
 export default BestCreditCard;

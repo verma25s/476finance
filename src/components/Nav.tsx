@@ -1,13 +1,10 @@
-// import the react
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './Nav.css';
 
-// Nav Component function defination
 interface NavProps {
   menuOpen: boolean;
 }
-// New Nav Component
 const Nav: React.FC<NavProps> = ({ menuOpen }) => {
   return (
     // Creating of the Unordered List for menu store
