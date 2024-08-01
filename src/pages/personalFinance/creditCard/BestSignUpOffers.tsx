@@ -1,17 +1,20 @@
 // ./pages/personalFinance/creditCard/BestSignUpOffer.tsx
+// import react library
 import React from 'react';
 import './CreditCardCategory.css'; // Import the styles
+// import credit cards images
 import scotiaPassport from '../../../components/images/scotia_passportinfinite.png';
 import cibcAventureInfinite from '../../../components/images/cibc_aventurainfinite.png';
 import amexGold from '../../../components/images/amex_gold.png';
 
+// define the BestSignUpOffers functional component
 const BestSignUpOffers: React.FC = () => {
     return (
         <div className="credit-card-category-container">
             <h1>BEST SIGN-UP OFFERS</h1>
             <div className="ranked-cards">
                 <div className="card">
-                    <img src={amexGold}alt="Sign Up Offer Card 1" />
+                    <img src={amexGold} alt="Sign Up Offer Card 1" />
                     <p>
                         <strong>1. American Express® Gold Rewards Card</strong><br />
                         <em>Annual Fee:</em> $150<br />
@@ -41,5 +44,5 @@ const BestSignUpOffers: React.FC = () => {
         </div>
     );
 };
-
+// export the BestSignUpOffers component as default export
 export default BestSignUpOffers;

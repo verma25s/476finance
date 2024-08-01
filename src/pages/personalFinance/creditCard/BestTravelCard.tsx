@@ -1,12 +1,14 @@
 // ./pages/personalFinance/creditCard/BestTravelCard.tsx
+// import react library
 import React from 'react';
 import './CreditCardCategory.css'; // Import the styles
+// import credit cards images
 import scotiaGold from '../../../components/images/scotia_gold.png';
 import amexAeroplan from '../../../components/images/amex_aeroplan.png';
 import rbcEliteWestjet from '../../../components/images/rbc_elitewestjet.png';
 import cibcAventuraInfinite from '../../../components/images/cibc_aventurainfinite.png';
 
-
+// define the BestTravelCard functional component
 const BestTravelCard: React.FC = () => {
     return (
         <div className="credit-card-category-container">
@@ -52,5 +54,5 @@ const BestTravelCard: React.FC = () => {
         </div>
     );
 };
-
+// export the BestTravelCard component as default export
 export default BestTravelCard;

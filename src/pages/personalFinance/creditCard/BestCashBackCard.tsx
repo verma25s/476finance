@@ -1,11 +1,15 @@
 // ./pages/personalFinance/creditCard/BestCashBackCard.tsx
+// import react library
 import React from 'react';
+// import the css file for styling
 import './CreditCardCategory.css'; // Import the styles
+// import credit cards images
 import scotiaMomenutumPlus from '../../../components/images/scotia_monemtum+.png';
 import amexSimpleCash from '../../../components/images/amex_simplecash.png';
 import bmoPreferredRate from '../../../components/images/bmo_preferredrate.png';
 import tangerineMoneyBack from '../../../components/images/tangerine_moneyback.png';
 
+// define the BestCashBackCard functional component
 const BestCashBackCard: React.FC = () => {
     return (
         <div className="credit-card-category-container">
@@ -51,5 +55,5 @@ const BestCashBackCard: React.FC = () => {
         </div>
     );
 };
-
+// export the BestCashBackCard component as default export
 export default BestCashBackCard;

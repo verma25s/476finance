@@ -1,5 +1,7 @@
 // ./pages/personalFinance/creditCard/CreditCard.tsx
+// import react library
 import React, { useState } from 'react';
+// import Link from react-router-dom for navigation
 import { Link } from 'react-router-dom';
 import './CreditCard.css'; // Import the styles
 import CardRecommendationForm from '../../../components/CardRecommendationForm';
@@ -10,7 +12,7 @@ import amexPlatinum from '../../../components/images/amex_platinum.png';
 import capitalSilver from '../../../components/images/capital_silver.png';
 import cibcInfinite from '../../../components/images/cibc_infiniteprivilege.png';
 
-
+// define the CreditCard functional component
 const CreditCard: React.FC = () => {
     const [recommendationCriteria, setRecommendationCriteria] = useState<{ useType: string; benefit: string; annualFee: string } | null>(null);
 
@@ -50,7 +52,7 @@ const CreditCard: React.FC = () => {
             <h2>Featured Credit Card Reviews</h2>
             <div className="featured-cards">
                 <div className="card">
-                   <img src={amexPlatinum} alt="The Platinum Card from American Express" />
+                    <img src={amexPlatinum} alt="The Platinum Card from American Express" />
                     <p>
                         <strong>The Platinum Card® from American Express</strong><br />
                         <em>Annual Fee:</em> $799<br />
@@ -81,5 +83,5 @@ const CreditCard: React.FC = () => {
         </div>
     );
 };
-
+// export the CreditCard component as default export
 export default CreditCard;

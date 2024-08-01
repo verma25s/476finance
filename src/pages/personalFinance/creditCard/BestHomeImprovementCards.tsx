@@ -1,11 +1,14 @@
 // ./pages/personalFinance/creditCard/BestHomeImprovementCard.tsx
+// import react library
 import React from 'react';
 import './CreditCardCategory.css'; // Import the styles
+// import credit cards images
 import scotiaScene from '../../../components/images/scotia_scene.png';
 import homedepotCustomerCreditCard from '../../../components/images/homedepot_customercard.png';
 import lowesAdvantage from '../../../components/images/lowes_advantage.png';
 import canadiantireTriangle from '../../../components/images/canadiantire_triangle.png';
 
+// define the BestHomeImprovementCard functional component
 const BestHomeImprovementCard: React.FC = () => {
     return (
         <div className="credit-card-category-container">
@@ -51,5 +54,5 @@ const BestHomeImprovementCard: React.FC = () => {
         </div>
     );
 };
-
+// export the BestHomeImprovementCard component as default export
 export default BestHomeImprovementCard;
