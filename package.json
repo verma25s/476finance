@@ -26,10 +26,10 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
+    "start-client": "npm start",
     "start-api": "set FLASK_APP=api/main.py && flask run",
     "install-all": "pip install -r api/requirements.txt && npm install",
-     "run-all": "start cmd /c npm run start-api && start cmd /c npm start"
-    
+    "run-all": "npm-run-all --parallel start-api start-client"
   },
   "eslintConfig": {
     "extends": [
@@ -55,6 +55,7 @@
     "concurrently": "^6.0.0",
     "cross-env": "^7.0.3",
     "file-loader": "^6.2.0",
+    "npm-run-all": "^4.1.5",
     "react-router-dom": "^6.23.1"
   },
   "proxy": "http://localhost:5000/"

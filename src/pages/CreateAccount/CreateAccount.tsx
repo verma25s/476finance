@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './CreateAccount.css';
 
-const CreateAccount = () => {
+export const CreateAccount = () => {
   const navigate = useNavigate();
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -12,8 +12,8 @@ const CreateAccount = () => {
   const [error, setError] = useState<string | null>(null);
   
   // form submission handling 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+  const handleSubmit = async () => {
+  
     // POST request data
     const response = await fetch('/register', {
       method: 'POST',
@@ -27,12 +27,8 @@ const CreateAccount = () => {
     const data = await response.json();
   
     if (response.ok) {
-<<<<<<< HEAD
-      alert(data.success);
-      navigate('/');
-=======
       alert(data.success);// success alert
->>>>>>> 287fbc7b90d179455fb740e450500034588ee077
+      navigate('/');
     } else {
       alert(data.error);// error alert
     }

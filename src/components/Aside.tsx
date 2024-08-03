@@ -34,12 +34,8 @@ const Aside = () => {
           console.log('Logout successful');
 
         }
-<<<<<<< HEAD
-        catch(error) { console.log("Logout Error");}
-=======
         // catches error
         catch {}
->>>>>>> 287fbc7b90d179455fb740e450500034588ee077
 
         if (getIsLoggedIn()) {
           // Perform logout actions
@@ -69,7 +65,7 @@ const Aside = () => {
         </div>
         }
 
-        {/*If the user is logged in show*/
+        {/*If the user is logged in */
         cookies.userEmail &&
         <div className="auth-buttons-sidebar">
         

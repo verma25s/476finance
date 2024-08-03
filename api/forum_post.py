@@ -1,4 +1,4 @@
-from main import app,finance476_database
+from main import app,Client
 from flask import Flask, request, jsonify, session
 from flask_pymongo import PyMongo
 from flask_cors import CORS
@@ -9,7 +9,7 @@ from pymongo import MongoClient,DESCENDING
 
 
 
-fn = finance476_database
+fn = Client.finance476_database
 #Contact to formposts collection
 forumposts = fn.forumposts
 

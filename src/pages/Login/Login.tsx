@@ -19,8 +19,8 @@ export const Login = () => {
   const [cookies, setCookie] = useCookies(['userEmail']);
 
 
-  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
+  const handleSubmit = async () => {
+  
     try {
       const response = await fetch('/login', {
         method: 'POST',
