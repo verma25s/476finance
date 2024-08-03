@@ -27,8 +27,8 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "start-client":"npm start",
-    "start-api:windows": "set FLASK_APP=api/main.py && npm start",
-    "start-api:unix": "export FLASK_APP=api/main.py npm start",
+    "start-api:windows": "set FLASK_APP=api/main.py && flask run",
+    "start-api:unix": "export FLASK_APP=api/main.py && flask run",
     "install-all": "pip install -r api/requirements.txt && npm install",
     "run-all:windows": "npm-run-all --parallel start-api:windows start-client",
     "run-all:unix": "npm-run-all --parallel start-api:unix  start-client"
