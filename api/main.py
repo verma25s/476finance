@@ -26,7 +26,7 @@ MONGODB_URI = os.getenv('MONGODB_URI')
 
 #Start the mongo client
 
-Client = MongoClient(MONGODB_URI,tlsCAFile=certifi.where())
+Client = MongoClient(MONGODB_URI)
 #Connect to database
 fn_database = Client.finance476_database
 
