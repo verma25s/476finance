@@ -4,7 +4,7 @@ import {Link, useNavigate} from 'react-router-dom';
 import "./Forum.css";
 
 
-interface ForumPost {
+interface ForumPost {// Create a form post interface for typescript
   _id: string;
   email: string;
   title:string;

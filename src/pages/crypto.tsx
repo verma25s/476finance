@@ -15,11 +15,11 @@ export const Crypto = () => {
   const [loading, setLoading] = useState<boolean>(true);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    fetchTopGainers();
+  useEffect(() => {// 
+    fetchCrypto();
   }, []);
 
-  const fetchTopGainers = async () => {
+  const fetchCrypto = async () => {
     try {
       const response = await fetch('/getcryptolist'); // Adjust API endpoint as needed
       if (!response.ok) {
@@ -42,7 +42,7 @@ export const Crypto = () => {
 
   const handleInputChange = (symbol: string) => {
       
-    navigate(`/symbol/${symbol}`);
+    navigate(`/symbol/${symbol}`); // On click go to the stock page
   };
 
   return (
@@ -50,7 +50,7 @@ export const Crypto = () => {
       <h1 className="cp">Cryptocurrencies</h1>
       <hr />
       <hr />
-      {loading ? (
+      {loading ? ( 
         <p>Loading...</p>
       ) : error ? (
         <p>{error}</p>
