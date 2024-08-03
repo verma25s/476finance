@@ -6,7 +6,6 @@ import amexAeroplan from '../../../components/images/amex_aeroplan.png';
 import rbcEliteWestjet from '../../../components/images/rbc_elitewestjet.png';
 import cibcAventuraInfinite from '../../../components/images/cibc_aventurainfinite.png';
 
-
 const BestTravelCard: React.FC = () => {
     return (
         <div className="credit-card-category-container">
@@ -52,5 +51,4 @@ const BestTravelCard: React.FC = () => {
         </div>
     );
 };
-
 export default BestTravelCard;

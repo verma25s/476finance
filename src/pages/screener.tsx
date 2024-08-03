@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-
 interface Stock {
   symbol: string;
   companyName: string;
@@ -278,5 +277,4 @@ export const Screener: React.FC = () => {
     </div>
   );
 };
-
 export default Screener;

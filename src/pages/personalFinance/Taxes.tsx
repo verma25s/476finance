@@ -5,7 +5,6 @@ interface TaxBracket {
   income: string;
   rate: number;
 }
-
 interface ProvincialTaxBrackets {
   [key: string]: TaxBracket[];
 }
@@ -115,7 +114,6 @@ const provincialTaxBrackets: ProvincialTaxBrackets = {
   ]
 };
 
-
 const provinceAddresses: ProvinceAddresses = {
   Alberta: [
     { name: "Alberta Tax Services Office", address: "9833 109 St NW, Edmonton, AB T5K 2E8" },
@@ -207,7 +205,7 @@ const Taxes: React.FC = () => {
       remainingIncome -= taxableIncome;
       return acc + (taxableIncome * bracket.rate / 100);
     }, 0);
-
+    // Tax calculater 
     setCalculatedTax(`Federal Tax: $${federalTax.toFixed(2)}, Provincial Tax: $${provincialTax.toFixed(2)}, Total Tax: $${(federalTax + provincialTax).toFixed(2)}`);
   };
 
@@ -362,5 +360,4 @@ const Taxes: React.FC = () => {
     </div>
   );
 };
-
 export default Taxes;

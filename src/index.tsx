@@ -10,9 +10,8 @@ const root = ReactDOM.createRoot(
 
 root.render(
 
-    <CookiesProvider>
+  <CookiesProvider>
     <App />
-    </CookiesProvider>
-    
-);
+  </CookiesProvider>
 
+);

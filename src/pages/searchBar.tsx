@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+
 interface Stock {
   symbol: string;
   description: string;
 }
 
-
+ 
 export const SearchBar = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [searchResults, setSearchResults] = useState<Stock[]>([]);
@@ -14,6 +15,7 @@ export const SearchBar = () => {
   const [error, setError] = useState<string | null>(null);
   const navigate = useNavigate();
 
+   
   const handleSearchInputChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
     const query = event.target.value;
     setSearchQuery(query);
@@ -41,17 +43,16 @@ export const SearchBar = () => {
       setSearchResults([]);
     }
 
-    
-
   };
 
+   
   const handleClick = (symbol: string) => {
     setSearchQuery('');
     setSearchResults([]);
     navigate(`/symbol/${symbol}`);
   };
 
-
+   
   const handleCancel = () => {
     setSearchQuery('');
     setSearchResults([]);
@@ -86,5 +87,4 @@ export const SearchBar = () => {
     </div>
   );
 };
-
 export default SearchBar;

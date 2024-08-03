@@ -5,9 +5,10 @@ import './Nav.css';
 interface NavProps {
   menuOpen: boolean;
 }
-
 const Nav: React.FC<NavProps> = ({ menuOpen }) => {
   return (
+    // Creating of the Unordered List for menu store
+    // 2 Dropdown menus for Market & Personal Finance
     <nav>
       <ul className={menuOpen ? 'show' : 'hide'}>
         <li><Link to="/forum">Forum</Link></li>

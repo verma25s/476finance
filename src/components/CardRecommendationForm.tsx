@@ -6,8 +6,11 @@ interface Props {
 }
 
 const CardRecommendationForm: React.FC<Props> = ({ onSubmit }) => {
+    // this initializes useType state with an empty string
     const [useType, setUseType] = useState('');
+    // this initializes benefit state with an empty string
     const [benefit, setBenefit] = useState('');
+    // this initializes annualFee state with an empty string
     const [annualFee, setAnnualFee] = useState('');
 
     const handleUseTypeChange = (value: string) => {

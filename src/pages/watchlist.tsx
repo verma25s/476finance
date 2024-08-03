@@ -2,13 +2,12 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useCookies } from 'react-cookie';
 
-
 interface StockItem {
   priceChange: number;
   currentPrice: number;
   symbol: string;
   longName: string;
-  previousClose:number;
+  previousClose: number;
 }
 
 export const Watchlist = () => {
@@ -31,7 +30,7 @@ export const Watchlist = () => {
       try {
         const response = await fetch(`/get-watchlist?email=${cookies.userEmail}`);
         if (response.ok) {
-          const data = await response.json();
+          const data = await response.json();// parse response JSON
           console.log('Raw watchlist data:', data);
 
           let symbols: string[];
@@ -60,9 +59,10 @@ export const Watchlist = () => {
     fetchWatchlist();
   }, [cookies.userEmail]);
 
+
   useEffect(() => {
     const fetchStockDetails = async () => {
-     
+
       const stockDetails: StockItem[] = [];
 
       for (const symbol of watchlist) {
@@ -77,6 +77,7 @@ export const Watchlist = () => {
               priceChange: data.priceChange,
               previousClose: data.previousClose
             });
+            // add stock details to the array
           } else {
             console.error(`Error fetching stock details for symbol: ${symbol}`);
           }
@@ -95,6 +96,7 @@ export const Watchlist = () => {
     }
   }, [watchlist]);
 
+
   if (loading) {
     return <div className="top-trending"><p className="h3">Loading...</p></div>;
   }
@@ -102,6 +104,7 @@ export const Watchlist = () => {
   if (error) {
     return <div  className="top-trending"><p className="h3">{error}</p></div>;
   }
+
 
   const handleInputChange = (symbol: string) => {
     navigate(`/symbol/${symbol}`);
@@ -122,7 +125,7 @@ export const Watchlist = () => {
             <div className="h5">{watchlistItem.currentPrice}</div>
             <div className="h4">{watchlistItem.longName}</div>
             <div className="positive h6">{(watchlistItem.currentPrice - watchlistItem.previousClose).toFixed(3)}</div>
-            
+
             <hr />
             <hr />
           </div>
@@ -133,5 +136,4 @@ export const Watchlist = () => {
     </div>
   );
 };
-
 export default Watchlist;

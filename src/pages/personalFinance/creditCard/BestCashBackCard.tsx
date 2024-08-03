@@ -51,5 +51,4 @@ const BestCashBackCard: React.FC = () => {
         </div>
     );
 };
-
 export default BestCashBackCard;

@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 
-
 interface Gainer {
   change: number;
   changesPercentage: number;
@@ -27,7 +26,7 @@ export const Top_gainers = () => {
       if (!response.ok) {
         throw new Error('Network response was not ok');
       }
-      const data = await response.json();
+      const data = await response.json();// parse response JSON
 
       if (Array.isArray(data)) {
         setGainers(data);
@@ -72,5 +71,4 @@ export const Top_gainers = () => {
     </div>
   );
 };
-
 export default Top_gainers;

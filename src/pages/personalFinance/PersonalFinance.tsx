@@ -1,7 +1,7 @@
 // ./pages/personalFinance/PersonalFinance.tsx
 import React from 'react';
 import { Link, Routes, Route } from 'react-router-dom';
-import CreditCard from './creditCard/CreditCard';
+import CreditCard from './creditCard/CreditCard'; 
 import PersonalLoans from './PersonalLoans';
 import MortgageCalculator from './MortgageCalculator';
 import Taxes from './Taxes';
@@ -27,5 +27,4 @@ const PersonalFinance: React.FC = () => {
     </div>
   );
 };
-
 export default PersonalFinance;

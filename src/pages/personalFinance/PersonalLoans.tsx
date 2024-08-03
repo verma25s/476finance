@@ -101,7 +101,6 @@ const WhatIsTab: React.FC = () => (
     <p>Consider your loan purpose, interest rates, and repayment terms before applying.</p>
   </div>
 );
-
 const TipsTab: React.FC = () => (
   <div className="tab-pane">
     <h2>Tips on Personal Loans</h2>
@@ -114,7 +113,6 @@ const TipsTab: React.FC = () => (
     </ul>
   </div>
 );
-
 const ProviderTab: React.FC<{ provider: typeof providers[0] }> = ({ provider }) => (
   <div className="tab-pane">
     <h2>{provider.name}</h2>

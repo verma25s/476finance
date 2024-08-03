@@ -1,8 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-
-
 interface Gainer {
   
   stockExchange: string;
@@ -29,7 +27,6 @@ export const Crypto = () => {
       }
       const data = await response.json();
 
-      // Ensure data.top_gainers is an array and set it to state
       if (Array.isArray(data)) {
         setGainers(data);
         setLoading(false); // Set loading to false once data is fetched
@@ -73,5 +70,4 @@ export const Crypto = () => {
     </div>
   );
 };
-
 export default Crypto;

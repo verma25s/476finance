@@ -1,6 +1,5 @@
 import React from 'react';
 import images from './importImages';
-
 const YourComponent: React.FC = () => {
     return (
         <div>
@@ -10,6 +9,5 @@ const YourComponent: React.FC = () => {
         </div>
     );
 };
-
 export default YourComponent;
 

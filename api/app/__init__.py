@@ -1,3 +1,4 @@
+# Import necessary libraries
 from flask import Flask
 from flask_cors import CORS
 import os
@@ -23,3 +24,4 @@ def create_app():
 if __name__ == "__main__":
     app = create_app()
     app.run()
+# enables the debug mode for development 

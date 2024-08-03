@@ -11,7 +11,7 @@ const BestSignUpOffers: React.FC = () => {
             <h1>BEST SIGN-UP OFFERS</h1>
             <div className="ranked-cards">
                 <div className="card">
-                    <img src={amexGold}alt="Sign Up Offer Card 1" />
+                    <img src={amexGold} alt="Sign Up Offer Card 1" />
                     <p>
                         <strong>1. American Express® Gold Rewards Card</strong><br />
                         <em>Annual Fee:</em> $150<br />
@@ -41,5 +41,4 @@ const BestSignUpOffers: React.FC = () => {
         </div>
     );
 };
-
 export default BestSignUpOffers;

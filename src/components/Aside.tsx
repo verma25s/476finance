@@ -1,3 +1,4 @@
+// necessary imports for fuctioning
 import { NavLink } from 'react-router-dom';
 import { getIsLoggedIn, setIsLoggedIn }  from '../pages/Login/Login'
 import './Aside.css'; // Import your styles
@@ -5,13 +6,18 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useCookies } from 'react-cookie';
 const Aside = () => {
+  // navigation object creation
   const navigate = useNavigate();
+  // store logout message
   const [message, setMessage] = useState<string | null>(null);
+  // manages cookies for user email
   const [cookies, setCookie, removeCookie] = useCookies(['userEmail']);
  
     const handleButtonClick = async () => {// Remove cookie on logout
       removeCookie('userEmail', { path: '/' });
+      // try-catch block conditioning
         try {
+          // send a logout request
           const response = await fetch('logout', {
             method: 'GET',
             headers: {
@@ -21,12 +27,19 @@ const Aside = () => {
           
     
           if (!response.ok) {
+            // error-handling incase if logout fails
             throw new Error('Invalid credentials');
-          }    
+          } 
+          // on successfull logout   
           console.log('Logout successful');
 
         }
+<<<<<<< HEAD
         catch(error) { console.log("Logout Error");}
+=======
+        // catches error
+        catch {}
+>>>>>>> 287fbc7b90d179455fb740e450500034588ee077
 
         if (getIsLoggedIn()) {
           // Perform logout actions
@@ -38,17 +51,16 @@ const Aside = () => {
       } 
     };
 
-
+// different containers for buttons and action sidebars
   return (
-
+    
     <div className="auth-sidebar">
       
       {message && <p className="logout-message">{message}</p>}
       {!cookies.userEmail &&
           
         <div className="auth-buttons-sidebar">
-        
-        <button className="login-button">
+        <button className="login-button"> 
           <NavLink to="/login">Login</NavLink>
         </button>
         <button className="create-account-button">
@@ -57,7 +69,8 @@ const Aside = () => {
         </div>
         }
 
-{cookies.userEmail &&
+        {/*If the user is logged in show*/
+        cookies.userEmail &&
         <div className="auth-buttons-sidebar">
         
         <button className="login-button" onClick={handleButtonClick}>

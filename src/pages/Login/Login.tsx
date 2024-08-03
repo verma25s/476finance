@@ -4,11 +4,9 @@ import './Login.css';
 import { useCookies } from 'react-cookie';
 
 let isLoggedInState = false;
-
 export const getIsLoggedIn = () => {
   return isLoggedInState;
 };
-
 export const setIsLoggedIn = (loggedIn: boolean) => {
   isLoggedInState = loggedIn;
 };
@@ -23,9 +21,7 @@ export const Login = () => {
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-
     try {
-      
       const response = await fetch('/login', {
         method: 'POST',
         headers: {
@@ -43,7 +39,7 @@ export const Login = () => {
       console.log('Login successful');
       setIsLoggedIn(true);
       localStorage.setItem('isLoggedIn', 'true');
-     
+      // cookie setup if user's email login is successful
       if (isLoggedInState) {
         setCookie('userEmail', email, { path: '/', maxAge: 86400 });
         console.log(email);
@@ -52,7 +48,7 @@ export const Login = () => {
       }
       
     } catch (error) {
-      setError("Incorrect username or Password");
+      setError("Incorrect username or Password");//update error state on error
     }
   };
 

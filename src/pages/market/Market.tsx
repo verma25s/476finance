@@ -5,7 +5,6 @@ import {Top_gainers} from '../top_gainers';
 import {Top_losers} from '../Top_losers';
 import {Crypto} from '../crypto';
 import Trending from '../trending';
-
 export const Market = () => {
   return (
     <div>
@@ -28,5 +27,4 @@ export const Market = () => {
     </div>
   );
 }
-
 export default Market;

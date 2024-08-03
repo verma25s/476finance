@@ -1,10 +1,15 @@
+
 import React, { useEffect, useState } from 'react';
+ 
 import { Line } from 'react-chartjs-2';
+ 
 import axios from 'axios';
+ 
 import { useParams } from 'react-router-dom';
 import { Chart, LineElement, BarElement, PointElement, LinearScale, CategoryScale, Title, Tooltip, Legend } from 'chart.js';
 
 Chart.register(LineElement, BarElement, PointElement, LinearScale, CategoryScale, Title, Tooltip, Legend);
+
 
 interface HistoricalData {
     date: string;
@@ -22,6 +27,7 @@ interface HistoricalData {
     changeOverTime: number;
 }
 
+ 
 interface StockData {
     symbol: string;
     historical: HistoricalData[];
@@ -130,5 +136,4 @@ export const TickerGraph: React.FC = () => {
         </div>
     );
 };
-
 export default TickerGraph;

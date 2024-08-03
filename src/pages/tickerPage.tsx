@@ -5,7 +5,6 @@ import { useCookies } from 'react-cookie';
 import { TickerGraph } from './tickergraph';
 import {StockNews} from './stocknews';
 
-
 interface StockData {
   symbol: string;
   shortName: string;
@@ -56,7 +55,7 @@ export const TickerPage = () => {
   const [watchlistError, setWatchlistError] = useState<string | null>(null);
   const [cookies] = useCookies(['userEmail']);
 
-  useEffect(() => {
+   useEffect(() => {
     const fetchStockData = async () => {
       try {
         const response = await fetch(`/stock/${symbol}`);
@@ -74,7 +73,7 @@ export const TickerPage = () => {
     fetchStockData();
   }, [symbol]);
 
-  useEffect(() => {
+   useEffect(() => {
     const checkIfInWatchlist = async () => {
       if (!symbol) return;
       setWatchlistLoading(true);
@@ -96,7 +95,7 @@ export const TickerPage = () => {
     checkIfInWatchlist();
   }, [symbol]);
 
-  const handleAddToWatchlist = async () => {
+   const handleAddToWatchlist = async () => {
     if (!symbol) return;
     try {
       const response = await fetch('/add-to-watchlist', {
@@ -116,7 +115,7 @@ export const TickerPage = () => {
     }
   };
 
-  const handleRemoveFromWatchlist = async () => {
+   const handleRemoveFromWatchlist = async () => {
     if (!symbol) return;
     try {
       const response = await fetch('/remove-from-watchlist', {
@@ -144,8 +143,10 @@ export const TickerPage = () => {
     return <div>Loading...</div>;
   }
 
+  // function to format number values
   const formatValue = (value: number | undefined) => value !== undefined ? value.toLocaleString() : 'N/A';
 
+  // rows for displaying stock metrics in a table
   const rows = [
     { label: 'Symbol', value: stockData.symbol },
     { label: 'Company Name', value: stockData.shortName },
@@ -246,5 +247,4 @@ export const TickerPage = () => {
     </div>
   );
 };
-
 export default TickerPage;

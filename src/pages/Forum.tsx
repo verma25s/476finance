@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useCookies } from 'react-cookie';
 import {Link, useNavigate} from 'react-router-dom';
 import "./Forum.css";
+
+
 interface ForumPost {
   _id: string;
   email: string;
@@ -9,6 +11,7 @@ interface ForumPost {
   content: string;
   timestamp: Date;
 }
+
 
 export const Forum = () => {
   const [posts, setPosts] = useState<ForumPost[]>([]);
@@ -20,6 +23,7 @@ export const Forum = () => {
   useEffect(() => {
     fetchPosts();
   }, []);
+
 
   const fetchPosts = async () => {
     try {
@@ -82,17 +86,12 @@ export const Forum = () => {
     }}
 
     else{setError('Please Login First')}
-
-
-
-
     
   };
+
   const handlePostClick = (postTitle: string) => {
     navigate(`/forum/${postTitle}`);
   };
-
-  
 
   return  (
     <div className="forum-container">
@@ -140,6 +139,5 @@ export const Forum = () => {
     </div>
   );
 };
-
 
 export default Forum;

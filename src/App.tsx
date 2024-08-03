@@ -18,12 +18,12 @@ import { Top_losers } from './pages/Top_losers';
 import { MessageBox } from './pages/messages';
 import { SearchBar } from './pages/searchBar';
 import { FullPost } from './pages/post';
-import {TickerPage} from './pages/tickerPage';
-import {News} from './pages/news';
+import { TickerPage } from './pages/tickerPage';
+import { News } from './pages/news';
 import { Trending } from './pages/trending';
 import { Watchlist } from './pages/watchlist';
-import {Screener} from './pages/screener';
-import {Crypto} from './pages/crypto'
+import { Screener } from './pages/screener';
+import { Crypto } from './pages/crypto'
 
 //Personal Finance
 import MortgageCalculator from './pages/personalFinance/MortgageCalculator';
@@ -43,7 +43,6 @@ import BestBalanceTransferCard from './pages/personalFinance/creditCard/BestBala
 // src/App.tsx
 import { useCookies } from 'react-cookie';
 
-
 const App = () => {
   const [cookies, setCookie, removeCookie] = useCookies(['userEmail']);
   return (
@@ -52,7 +51,7 @@ const App = () => {
         <Header />
         {cookies.userEmail ? <p className="welcome-label">Welcome {cookies.userEmail}</p> : <p></p>}
         <Routes>
-          <Route path="/" element={< MainContent />}/>
+          <Route path="/" element={< MainContent />} />
           <Route path="/login" element={<Login />} />
           <Route path="/news" element={<News />} />
           <Route path="/forum" element={<Forum />} />
@@ -63,9 +62,9 @@ const App = () => {
           <Route path="/forum/:title" Component={FullPost} />
           <Route path="/personalFinance/*" element={<PersonalFinance />} />
           <Route path="/personalFinance/credit-Card" element={<CreditCard />} />
-          <Route path="/personalFinance/mortgage-calculator" element = {<MortgageCalculator/>} />
-          <Route path="/personalFinance/Taxes" element = {<Taxes/>} />
-          <Route path="/personalFinance/personal-loans" element = {<PersonalLoans/>} />
+          <Route path="/personalFinance/mortgage-calculator" element={<MortgageCalculator />} />
+          <Route path="/personalFinance/Taxes" element={<Taxes />} />
+          <Route path="/personalFinance/personal-loans" element={<PersonalLoans />} />
           <Route path="/personalFinance/creditCard/best-credit-cards" element={<BestCreditCard />} />
           <Route path="/personalFinance/creditCard/best-travel-cards" element={<BestTravelCard />} />
           <Route path="/personalFinance/creditCard/best-cash-back-cards" element={<BestCashBackCard />} />
@@ -80,13 +79,12 @@ const App = () => {
   );
 };
 
-
 const MainContent = () => {
   return (
     <main>
-      
+
       <div className="main-content">
-        
+
         <Section id="Top 3's" title="Top 3's" content={<News />} />
         <Section id="Top 3's" title="Top 3's" content={<Watchlist />} />
         <Section id="graphs" title="Graphical analysis" content={<Trending />} />
@@ -94,11 +92,11 @@ const MainContent = () => {
 
       <div className="tabs-content">
         <Section id="Top 3's" title="Top 3's" content={<Top_gainers />} />
-          <Section id="Top 3's" title="Top 3's" content={<Top_losers />} />
-          <Section id="Latest Finance and Business News" title="Latest Finance and Business News" content={<MessageBox />} />
+        <Section id="Top 3's" title="Top 3's" content={<Top_losers />} />
+        <Section id="Latest Finance and Business News" title="Latest Finance and Business News" content={<MessageBox />} />
       </div>
-         
-      
+
+
     </main>
   );
 };

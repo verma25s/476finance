@@ -12,7 +12,7 @@ const BestRewardsCards: React.FC = () => {
             <h1>BEST REWARDS CARDS</h1>
             <div className="ranked-cards">
                 <div className="card">
-                    <img src={amexCobalt}alt="Rewards Card 1" />
+                    <img src={amexCobalt} alt="Rewards Card 1" />
                     <p>
                         <strong>1. American Express® Cobalt™ Card</strong><br />
                         <em>Annual Fee:</em> $155.88<br />
@@ -51,5 +51,4 @@ const BestRewardsCards: React.FC = () => {
         </div>
     );
 };
-
 export default BestRewardsCards;

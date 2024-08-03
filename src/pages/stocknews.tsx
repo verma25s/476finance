@@ -12,10 +12,12 @@ interface NewsArticle {
 
 }
 
+
 export const StockNews: React.FC = () => {
   const [newsFeed, setNewsFeed] = useState<NewsArticle[]>([]);
   const { symbol } = useParams<{ symbol: string }>();
 
+   
   useEffect(() => {
     const fetchNews = async () => {
       try {
@@ -51,5 +53,5 @@ export const StockNews: React.FC = () => {
     </div>
   );
 };
-
+ 
 export default StockNews;

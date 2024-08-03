@@ -51,5 +51,4 @@ const BestHomeImprovementCard: React.FC = () => {
         </div>
     );
 };
-
 export default BestHomeImprovementCard;

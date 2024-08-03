@@ -50,5 +50,4 @@ export const FullPost = () => {
     </div>
   );
 };
-
 export default FullPost;

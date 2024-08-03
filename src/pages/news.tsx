@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './news.css';
 
-
-
 interface NewsArticle {
   category: string;
   datetime: number;
@@ -12,7 +10,6 @@ interface NewsArticle {
   id: string;
   
 }
-
 
 export const News = () => {
   const [newsFeed, setNewsFeed] = useState<NewsArticle[]>([]);
@@ -30,8 +27,6 @@ export const News = () => {
 
     fetchNews();
   }, []);
-
-
     
   return (
 
@@ -52,5 +47,4 @@ export const News = () => {
     </div>
   );
 };
-
 export default News;

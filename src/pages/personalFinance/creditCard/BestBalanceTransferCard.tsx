@@ -1,4 +1,3 @@
-// ./pages/personalFinance/creditCard/BestBalanceTransferCard.tsx
 import React from 'react';
 import './CreditCardCategory.css'; // Import the styles
 import scotiaValue from '../../../components/images/scotia_value.png';
@@ -30,7 +29,7 @@ const BestBalanceTransferCard: React.FC = () => {
                     </p>
                 </div>
                 <div className="card">
-                    <img src={cibcSelect}alt="Balance Transfer Card 3" />
+                    <img src={cibcSelect} alt="Balance Transfer Card 3" />
                     <p>
                         <strong>3. CIBC Select Visa* Card</strong><br />
                         <em>Annual Fee:</em> $29<br />
@@ -39,7 +38,7 @@ const BestBalanceTransferCard: React.FC = () => {
                     </p>
                 </div>
                 <div className="card">
-                    <img src={bmoPreferredRate}alt="Balance Transfer Card 4" />
+                    <img src={bmoPreferredRate} alt="Balance Transfer Card 4" />
                     <p>
                         <strong>4. BMO® Preferred Rate Mastercard®*</strong><br />
                         <em>Annual Fee:</em> $20<br />
@@ -51,5 +50,4 @@ const BestBalanceTransferCard: React.FC = () => {
         </div>
     );
 };
-
 export default BestBalanceTransferCard;

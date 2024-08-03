@@ -40,5 +40,4 @@ const BestCreditCard: React.FC = () => {
         </div>
     );
 };
-
 export default BestCreditCard;

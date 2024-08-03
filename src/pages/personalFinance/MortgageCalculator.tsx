@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import './MortgageCalculator.css';
-
 const provinces = [
   "Alberta", "British Columbia", "Manitoba", "New Brunswick",
   "Newfoundland and Labrador", "Northwest Territories", "Nova Scotia",
@@ -21,23 +20,23 @@ const MortgageCalculator: React.FC = () => {
   const [propertyTax, setPropertyTax] = useState<number | string>(1336.87);
   const [heatingCost, setHeatingCost] = useState<number | string>(175);
   const [errors, setErrors] = useState<{ income?: string, downPayment?: string }>({});
-
   const validateInputs = () => {
     let isValid = true;
     const newErrors: { income?: string, downPayment?: string } = {};
     const incomeNum = parseFloat(income);
     const downPaymentNum = parseFloat(downPayment);
 
+    // for income input 
     if (isNaN(incomeNum) || incomeNum < 1000 || incomeNum > 1500000) {
       newErrors.income = "You didn't enter a valid income amount. Enter an income between $1,000 and $1,500,000.";
       isValid = false;
     }
-
+    // to validate down payement input 
     if (isNaN(downPaymentNum) || downPaymentNum < 1000 || downPaymentNum > 4850000) {
       newErrors.downPayment = "You didn't enter a valid down payment amount. Enter a value between $1,000 and $4,850,000.";
       isValid = false;
     }
-
+    // setting validation errors state
     setErrors(newErrors);
     return isValid;
   };
@@ -57,16 +56,19 @@ const MortgageCalculator: React.FC = () => {
     const availableForHousing = maxTotalDebtPayment - monthlyDebts;
     const finalMonthlyHousingPayment = Math.min(maxMonthlyHousingPayment, availableForHousing);
 
+    // parse numeric inputs
     const propertyTaxPerMonth = typeof propertyTax === 'string' ? parseFloat(propertyTax) : propertyTax;
     const condoFeesNum = typeof condoFees === 'string' ? parseFloat(condoFees) : condoFees;
     const heatingCostNum = typeof heatingCost === 'string' ? parseFloat(heatingCost) : heatingCost;
     const principalAndInterest = finalMonthlyHousingPayment - (propertyTaxPerMonth / 12) - (condoFeesNum + heatingCostNum);
 
+    // parse interest rate and amortization period
     const interestRateNum = typeof interestRate === 'string' ? parseFloat(interestRate) : interestRate;
     const r = (interestRateNum / 100) / 12;
     const amortizationPeriodNum = typeof amortizationPeriod === 'string' ? parseInt(amortizationPeriod) : amortizationPeriod;
     const n = amortizationPeriodNum * 12;
 
+    // loan amount calculation
     const loanAmount = principalAndInterest / (r * Math.pow(1 + r, n) / (Math.pow(1 + r, n) - 1));
     const estimatedPurchasePrice = loanAmount + parseFloat(downPayment);
 
@@ -170,5 +172,4 @@ const MortgageCalculator: React.FC = () => {
     </div>
   );
 };
-
 export default MortgageCalculator;
