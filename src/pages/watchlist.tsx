@@ -66,7 +66,6 @@ export const Watchlist = () => {
       const stockDetails: StockItem[] = [];
 
       for (const symbol of watchlist) {
-        console.log('Fetching details for symbol:', symbol);
         try {
           const response = await fetch(`/stock/${symbol}`);
           if (response.ok) {
@@ -97,21 +96,18 @@ export const Watchlist = () => {
   }, [watchlist]);
 
   if (loading) {
-    return <div className="top-trending">Loading...</div>;
+    return <div className="top-trending"><p className="h3">Loading...</p></div>;
   }
 
   if (error) {
-    return <div  className="top-trending">{error}</div>;
+    return <div  className="top-trending"><p className="h3">{error}</p></div>;
   }
 
   const handleInputChange = (symbol: string) => {
     navigate(`/symbol/${symbol}`);
   };
 
-  const getSymbolClass = (change: number) => {
-    return change < 0 ? 'symbol-losing' : 'symbol-gaining';
-  };
-
+ 
   return (
     <div className="top-trending">
       <h1 className="cp">Watchlist</h1>
@@ -132,7 +128,7 @@ export const Watchlist = () => {
           </div>
         ))
       ) : (
-        <p>Loading...</p>
+        <p className="h3">Watchlist is Empty</p>
       )}
     </div>
   );

@@ -9,7 +9,7 @@ const Aside = () => {
   const [message, setMessage] = useState<string | null>(null);
   const [cookies, setCookie, removeCookie] = useCookies(['userEmail']);
  
-    const handleButtonClick = async () => {
+    const handleButtonClick = async () => {// Remove cookie on logout
       removeCookie('userEmail', { path: '/' });
         try {
           const response = await fetch('logout', {
@@ -26,7 +26,7 @@ const Aside = () => {
           console.log('Logout successful');
 
         }
-        catch {}
+        catch(error) { console.log("Logout Error");}
 
         if (getIsLoggedIn()) {
           // Perform logout actions
@@ -35,9 +35,7 @@ const Aside = () => {
           setMessage("Logged Out Successfully");
           navigate('/');// Navigate back to home page
 
-      } else {
-         
-      }
+      } 
     };
 
 

@@ -1,4 +1,4 @@
-from main import app
+from main import app,Client
 from pymongo import MongoClient,DESCENDING
 from flask_pymongo import PyMongo
 from flask import Flask, jsonify, session, redirect, url_for, request
@@ -7,27 +7,28 @@ from flask_cors import CORS
 from datetime import datetime
 from pymongo.errors import DuplicateKeyError
 
+#Create Session
 Session(app)
-Client = MongoClient('localhost',27017)
+
 import manage_users
 
 fn = Client.finance476_database
-messages = fn.messages
-watchlist = fn.watchlist
+messages = fn.messages #Connect to messges
+watchlist = fn.watchlist# Connect to watchlist
 
 
 CORS(app, resources={r"/*": {"origins": "*"}})
 
-
-try:
+try: #Set email as primary key from watchlist
     fn.watchlist.create_index("email", unique=True)
 except DuplicateKeyError:
     pass
 
+
 @app.route('/messages', methods=['GET'])
 def get_messages():
     try:
-        
+        #Get all messages
         messages = fn.messages.find().sort('timestamp', DESCENDING)
         formatted_messages = [{
             '_id': str(message['_id']),
@@ -46,12 +47,11 @@ def get_messages():
 
 @app.route('/add-messages', methods=['POST'])
 def add_messages():
-    try:
+
+    try:#Send a message
         email = request.json['email']
         content = request.json['content']
         timestamp = request.json['timestamp'] if 'timestamp' in request.json else datetime.now()
-        if not email or not content:
-            raise KeyError('Email or content is missing')
 
         new_message = {
             
@@ -60,11 +60,7 @@ def add_messages():
             'timestamp': timestamp
         }
 
-        messages.insert_one(new_message)
-        return jsonify({'message': 'Message added successfully'}), 200
-
-    except KeyError as e:
-        return jsonify({'error': 'Invalid data provided', 'details': str(e)}), 400
+        messages.insert_one(new_message) #Insert message in db
 
     except Exception as e:
         return jsonify({'error': 'An error occurred while adding the message', 'details': str(e)}), 500
@@ -73,18 +69,19 @@ def add_messages():
 
 @app.route('/get-watchlist', methods=['GET'])
 def get_watchlist():
+    #Get watchlist
     email = request.args.get('email')
     if not email:
         return jsonify({"error": "Email is required"}), 400
     
     user_watchlist = fn.watchlist.find_one({"email": email})
-    symbols = user_watchlist.get("symbols", []) if user_watchlist else []
-    print({"symbols": symbols})
+    symbols = user_watchlist.get("symbols", [])
     return jsonify({"symbols": symbols})
     
 
 @app.route('/check-if-in-watchlist', methods=['GET'])
 def check_if_in_watchlist():
+    #Check if a stock is alredy in watchlist
     symbol = request.args.get('symbol')
     email = request.args.get('email')
     

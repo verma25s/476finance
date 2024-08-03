@@ -28,6 +28,7 @@ const CreateAccount = () => {
   
     if (response.ok) {
       alert(data.success);
+      navigate('/');
     } else {
       alert(data.error);
     }

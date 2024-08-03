@@ -11,10 +11,10 @@
     "@types/node": "^16.18.101",
     "axios": "^1.7.2",
     "chart.js": "^4.4.3",
-    "react": "^18.3.1",
+    "react": "^18.2.0",
     "react-chartjs-2": "^5.2.0",
     "react-cookie": "^7.2.0",
-    "react-dom": "^18.3.1",
+    "react-dom": "^18.2.0",
     "react-icons": "^5.2.1",
     "react-responsive": "^10.0.0",
     "react-scripts": "5.0.1",
@@ -25,7 +25,11 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "start-api": "set FLASK_APP=api/main.py && flask run",
+    "install-all": "pip install -r api/requirements.txt && npm install",
+     "run-all": "start cmd /c npm run start-api && start cmd /c npm start"
+    
   },
   "eslintConfig": {
     "extends": [
@@ -46,8 +50,10 @@
     ]
   },
   "devDependencies": {
-    "@types/react": "^18.3.3",
-    "@types/react-dom": "^18.3.0",
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.0",
+    "concurrently": "^6.0.0",
+    "cross-env": "^7.0.3",
     "file-loader": "^6.2.0",
     "react-router-dom": "^6.23.1"
   },

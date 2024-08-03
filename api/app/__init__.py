@@ -11,9 +11,11 @@ os.environ['FLASK_APP'] = 'main.py'
 
 def create_app():
     app = Flask(__name__)
+    #Set the app session key
     app.config['SECRET_KEY'] = os.getenv('secret_key')
+    #Set the session storage type to filesystem
     app.config['SESSION_TYPE'] = 'filesystem'
-    
+    #Enable CORS app
     CORS(app)  # Enable CORS if needed
 
     return app
