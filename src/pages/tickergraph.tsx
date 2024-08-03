@@ -1,17 +1,17 @@
 
 import React, { useEffect, useState } from 'react';
  
-import { Line } from 'react-chartjs-2';
+import { Line } from 'react-chartjs-2';  // User chart.js library
  
 import axios from 'axios';
  
 import { useParams } from 'react-router-dom';
 import { Chart, LineElement, BarElement, PointElement, LinearScale, CategoryScale, Title, Tooltip, Legend } from 'chart.js';
 
-Chart.register(LineElement, BarElement, PointElement, LinearScale, CategoryScale, Title, Tooltip, Legend);
+Chart.register(LineElement, BarElement, PointElement, LinearScale, CategoryScale, Title, Tooltip, Legend);// Register chart
 
 
-interface HistoricalData {
+interface HistoricalData { // All the data returned by Financial Modeling Prep when access EOD chart data
     date: string;
     open: number;
     high: number;
@@ -28,34 +28,35 @@ interface HistoricalData {
 }
 
  
-interface StockData {
+interface StockData {   //Stock Data interface
+
     symbol: string;
     historical: HistoricalData[];
 }
 
-const getVolumeColor = (volume: number, threshold: number = 50000000) => {
-    return volume > threshold ? 'rgba(0, 128, 0, 0.8)' : 'rgba(255, 0, 0, 0.8)';
+const getVolumeColor = (volume: number, threshold: number = 50000000) => {//green when volume is high and red when low
+    return volume > threshold ? 'rgba(0, 255, 0, 0)' : 'rgba(255, 0, 0, 0)';
 };
 
-export const TickerGraph: React.FC = () => {
-    const [chartData, setChartData] = useState<any>(null);
+export const TickerGraph = () => {
+    const [chartData, setChartData] = useState<any>(null);// Chart data state
     const [error, setError] = useState<string | null>(null);
-    const { symbol } = useParams<{ symbol: string }>();
+    const { symbol } = useParams<{ symbol: string }>();// Get symbol from when page is called
 
     useEffect(() => {
-        axios.get<StockData>(`/graph/${symbol}`)
+        axios.get<StockData>(`/graph/${symbol}`)// Used axios to get graph data using params....
             .then(response => {
-                const stockData = response.data.historical;
+                const stockData = response.data.historical.reverse();// In reverse because FMP send data from latest to oldest
 
                 if (stockData.length === 0) {
-                    setError('No data available for this symbol.');
+                    setError('No data available for this symbol.')
                     setChartData(null);
                 } else {
                     const dates = stockData.map(item => item.date);
                     const closePrices = stockData.map(item => item.close);
                     const volumes = stockData.map(item => item.volume);
 
-                    setChartData({
+                    setChartData({// Default chart showed by chart.js
                         labels: dates,
                         datasets: [
                             {
