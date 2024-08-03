@@ -5,6 +5,7 @@ from flask import Flask, jsonify, session, redirect, url_for, request
 from flask_pymongo import PyMongo,MongoClient
 from flask_bcrypt import Bcrypt
 import requests
+import ssl
 from flask_session import Session
 
 
@@ -23,8 +24,12 @@ MONGODB_URI = os.getenv('MONGODB_URI')
 
 
 #Start the mongo client
-Client = MongoClient(MONGODB_URI)
 
+Client = MongoClient(
+    MONGODB_URI,
+    tls=True,
+    tlsAllowInvalidCertificates=True
+)
 #Connect to database
 fn_database = Client.finance476_database
 
