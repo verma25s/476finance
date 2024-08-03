@@ -19,16 +19,16 @@ export const Watchlist = () => {
 
   const navigate = useNavigate();
 
-  useEffect(() => {
+  useEffect(() => { 
     const fetchWatchlist = async () => {
-      if (!cookies.userEmail) {
+      if (!cookies.userEmail) {// Check if user is logged in
         setError('Please Login to see your Watchlist');
         setLoading(false);
         return;
       }
 
       try {
-        const response = await fetch(`/get-watchlist?email=${cookies.userEmail}`);
+        const response = await fetch(`/get-watchlist?email=${cookies.userEmail}`);// Fetch watchlist from user
         if (response.ok) {
           const data = await response.json();// parse response JSON
           console.log('Raw watchlist data:', data);
@@ -43,13 +43,11 @@ export const Watchlist = () => {
             throw new Error('Unexpected watchlist format');
           }
 
-          console.log('Processed watchlist symbols:', symbols);
           setWatchlist(symbols);
         } else {
           setError('Error fetching watchlist');
         }
       } catch (error) {
-        console.error('Error in fetchWatchlist:', error);
         setError('Error fetching watchlist');
       } finally {
         setLoading(false);
@@ -57,11 +55,11 @@ export const Watchlist = () => {
     };
 
     fetchWatchlist();
-  }, [cookies.userEmail]);
+  }, [cookies.userEmail]); // Runs if there is something in cookies.userEmail
 
 
   useEffect(() => {
-    const fetchStockDetails = async () => {
+    const fetchStockDetails = async () => {// Add details : name, price, Change Amount to the list
 
       const stockDetails: StockItem[] = [];
 

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-interface Trending {
+interface Trending { // Trending Interface
   change: number;
   changesPercentage: number;
   price: number;
@@ -17,7 +17,7 @@ export const Trending = () => {
 
 
   useEffect(() => {
-    fetchToptrending_stocks();
+    fetchToptrending_stocks();// Fetch trending stocks
   }, []);
 
   const fetchToptrending_stocks = async () => {
@@ -36,7 +36,6 @@ export const Trending = () => {
       }
     } catch (error) {
       setError('Error fetching top trending_stocks');
-      console.error('Error fetching top trending_stocks:', error);
       setLoading(false);
     }
   };

@@ -27,8 +27,8 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "start-client":"npm start",
-    "start-api:windows": "set FLASK_APP=api/main.py && flask run",
-    "start-api:unix": "export FLASK_APP=api/main.py && flask run",
+    "start-api:windows": "set FLASK_APP=api/main.py && flask run --port 8000",
+    "start-api:unix": "export FLASK_APP=api/main.py && flask run --port 8000",
     "install-all": "pip install -r api/requirements.txt && npm install",
     "run-all:windows": "npm-run-all --parallel start-api:windows start-client",
     "run-all:unix": "npm-run-all --parallel start-api:unix  start-client"
@@ -58,7 +58,8 @@
     "concurrently": "^6.0.0",
     "cross-env": "^7.0.3",
     "file-loader": "^6.2.0",
-    "react-router-dom": "^6.23.1"
+    "react-router-dom": "^6.23.1",
+    "npm-run-all": "^4.1.5"
   },
-  "proxy": "http://localhost:5000/"
+  "proxy": "http://localhost:8000/"
 }

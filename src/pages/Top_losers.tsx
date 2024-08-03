@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-interface Loser {
+interface Loser { //Top Losers Interface
   change: number;
   changesPercentage: number;
   price: number;
@@ -27,8 +27,7 @@ export const Top_losers = () => {
       }
       const data = await response.json();
 
-      if (Array.isArray(data)) {
-
+      if (Array.isArray(data)) {// Was giving error as not array error checking
         setLosers(data);
         setLoading(false);
       } else {
@@ -52,17 +51,14 @@ export const Top_losers = () => {
 
     <div className="top-losers">
       <h1 className="cp">TOP LOSERS</h1>
-      <hr /><hr />
-
-
+      <hr/>
+      <hr/>
       {losers.length > 0 ? (losers.map((loser) => (
 
 
         <div className="wrapper" key={loser.symbol} onClick={() => handleInputChange(loser.symbol)}>
-
           <div className="h3" > {loser.symbol}</div>
           <div className="h5"> {loser.price} </div>
-
           <div className="h4">  {loser.name} </div>
           <div className={"negative h6"}> {loser.change}({loser.changesPercentage}%) </div>
           <hr /><hr />

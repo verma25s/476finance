@@ -146,8 +146,8 @@ export const TickerPage = () => {
   // function to format number values
   const formatValue = (value: number | undefined) => value !== undefined ? value.toLocaleString() : 'N/A';
 
-  // rows for displaying stock metrics in a table
-  const rows = [
+  // Display all stock data sent by yfinance 
+  const rows = [   
     { label: 'Symbol', value: stockData.symbol },
     { label: 'Company Name', value: stockData.shortName },
     { label: 'Exchange', value: stockData.exchange },
