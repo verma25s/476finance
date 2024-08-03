@@ -16,12 +16,11 @@ export const SearchBar = () => {
   const navigate = useNavigate();
 
    
-  const handleSearchInputChange = async () => {
-    const query = searchQuery;
-   
+  const handleSearchInputChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
+    const query = event.target.value;
     setSearchQuery(query);
 
-    const wordCount = query.length;// Has to be minimum of 2 words
+    const wordCount = query.length;
    
 
     if (wordCount >= 2) {

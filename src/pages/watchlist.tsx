@@ -59,7 +59,7 @@ export const Watchlist = () => {
 
 
   useEffect(() => {
-    const fetchStockDetails = async () => {// Add details : name, price, Change Amount to the list
+    const fetchStockDetails = async () => {// Add details : name, price, Change Amount 
 
       const stockDetails: StockItem[] = [];
 

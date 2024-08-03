@@ -39,7 +39,7 @@ export const MessageBox = () => {
     if( cookies.userEmail){
     const currentTime = new Date()
     try {
-      const response = await fetch('http://localhost:5000/add-messages', {
+      const response = await fetch('/add-messages', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

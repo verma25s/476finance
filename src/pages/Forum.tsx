@@ -43,7 +43,7 @@ export const Forum = () => {
   const handleAddPost = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if( cookies.userEmail) {try {
-      const response = await fetch('http://localhost:5000/add-forum-post', {
+      const response = await fetch('/add-forum-post', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -69,7 +69,7 @@ export const Forum = () => {
   const handleDeletePost = async (postId: string) => {
     if( cookies.userEmail) {
          try {
-            const response = await fetch(`http://localhost:5000/delete-forum-post/${postId}`, {
+            const response = await fetch(`/delete-forum-post/${postId}`, {
         method: 'DELETE',
       });
 

@@ -47,11 +47,13 @@ def get_messages():
 
 @app.route('/add-messages', methods=['POST'])
 def add_messages():
+    
+    try:#Send message
 
-    try:#Send a message
         email = request.json['email']
         content = request.json['content']
         timestamp = request.json['timestamp'] if 'timestamp' in request.json else datetime.now()
+
 
         new_message = {
             
@@ -60,7 +62,7 @@ def add_messages():
             'timestamp': timestamp
         }
 
-        messages.insert_one(new_message) #Insert message in db
+        messages.insert_one(new_message)
 
     except Exception as e:
         return jsonify({'error': 'An error occurred while adding the message', 'details': str(e)}), 500
@@ -69,19 +71,18 @@ def add_messages():
 
 @app.route('/get-watchlist', methods=['GET'])
 def get_watchlist():
-    #Get watchlist
     email = request.args.get('email')
     if not email:
         return jsonify({"error": "Email is required"}), 400
     
     user_watchlist = fn.watchlist.find_one({"email": email})
-    symbols = user_watchlist.get("symbols", [])
+    symbols = user_watchlist.get("symbols", []) if user_watchlist else []
+    print({"symbols": symbols})
     return jsonify({"symbols": symbols})
     
 
 @app.route('/check-if-in-watchlist', methods=['GET'])
 def check_if_in_watchlist():
-    #Check if a stock is alredy in watchlist
     symbol = request.args.get('symbol')
     email = request.args.get('email')
     

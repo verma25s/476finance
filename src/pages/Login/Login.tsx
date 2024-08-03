@@ -19,8 +19,8 @@ export const Login = () => {
   const [cookies, setCookie] = useCookies(['userEmail']);
 
 
-  const handleSubmit = async () => {
-  
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
     try {
       const response = await fetch('/login', {
         method: 'POST',
@@ -38,6 +38,7 @@ export const Login = () => {
       setError('');
       console.log('Login successful');
       setIsLoggedIn(true);
+      localStorage.setItem('isLoggedIn', 'true');
       // cookie setup if user's email login is successful
       if (isLoggedInState) {
         setCookie('userEmail', email, { path: '/', maxAge: 86400 });
