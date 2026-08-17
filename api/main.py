@@ -2,153 +2,161 @@ from app import create_app
 import yfinance as yf
 from dotenv import load_dotenv
 from flask import Flask, jsonify, session, redirect, url_for, request
-from flask_pymongo import PyMongo,MongoClient
+from flask_pymongo import PyMongo, MongoClient
 from flask_bcrypt import Bcrypt
 import requests
-import ssl
-import certifi
 from flask_session import Session
-
-
-# os to fetch secret keys stored in .env
 import os
+from datetime import datetime, timedelta
+
 load_dotenv()
 app = create_app()
 
-
-
-#Fetch the api and Mongo keys from .env
-ALPHA_VANTAGE_API_KEY = os.getenv('ALPHA_VANTAGE_API_KEY')
-FMP_API_KEY = os.getenv('FMP_API_KEY')
+FMP_API_KEY     = os.getenv('FMP_API_KEY')
 FINNHUB_API_KEY = os.getenv('FINNHUB_API_KEY')
-MONGODB_URI = os.getenv('MONGODB_URI')
+MONGODB_URI     = os.getenv('MONGODB_URI')
 
-
-#Start the mongo client
-
-Client = MongoClient(MONGODB_URI)
-#Connect to database
+Client      = MongoClient(MONGODB_URI)
 fn_database = Client.finance476_database
 
 
+@app.route('/health')
+def health_check():
+    return jsonify({'status': 'ok'})
+
 
 @app.route('/stock/<symbol>')
-def get_stock_data(symbol):# Fetch a particular stock using yfinance library, shows real-time data
-    stock = yf.Ticker(symbol)
-    data = stock.info
-    return data
+def get_stock_data(symbol):
+    try:
+        stock = yf.Ticker(symbol)
+        data = stock.info
+        if not data or (data.get('regularMarketPrice') is None and data.get('currentPrice') is None):
+            return jsonify({'error': f'No data found for symbol {symbol}'}), 404
+        return jsonify(data)
+    except Exception as e:
+        return jsonify({'error': 'Failed to fetch stock data', 'details': str(e)}), 502
 
 
 @app.route('/search/<query>', methods=['GET'])
-def search_stock(query):# Use Finnhib to search for stocks, a little slow but accurate
-    
-    if not query:#Check if empty query was somehow passes
+def search_stock(query):
+    if not query:
         return jsonify({'error': 'Query parameter is required'}), 400
-
-    url = f'https://finnhub.io/api/v1/search?q={query}&token={FINNHUB_API_KEY}' #Fetch list
-    response = requests.get(url)
-    if response.status_code == 200:
-        
+    url = f'https://finnhub.io/api/v1/search?q={query}&token={FINNHUB_API_KEY}'
+    try:
+        response = requests.get(url, timeout=10)
+        response.raise_for_status()
         return jsonify(response.json())
-    else:
-        return jsonify({'error': 'Failed to fetch data from Finnhub'}), 500
+    except requests.exceptions.RequestException as e:
+        return jsonify({'error': 'Failed to fetch data from Finnhub', 'details': str(e)}), 502
 
 
+@app.route('/top-gainers')
+def get_top_gainers():
+    url = f'https://financialmodelingprep.com/api/v3/stock_market/gainers?apikey={FMP_API_KEY}'
+    try:
+        r = requests.get(url, timeout=10)
+        r.raise_for_status()
+        return jsonify(r.json())
+    except requests.exceptions.RequestException as e:
+        return jsonify({'error': 'Failed to fetch top gainers', 'details': str(e)}), 502
 
 
 @app.route('/top-losers')
 def get_top_losers():
-    url =f'https://financialmodelingprep.com/api/v3/stock_market/gainers?apikey={FMP_API_KEY}' # Fetch top losers
-    r = requests.get(url)
-    data = r.json()
-#   No need for error checking since it is done by FMP on their part
-    return data
-    
-    
+    url = f'https://financialmodelingprep.com/api/v3/stock_market/losers?apikey={FMP_API_KEY}'
+    try:
+        r = requests.get(url, timeout=10)
+        r.raise_for_status()
+        return jsonify(r.json())
+    except requests.exceptions.RequestException as e:
+        return jsonify({'error': 'Failed to fetch top losers', 'details': str(e)}), 502
 
-@app.route('/top-gainers') #Fetch top gainers
-def get_top_gainers():
-    url =f'https://financialmodelingprep.com/api/v3/stock_market/losers?apikey={FMP_API_KEY}'
-    r = requests.get(url)
-    data = r.json()
-   
-    return data
-    
-@app.route('/trending') #Fetch trending stocks, calculated mostly by volume of trades
+
+@app.route('/trending')
 def get_trending():
-    url =f'https://financialmodelingprep.com/api/v3/stock_market/actives?apikey={FMP_API_KEY}'
-    r = requests.get(url)
-    data = r.json()
-    
-    return data
+    url = f'https://financialmodelingprep.com/api/v3/stock_market/actives?apikey={FMP_API_KEY}'
+    try:
+        r = requests.get(url, timeout=10)
+        r.raise_for_status()
+        return jsonify(r.json())
+    except requests.exceptions.RequestException as e:
+        return jsonify({'error': 'Failed to fetch trending stocks', 'details': str(e)}), 502
+
 
 @app.route('/screener', methods=['GET'])
 def screener():
-    # Extract query parameters all provided by Financial modeling prep
     params = {
-        'marketCapMoreThan': request.args.get('marketCapMoreThan'),
+        'marketCapMoreThan':  request.args.get('marketCapMoreThan'),
         'marketCapLowerThan': request.args.get('marketCapLowerThan'),
-        'priceMoreThan': request.args.get('priceMoreThan'),
-        'priceLowerThan': request.args.get('priceLowerThan'),
-        'betaMoreThan': request.args.get('betaMoreThan'),
-        'betaLowerThan': request.args.get('betaLowerThan'),
-        'volumeMoreThan': request.args.get('volumeMoreThan'),
-        'volumeLowerThan': request.args.get('volumeLowerThan'),
-        'dividendMoreThan': request.args.get('dividendMoreThan'),
-        'dividendLowerThan': request.args.get('dividendLowerThan'),
-        'isEtf': request.args.get('isEtf'),
-        'isFund': request.args.get('isFund'),
-        'isActivelyTrading': request.args.get('isActivelyTrading'),
-        'sector': request.args.get('sector'),
-        'industry': request.args.get('industry'),
-        'country': request.args.get('country'),
-        'exchange': request.args.get('exchange'),
-        'limit': request.args.get('limit', 10)  # Default to 10 if not provided
+        'priceMoreThan':      request.args.get('priceMoreThan'),
+        'priceLowerThan':     request.args.get('priceLowerThan'),
+        'betaMoreThan':       request.args.get('betaMoreThan'),
+        'betaLowerThan':      request.args.get('betaLowerThan'),
+        'volumeMoreThan':     request.args.get('volumeMoreThan'),
+        'volumeLowerThan':    request.args.get('volumeLowerThan'),
+        'dividendMoreThan':   request.args.get('dividendMoreThan'),
+        'dividendLowerThan':  request.args.get('dividendLowerThan'),
+        'isEtf':              request.args.get('isEtf'),
+        'isFund':             request.args.get('isFund'),
+        'isActivelyTrading':  request.args.get('isActivelyTrading'),
+        'sector':             request.args.get('sector'),
+        'industry':           request.args.get('industry'),
+        'country':            request.args.get('country'),
+        'exchange':           request.args.get('exchange'),
+        'limit':              request.args.get('limit', 10),
     }
-    
-    # Remove any parameters that are None
     params = {k: v for k, v in params.items() if v is not None}
-
     try:
-        # Call the FMP screener API
-        response = requests.get('https://financialmodelingprep.com/api/v3/stock-screener', params={**params, 'apikey': FMP_API_KEY})
-        response.raise_for_status()  # Raise an error for bad status codes
-        data = response.json()
-
-        # Return the data as JSON
-        return jsonify(data)
+        response = requests.get(
+            'https://financialmodelingprep.com/api/v3/stock-screener',
+            params={**params, 'apikey': FMP_API_KEY},
+            timeout=10,
+        )
+        response.raise_for_status()
+        return jsonify(response.json())
     except requests.exceptions.RequestException as e:
-        return jsonify({'error': str(e)}), 500
+        return jsonify({'error': str(e)}), 502
 
-@app.route('/graph/<symbol>') #Fetch the EOD time series data, data is not day to day so not real time, updated end of every business day
+
+@app.route('/graph/<symbol>')
 def get_graph(symbol):
-    url=f'https://financialmodelingprep.com/api/v3/historical-price-full/{symbol}?apikey={FMP_API_KEY}'
-    r = requests.get(url)
-    data = r.json()
-    return data
+    url = f'https://financialmodelingprep.com/api/v3/historical-price-full/{symbol}?apikey={FMP_API_KEY}'
+    try:
+        r = requests.get(url, timeout=10)
+        r.raise_for_status()
+        return jsonify(r.json())
+    except requests.exceptions.RequestException as e:
+        return jsonify({'error': 'Failed to fetch graph data', 'details': str(e)}), 502
 
 
-@app.route('/stocknews/<symbol>') #Fetch stock news
+@app.route('/stocknews/<symbol>')
 def get_stocknews(symbol):
-    url=f'https://finnhub.io/api/v1/company-news?symbol={symbol}&from=2023-08-15&to=2024-07-24&token={FINNHUB_API_KEY}'
-    r = requests.get(url)
-    data = r.json()
-    return data
+    today     = datetime.now().date()
+    from_date = (today - timedelta(days=30)).isoformat()
+    url = f'https://finnhub.io/api/v1/company-news?symbol={symbol}&from={from_date}&to={today.isoformat()}&token={FINNHUB_API_KEY}'
+    try:
+        r = requests.get(url, timeout=10)
+        r.raise_for_status()
+        return jsonify(r.json())
+    except requests.exceptions.RequestException as e:
+        return jsonify({'error': 'Failed to fetch stock news', 'details': str(e)}), 502
 
-@app.route('/getcryptolist') #Fetch crypto list
+
+@app.route('/getcryptolist')
 def get_crypto():
-    url=f'https://financialmodelingprep.com/api/v3/symbol/available-cryptocurrencies?apikey={FMP_API_KEY}'
-    r = requests.get(url)
-    data = r.json()
-    print(data)
-    return data
+    url = f'https://financialmodelingprep.com/api/v3/symbol/available-cryptocurrencies?apikey={FMP_API_KEY}'
+    try:
+        r = requests.get(url, timeout=10)
+        r.raise_for_status()
+        return jsonify(r.json())
+    except requests.exceptions.RequestException as e:
+        return jsonify({'error': 'Failed to fetch crypto list', 'details': str(e)}), 502
 
-#Import files
-import manage_users 
+
+import manage_users
 import user_data
 import forum_post
 import news
-
 
 if __name__ == '__main__':
     app.run(debug=False)
