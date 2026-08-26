@@ -1,141 +1,106 @@
-from main import app,Client
-from pymongo import MongoClient,DESCENDING
-from flask_pymongo import PyMongo
-from flask import Flask, jsonify, session, redirect, url_for, request
-from flask_session import Session 
-from flask_cors import CORS
+from main import app, Client
+from pymongo import DESCENDING
+from flask import jsonify, session, request
 from datetime import datetime
-from pymongo.errors import DuplicateKeyError
 
-#Create Session
-Session(app)
+fn        = Client.finance476_database
+messages  = fn.messages
+watchlist = fn.watchlist
 
-import manage_users
-
-fn = Client.finance476_database
-messages = fn.messages #Connect to messges
-watchlist = fn.watchlist# Connect to watchlist
-
-
-CORS(app, resources={r"/*": {"origins": "*"}})
-
-try: #Set email as primary key from watchlist
+try:
     fn.watchlist.create_index("email", unique=True)
-except DuplicateKeyError:
+except Exception:
     pass
+
+
+def _require_login():
+    """Return the logged-in email from the server-side session, or None.
+    Identity always comes from the session — never from a client-supplied field."""
+    return session.get('email')
 
 
 @app.route('/messages', methods=['GET'])
 def get_messages():
     try:
-        #Get all messages
-        messages = fn.messages.find().sort('timestamp', DESCENDING)
-        formatted_messages = [{
-            '_id': str(message['_id']),
-            'email': message['email'],
-            'content': message['content'],
-            'timestamp': message['timestamp']
-        } for message in messages]
-        return jsonify(formatted_messages), 200
+        all_messages = fn.messages.find().sort('timestamp', DESCENDING)
+        return jsonify([{
+            '_id':       str(m['_id']),
+            'email':     m['email'],
+            'content':   m['content'],
+            'timestamp': m['timestamp'],
+        } for m in all_messages]), 200
     except Exception as e:
-        return jsonify({'error': 'An error occurred while fetching messages', 'details': str(e)}), 500
-
-
-
-
+        return jsonify({'error': 'Failed to fetch messages', 'details': str(e)}), 500
 
 
 @app.route('/add-messages', methods=['POST'])
 def add_messages():
-    
-    try:#Send message
-
-        email = request.json['email']
-        content = request.json['content']
-        timestamp = request.json['timestamp'] if 'timestamp' in request.json else datetime.now()
-
-
-        new_message = {
-            
-            'email': email,
-            'content': content,
-            'timestamp': timestamp
-        }
-
-        messages.insert_one(new_message)
-
+    email = _require_login()
+    if not email:
+        return jsonify({'error': 'You must be logged in to post a message'}), 401
+    data    = request.get_json(silent=True) or {}
+    content = data.get('content')
+    if not content:
+        return jsonify({'error': 'Message content is required'}), 400
+    try:
+        messages.insert_one({'email': email, 'content': content, 'timestamp': datetime.utcnow()})
+        return jsonify({'success': 'Message added successfully'}), 201
     except Exception as e:
-        return jsonify({'error': 'An error occurred while adding the message', 'details': str(e)}), 500
-
+        return jsonify({'error': 'Failed to add message', 'details': str(e)}), 500
 
 
 @app.route('/get-watchlist', methods=['GET'])
 def get_watchlist():
-    email = request.args.get('email')
+    email = _require_login()
     if not email:
-        return jsonify({"error": "Email is required"}), 400
-    
-    user_watchlist = fn.watchlist.find_one({"email": email})
-    symbols = user_watchlist.get("symbols", []) if user_watchlist else []
-    print({"symbols": symbols})
-    return jsonify({"symbols": symbols})
-    
+        return jsonify({'error': 'You must be logged in to view your watchlist'}), 401
+    user_wl  = fn.watchlist.find_one({'email': email})
+    symbols  = user_wl.get('symbols', []) if user_wl else []
+    return jsonify({'symbols': symbols})
+
 
 @app.route('/check-if-in-watchlist', methods=['GET'])
 def check_if_in_watchlist():
+    email  = _require_login()
     symbol = request.args.get('symbol')
-    email = request.args.get('email')
-    
-    if not symbol or not email:
-        return jsonify({"error": "Symbol and email are required"}), 400
-
-    # Find the user's watchlist document
-    user_watchlist = fn.watchlist.find_one({"email": email})
-    
-    if not user_watchlist:
-        return jsonify({"inWatchlist": False})
-
-    # Check if the symbol is in the user's watchlist
-    in_watchlist = symbol in user_watchlist.get("symbols", [])
-
-    return jsonify({"inWatchlist": in_watchlist})
+    if not symbol:
+        return jsonify({'error': 'Symbol is required'}), 400
+    if not email:
+        return jsonify({'inWatchlist': False})
+    user_wl     = fn.watchlist.find_one({'email': email})
+    in_watchlist = symbol in user_wl.get('symbols', []) if user_wl else False
+    return jsonify({'inWatchlist': in_watchlist})
 
 
 @app.route('/add-to-watchlist', methods=['POST'])
 def add_to_watchlist():
-    data = request.get_json()
+    email = _require_login()
+    if not email:
+        return jsonify({'error': 'You must be logged in to use your watchlist'}), 401
+    data   = request.get_json(silent=True) or {}
     symbol = data.get('symbol')
-    email = data.get('email')
- 
-    if not symbol or not email:
-        return jsonify({"error": "Symbol and email are required"}), 400
-
-    # Find the user's watchlist document
-    user_watchlist = fn.watchlist.find_one({"email": email})
-
-    if user_watchlist:
-        # Check if the symbol is already in the watchlist
-        if symbol in user_watchlist.get("symbols", []):
-            return jsonify({"error": "Symbol is already in the watchlist"}), 400
-        # Add the symbol to the user's watchlist
-        fn.watchlist.update_one({"email": email}, {"$addToSet": {"symbols": symbol}})
+    if not symbol:
+        return jsonify({'error': 'Symbol is required'}), 400
+    user_wl = fn.watchlist.find_one({'email': email})
+    if user_wl:
+        if symbol in user_wl.get('symbols', []):
+            return jsonify({'error': 'Symbol already in watchlist'}), 400
+        fn.watchlist.update_one({'email': email}, {'$addToSet': {'symbols': symbol}})
     else:
-        # Create a new watchlist document for the user
-        fn.watchlist.insert_one({"email": email, "symbols": [symbol]})
+        fn.watchlist.insert_one({'email': email, 'symbols': [symbol]})
+    return jsonify({'message': 'Symbol added to watchlist'})
 
-    return jsonify({"message": "Symbol added to watchlist"})
 
-# Endpoint to remove a stock from the watchlist
 @app.route('/remove-from-watchlist', methods=['POST'])
 def remove_from_watchlist():
-    data = request.get_json()
-    symbol = data.get('symbol')
-    email = data.get('email')
+    email = _require_login()
     if not email:
-        return jsonify({"error": "Email is required"}), 400
-
-    result = fn.watchlist.update_one({"email": email}, {"$pull": {"symbols": symbol}})
+        return jsonify({'error': 'You must be logged in to use your watchlist'}), 401
+    data   = request.get_json(silent=True) or {}
+    symbol = data.get('symbol')
+    if not symbol:
+        return jsonify({'error': 'Symbol is required'}), 400
+    result = fn.watchlist.update_one({'email': email}, {'$pull': {'symbols': symbol}})
     if result.modified_count == 0:
-        return jsonify({"error": "Symbol not found in watchlist"}), 404
-
-    return jsonify({"message": "Symbol removed from watchlist"})
+        return jsonify({'error': 'Symbol not found in watchlist'}), 404
+    return jsonify({'message': 'Symbol removed from watchlist'})
