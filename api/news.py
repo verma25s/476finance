@@ -13,4 +13,3 @@ def get_news():
     data = r.json()
    
     return data
-
